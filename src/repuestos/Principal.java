@@ -348,5 +348,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel WAS;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton verPartesButton;
+
     // End of variables declaration                   
+
+
 }
