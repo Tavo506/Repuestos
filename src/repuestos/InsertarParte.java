@@ -5,6 +5,11 @@
  */
 package repuestos;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import javax.swing.JFrame;
+
 /**
  *
  * @author iFreuk
@@ -14,8 +19,26 @@ public class InsertarParte extends javax.swing.JFrame {
     /**
      * Creates new form InsertarParte
      */
-    public InsertarParte() {
+    JFrame principal;
+    
+    public WindowListener c = new WindowAdapter() {
+        @Override
+        public void windowClosing(WindowEvent e) {
+            cerrar(principal);
+        }
+    };
+    
+    public InsertarParte(JFrame p) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.addWindowListener(c);
+        this.setVisible(true);
+        principal = p;
+    }
+    
+    void cerrar(JFrame p){
+        p.setVisible(true);
+        this.dispose();
     }
 
     /**
@@ -32,51 +55,38 @@ public class InsertarParte extends javax.swing.JFrame {
         FabricanteCombo = new javax.swing.JComboBox();
         FabricanteLabel = new javax.swing.JLabel();
         MarcaLabel = new javax.swing.JLabel();
+        NombreField = new javax.swing.JTextField();
+        NombreLabel = new javax.swing.JLabel();
+        MarcaField = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Panelinsertar.setBackground(new java.awt.Color(51, 51, 51));
         Panelinsertar.setForeground(new java.awt.Color(51, 51, 51));
+        Panelinsertar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panelinsertar.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 73, -1, -1));
 
         FabricanteCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Panelinsertar.add(FabricanteCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         FabricanteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         FabricanteLabel.setText("Fabricante");
+        Panelinsertar.add(FabricanteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 29, -1, -1));
 
         MarcaLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         MarcaLabel.setText("Marca");
+        Panelinsertar.add(MarcaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 95, -1, -1));
 
-        javax.swing.GroupLayout PanelinsertarLayout = new javax.swing.GroupLayout(Panelinsertar);
-        Panelinsertar.setLayout(PanelinsertarLayout);
-        PanelinsertarLayout.setHorizontalGroup(
-            PanelinsertarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelinsertarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(163, 163, 163))
-            .addGroup(PanelinsertarLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(PanelinsertarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(MarcaLabel)
-                    .addGroup(PanelinsertarLayout.createSequentialGroup()
-                        .addComponent(FabricanteLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(FabricanteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(585, Short.MAX_VALUE))
-        );
-        PanelinsertarLayout.setVerticalGroup(
-            PanelinsertarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelinsertarLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(PanelinsertarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FabricanteLabel)
-                    .addComponent(FabricanteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(MarcaLabel)
-                .addContainerGap(257, Short.MAX_VALUE))
-        );
+        NombreField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        Panelinsertar.add(NombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 151, 163, -1));
+
+        NombreLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        NombreLabel.setText("Nombre");
+        Panelinsertar.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 151, -1, -1));
+
+        MarcaField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        Panelinsertar.add(MarcaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 91, 163, -1));
 
         getContentPane().add(Panelinsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 372));
 
@@ -113,7 +123,7 @@ public class InsertarParte extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertarParte().setVisible(true);
+                new InsertarParte(null).setVisible(true);
             }
         });
     }
@@ -121,7 +131,10 @@ public class InsertarParte extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox FabricanteCombo;
     private javax.swing.JLabel FabricanteLabel;
+    private javax.swing.JTextField MarcaField;
     private javax.swing.JLabel MarcaLabel;
+    private javax.swing.JTextField NombreField;
+    private javax.swing.JLabel NombreLabel;
     private javax.swing.JPanel Panelinsertar;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables

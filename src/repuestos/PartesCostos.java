@@ -5,6 +5,11 @@
  */
 package repuestos;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import javax.swing.JFrame;
+
 /**
  *
  * @author iFreuk
@@ -14,8 +19,26 @@ public class PartesCostos extends javax.swing.JFrame {
     /**
      * Creates new form PartesCostos
      */
-    public PartesCostos() {
+    JFrame principal;
+    
+    public WindowListener c = new WindowAdapter() {
+        @Override
+        public void windowClosing(WindowEvent e) {
+            cerrar(principal);
+        }
+    };
+    
+    public PartesCostos(JFrame p) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.addWindowListener(c);
+        this.setVisible(true);
+        principal = p;
+    }
+    
+    void cerrar(JFrame p){
+        p.setVisible(true);
+        this.dispose();
     }
 
     /**
@@ -41,25 +64,32 @@ public class PartesCostos extends javax.swing.JFrame {
         CostoLabel = new javax.swing.JLabel();
         PorcentajeField = new javax.swing.JFormattedTextField(new Integer(3));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ProveedorCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(ProveedorCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 32, -1, -1));
 
         ProveedorLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         ProveedorLabel.setText("Proveedor");
+        jPanel1.add(ProveedorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 31, -1, -1));
 
         PiezaLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         PiezaLabel.setText("Pieza");
+        jPanel1.add(PiezaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 76, -1, -1));
 
         FabricanteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         FabricanteLabel.setText("Fabricante");
+        jPanel1.add(FabricanteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         PiezaCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(PiezaCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 76, -1, -1));
 
         FabricanteCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(FabricanteCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 131, -1, -1));
 
         CostoFinal.setEditable(false);
         CostoFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -67,17 +97,22 @@ public class PartesCostos extends javax.swing.JFrame {
                 CostoFinalActionPerformed(evt);
             }
         });
+        jPanel1.add(CostoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 295, 118, -1));
 
         PorcentajeSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 PorcentajeSpinnerStateChanged(evt);
             }
         });
+        jPanel1.add(PorcentajeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 214, 57, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 76, -1, -1));
 
         PorcentajeLabel.setText("Porcentaje Beneficio");
+        jPanel1.add(PorcentajeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 219, -1, -1));
 
         CostoLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         CostoLabel.setText("Costo en Colones");
+        jPanel1.add(CostoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 130, -1, -1));
 
         PorcentajeField.setText("0");
         PorcentajeField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -91,73 +126,7 @@ public class PartesCostos extends javax.swing.JFrame {
                 PorcentajeFieldKeyPressed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FabricanteLabel)
-                    .addComponent(PiezaLabel)
-                    .addComponent(ProveedorLabel))
-                .addGap(56, 56, 56)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(PiezaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addGap(163, 163, 163))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ProveedorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(FabricanteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(PorcentajeLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(PorcentajeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(CostoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(86, 86, 86))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(CostoLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(PorcentajeField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(52, 52, 52))))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ProveedorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProveedorLabel))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PiezaLabel)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(PiezaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4)))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FabricanteLabel)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(FabricanteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CostoLabel)
-                        .addComponent(PorcentajeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PorcentajeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PorcentajeLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(CostoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
-        );
+        jPanel1.add(PorcentajeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 128, 134, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 724, 372));
 
@@ -210,7 +179,7 @@ public class PartesCostos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PartesCostos().setVisible(true);
+                new PartesCostos(null).setVisible(true);
             }
         });
     }

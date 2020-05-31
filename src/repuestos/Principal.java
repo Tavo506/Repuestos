@@ -276,7 +276,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_verPartesButtonActionPerformed
 
     private void InsertarParteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarParteButtonActionPerformed
-        // TODO add your handling code here:
+        new InsertarParte(this);
+       this.setVisible(false);
     }//GEN-LAST:event_InsertarParteButtonActionPerformed
 
     private void BorrarParteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarParteButtonActionPerformed
@@ -288,7 +289,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_AsociarProvButtonActionPerformed
 
     private void ActualizaCostosProvButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizaCostosProvButtonActionPerformed
-        // TODO add your handling code here:
+        new PartesCostos(this);
+       this.setVisible(false);
     }//GEN-LAST:event_ActualizaCostosProvButtonActionPerformed
 
     /**
