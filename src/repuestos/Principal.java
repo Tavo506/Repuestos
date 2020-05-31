@@ -39,9 +39,11 @@ public class Principal extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         Panel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        InsertarClientes = new javax.swing.JButton();
+        ModificarClientes = new javax.swing.JButton();
+        SuspenderClientes = new javax.swing.JButton();
+        VerClientes = new javax.swing.JButton();
+        LabelAdminCliente = new javax.swing.JLabel();
         Panel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Panel3 = new javax.swing.JPanel();
@@ -64,22 +66,51 @@ public class Principal extends javax.swing.JFrame {
         Panel1.setPreferredSize(new java.awt.Dimension(720, 600));
         Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jButton1.setText("Ver Clientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        InsertarClientes.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
+        InsertarClientes.setText("Insertar Clientes");
+        InsertarClientes.setPreferredSize(new java.awt.Dimension(285, 75));
+        InsertarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                InsertarClientesActionPerformed(evt);
             }
         });
-        Panel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 260, 60));
+        Panel1.add(InsertarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
 
-        jRadioButton1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jRadioButton1.setText("Insertar Cliente");
-        Panel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
+        ModificarClientes.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
+        ModificarClientes.setText("Modificar Clientes");
+        ModificarClientes.setPreferredSize(new java.awt.Dimension(285, 75));
+        ModificarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarClientesActionPerformed(evt);
+            }
+        });
+        Panel1.add(ModificarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
 
-        jRadioButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jRadioButton2.setText("Insertar Cliente");
-        Panel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, -1));
+        SuspenderClientes.setFont(new java.awt.Font("Dialog", 1, 26)); // NOI18N
+        SuspenderClientes.setText("Suspender Clientes");
+        SuspenderClientes.setPreferredSize(new java.awt.Dimension(285, 75));
+        SuspenderClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SuspenderClientesActionPerformed(evt);
+            }
+        });
+        Panel1.add(SuspenderClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+
+        VerClientes.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
+        VerClientes.setText("Ver Clientes");
+        VerClientes.setPreferredSize(new java.awt.Dimension(285, 75));
+        VerClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerClientesActionPerformed(evt);
+            }
+        });
+        Panel1.add(VerClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, -1, -1));
+
+        LabelAdminCliente.setBackground(new java.awt.Color(255, 255, 255));
+        LabelAdminCliente.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        LabelAdminCliente.setForeground(new java.awt.Color(204, 204, 204));
+        LabelAdminCliente.setText("Administrar Clientes");
+        Panel1.add(LabelAdminCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
         getContentPane().add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -165,12 +196,27 @@ public class Principal extends javax.swing.JFrame {
         Panel3.setVisible(true);
     }//GEN-LAST:event_MenuOrdenesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void VerClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerClientesActionPerformed
         if(!listaAbierta){
             new ListaClientes();
             listaAbierta = true;
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_VerClientesActionPerformed
+
+    private void InsertarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarClientesActionPerformed
+        new InsertarClientes(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_InsertarClientesActionPerformed
+
+    private void ModificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarClientesActionPerformed
+        new ModificarClientes(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_ModificarClientesActionPerformed
+
+    private void SuspenderClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuspenderClientesActionPerformed
+        new SuspenderClientes(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_SuspenderClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,19 +255,21 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar BarraMenu;
+    private javax.swing.JButton InsertarClientes;
+    private javax.swing.JLabel LabelAdminCliente;
     private javax.swing.JMenu MenuAcercaDe;
     private javax.swing.JMenu MenuAdministrar;
     private javax.swing.JMenuItem MenuClientes;
     private javax.swing.JMenuItem MenuOrdenes;
     private javax.swing.JMenuItem MenuPartes;
+    private javax.swing.JButton ModificarClientes;
     private javax.swing.JPanel Panel1;
     private javax.swing.JPanel Panel2;
     private javax.swing.JPanel Panel3;
+    private javax.swing.JButton SuspenderClientes;
+    private javax.swing.JButton VerClientes;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration//GEN-END:variables
 }
