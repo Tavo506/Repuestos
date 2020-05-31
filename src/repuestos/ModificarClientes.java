@@ -31,7 +31,6 @@ public class ModificarClientes extends javax.swing.JFrame {
     public ModificarClientes(JFrame p) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setResizable(false);
         this.addWindowListener(c);
         this.setVisible(true);
         principal = p;
@@ -51,21 +50,97 @@ public class ModificarClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        Panel1 = new javax.swing.JPanel();
+        RadioPersona = new javax.swing.JRadioButton();
+        RadioOrg = new javax.swing.JRadioButton();
+        Label = new javax.swing.JLabel();
+        Panel2 = new javax.swing.JPanel();
+        Panel3 = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 600));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Panel1.setBackground(new java.awt.Color(51, 51, 51));
+        Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        RadioPersona.setBackground(new java.awt.Color(55, 55, 55));
+        buttonGroup1.add(RadioPersona);
+        RadioPersona.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        RadioPersona.setForeground(new java.awt.Color(204, 204, 204));
+        RadioPersona.setText("Persona");
+        RadioPersona.setFocusPainted(false);
+        RadioPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioPersonaActionPerformed(evt);
+            }
+        });
+        Panel1.add(RadioPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+
+        RadioOrg.setBackground(new java.awt.Color(55, 55, 55));
+        buttonGroup1.add(RadioOrg);
+        RadioOrg.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        RadioOrg.setForeground(new java.awt.Color(204, 204, 204));
+        RadioOrg.setText("Organización");
+        RadioOrg.setFocusPainted(false);
+        RadioOrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioOrgActionPerformed(evt);
+            }
+        });
+        Panel1.add(RadioOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+
+        Label.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        Label.setForeground(new java.awt.Color(204, 204, 204));
+        Label.setText("Modificar Cliente");
+        Panel1.add(Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+
+        getContentPane().add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+
+        Panel2.setBackground(new java.awt.Color(51, 51, 51));
+
+        javax.swing.GroupLayout Panel2Layout = new javax.swing.GroupLayout(Panel2);
+        Panel2.setLayout(Panel2Layout);
+        Panel2Layout.setHorizontalGroup(
+            Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        Panel2Layout.setVerticalGroup(
+            Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
+
+        getContentPane().add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, 470));
+
+        Panel3.setBackground(new java.awt.Color(51, 51, 51));
+
+        javax.swing.GroupLayout Panel3Layout = new javax.swing.GroupLayout(Panel3);
+        Panel3.setLayout(Panel3Layout);
+        Panel3Layout.setHorizontalGroup(
+            Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+        Panel3Layout.setVerticalGroup(
+            Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 470, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 500, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RadioPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioPersonaActionPerformed
+        Panel2.setVisible(true);
+        Panel3.setVisible(false);
+    }//GEN-LAST:event_RadioPersonaActionPerformed
+
+    private void RadioOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioOrgActionPerformed
+        Panel2.setVisible(false);
+        Panel3.setVisible(true);
+    }//GEN-LAST:event_RadioOrgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,5 +178,12 @@ public class ModificarClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label;
+    private javax.swing.JPanel Panel1;
+    private javax.swing.JPanel Panel2;
+    private javax.swing.JPanel Panel3;
+    private javax.swing.JRadioButton RadioOrg;
+    private javax.swing.JRadioButton RadioPersona;
+    private javax.swing.ButtonGroup buttonGroup1;
     // End of variables declaration//GEN-END:variables
 }
