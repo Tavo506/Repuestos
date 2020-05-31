@@ -269,17 +269,11 @@ public class Principal extends javax.swing.JFrame {
         new SuspenderClientes(this);
         this.setVisible(false);
     }                                                 
-
-<<<<<<< HEAD
     private void verPartesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPartesButtonActionPerformed
        new VerPartes(this);
        this.setVisible(false);
     }//GEN-LAST:event_verPartesButtonActionPerformed
-=======
-    private void verPartesButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
-       System.out.println("Patoasado");
-    }                                               
->>>>>>> 80fbc8feac94c50b3573643888bb86d822364e67
+
 
     private void InsertarParteButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         // TODO add your handling code here:
