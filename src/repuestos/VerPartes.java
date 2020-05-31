@@ -31,7 +31,6 @@ public class VerPartes extends javax.swing.JFrame {
     public VerPartes(JFrame p) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setResizable(false);
         this.addWindowListener(c);
         this.setVisible(true);
         principal = p;
@@ -57,8 +56,11 @@ public class VerPartes extends javax.swing.JFrame {
         ModeloLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaPartes = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         AnnoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -91,7 +93,10 @@ public class VerPartes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TablaPartes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 660, 300));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 660, 90));
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,6 +146,7 @@ public class VerPartes extends javax.swing.JFrame {
     private javax.swing.JComboBox ModeloCombo;
     private javax.swing.JLabel ModeloLabel;
     private javax.swing.JTable TablaPartes;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
