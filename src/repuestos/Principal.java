@@ -52,7 +52,7 @@ public class Principal extends javax.swing.JFrame {
         AsociaAutoButton = new javax.swing.JButton();
         ActualizaCostosProvButton = new javax.swing.JButton();
         Panel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        WAS = new javax.swing.JLabel();
         BarraMenu = new javax.swing.JMenuBar();
         MenuAdministrar = new javax.swing.JMenu();
         MenuClientes = new javax.swing.JMenuItem();
@@ -176,9 +176,9 @@ public class Principal extends javax.swing.JFrame {
 
         Panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel3.setText("jLabel3");
-        Panel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 285, -1, -1));
+        WAS.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        WAS.setText("jLabel3");
+        Panel3.add(WAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 285, -1, -1));
 
         getContentPane().add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 600));
 
@@ -330,13 +330,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton AsociaAutoButton;
     private javax.swing.JButton AsociarProvButton;
     private javax.swing.JMenuBar BarraMenu;
-
-    private javax.swing.JButton InsertarClientes;
-    private javax.swing.JLabel LabelAdminCliente;
-
     private javax.swing.JButton BorrarParteButton;
+    private javax.swing.JButton InsertarClientes;
     private javax.swing.JButton InsertarParteButton;
-
+    private javax.swing.JLabel LabelAdminCliente;
     private javax.swing.JMenu MenuAcercaDe;
     private javax.swing.JMenu MenuAdministrar;
     private javax.swing.JMenuItem MenuClientes;
@@ -348,16 +345,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel Panel3;
     private javax.swing.JButton SuspenderClientes;
     private javax.swing.JButton VerClientes;
+    private javax.swing.JLabel WAS;
     private javax.swing.ButtonGroup buttonGroup1;
-
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JButton verPartesButton;
-
     // End of variables declaration//GEN-END:variables
 }
