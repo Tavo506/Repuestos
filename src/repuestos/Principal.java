@@ -271,7 +271,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_SuspenderClientesActionPerformed
 
     private void verPartesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPartesButtonActionPerformed
-       System.out.println("Patoasado");
+       new VerPartes(this);
+       this.setVisible(false);
     }//GEN-LAST:event_verPartesButtonActionPerformed
 
     private void InsertarParteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarParteButtonActionPerformed

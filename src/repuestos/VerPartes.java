@@ -5,6 +5,11 @@
  */
 package repuestos;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import javax.swing.JFrame;
+
 /**
  *
  * @author iFreuk
@@ -14,8 +19,27 @@ public class VerPartes extends javax.swing.JFrame {
     /**
      * Creates new form VerPartes
      */
-    public VerPartes() {
+    JFrame principal;
+    
+    public WindowListener c = new WindowAdapter() {
+        @Override
+        public void windowClosing(WindowEvent e) {
+            cerrar(principal);
+        }
+    };
+    
+    public VerPartes(JFrame p) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.addWindowListener(c);
+        this.setVisible(true);
+        principal = p;
+    }
+    
+    void cerrar(JFrame p){
+        p.setVisible(true);
+        this.dispose();
     }
 
     /**
@@ -34,7 +58,7 @@ public class VerPartes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaPartes = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         AnnoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -106,7 +130,7 @@ public class VerPartes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VerPartes().setVisible(true);
+                new VerPartes(null).setVisible(true);
             }
         });
     }
