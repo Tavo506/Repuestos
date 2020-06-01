@@ -61,4 +61,18 @@ public class Repuestos {
         Statement instruccion = con.createStatement();
         instruccion.execute("insert into Persona values (208130469, 'Miguel Alejandro Araya Blanco', 'San Pedro', 'San José', 61498787)");
     }
+    
+    public static boolean isNumeric(String cadena) {
+
+        boolean resultado;
+
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+
+        return resultado;
+    }
 }

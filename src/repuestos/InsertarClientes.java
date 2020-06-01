@@ -70,7 +70,29 @@ public class InsertarClientes extends javax.swing.JFrame {
         AgregarTelefono = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Telefonos = new javax.swing.JTextArea();
+        LabelEstadoCliente = new javax.swing.JLabel();
+        ComboEstadoPersona = new javax.swing.JComboBox<>();
+        InsertarPersona = new javax.swing.JButton();
         Panel2 = new javax.swing.JPanel();
+        LabelNombreOrg = new javax.swing.JLabel();
+        TextNombreOrg = new javax.swing.JTextField();
+        LabelCedulaOrg = new javax.swing.JLabel();
+        TextCedulaOrg = new javax.swing.JTextField();
+        LabelDireccionOrg = new javax.swing.JLabel();
+        TextDireccionOrg = new javax.swing.JTextField();
+        LabelCiudadOrg = new javax.swing.JLabel();
+        TextCiudadOrg = new javax.swing.JTextField();
+        LabelTeléfonoOrg = new javax.swing.JLabel();
+        TextTeléfonoOrg = new javax.swing.JTextField();
+        LabelEstadoOrg = new javax.swing.JLabel();
+        ComboEstadoOrg = new javax.swing.JComboBox<>();
+        InsertarOrg = new javax.swing.JButton();
+        TextNombreContacto = new javax.swing.JTextField();
+        NombreContacto = new javax.swing.JLabel();
+        CargoContacto = new javax.swing.JLabel();
+        TextCargoContacto = new javax.swing.JTextField();
+        TextTelContacto = new javax.swing.JTextField();
+        TelContacto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Insertar Cliente");
@@ -85,6 +107,7 @@ public class InsertarClientes extends javax.swing.JFrame {
         buttonGroup1.add(RadioPersona);
         RadioPersona.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         RadioPersona.setForeground(new java.awt.Color(204, 204, 204));
+        RadioPersona.setSelected(true);
         RadioPersona.setText("Persona");
         RadioPersona.setFocusPainted(false);
         RadioPersona.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +138,7 @@ public class InsertarClientes extends javax.swing.JFrame {
         getContentPane().add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         Panel1.setBackground(new java.awt.Color(51, 51, 51));
-        Panel1.setPreferredSize(new java.awt.Dimension(500, 600));
+        Panel1.setPreferredSize(new java.awt.Dimension(500, 650));
         Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LabelNombreCliente.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -176,14 +199,105 @@ public class InsertarClientes extends javax.swing.JFrame {
         Telefonos.setRows(5);
         jScrollPane1.setViewportView(Telefonos);
 
-        Panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
+        Panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, 110));
 
-        getContentPane().add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, 470));
+        LabelEstadoCliente.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        LabelEstadoCliente.setForeground(new java.awt.Color(204, 204, 204));
+        LabelEstadoCliente.setText("Estado:");
+        Panel1.add(LabelEstadoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
+
+        ComboEstadoPersona.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        ComboEstadoPersona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        Panel1.add(ComboEstadoPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 210, -1));
+
+        InsertarPersona.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        InsertarPersona.setText("Insertar");
+        Panel1.add(InsertarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
+
+        getContentPane().add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, 520));
 
         Panel2.setBackground(new java.awt.Color(51, 51, 51));
         Panel2.setPreferredSize(new java.awt.Dimension(500, 600));
         Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, 470));
+
+        LabelNombreOrg.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        LabelNombreOrg.setForeground(new java.awt.Color(204, 204, 204));
+        LabelNombreOrg.setText("Nombre:");
+        Panel2.add(LabelNombreOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        TextNombreOrg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextNombreOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 360, -1));
+
+        LabelCedulaOrg.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        LabelCedulaOrg.setForeground(new java.awt.Color(204, 204, 204));
+        LabelCedulaOrg.setText("Cédula Jurídica:");
+        Panel2.add(LabelCedulaOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        TextCedulaOrg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextCedulaOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 330, -1));
+
+        LabelDireccionOrg.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        LabelDireccionOrg.setForeground(new java.awt.Color(204, 204, 204));
+        LabelDireccionOrg.setText("Dirección:");
+        Panel2.add(LabelDireccionOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        TextDireccionOrg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextDireccionOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 360, -1));
+
+        LabelCiudadOrg.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        LabelCiudadOrg.setForeground(new java.awt.Color(204, 204, 204));
+        LabelCiudadOrg.setText("Ciudad:");
+        Panel2.add(LabelCiudadOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        TextCiudadOrg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextCiudadOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 360, -1));
+
+        LabelTeléfonoOrg.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        LabelTeléfonoOrg.setForeground(new java.awt.Color(204, 204, 204));
+        LabelTeléfonoOrg.setText("Teléfono:");
+        Panel2.add(LabelTeléfonoOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        TextTeléfonoOrg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextTeléfonoOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 360, -1));
+
+        LabelEstadoOrg.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        LabelEstadoOrg.setForeground(new java.awt.Color(204, 204, 204));
+        LabelEstadoOrg.setText("Estado:");
+        Panel2.add(LabelEstadoOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
+
+        ComboEstadoOrg.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        ComboEstadoOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        Panel2.add(ComboEstadoOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 210, -1));
+
+        InsertarOrg.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        InsertarOrg.setText("Insertar");
+        Panel2.add(InsertarOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
+
+        TextNombreContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextNombreContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 310, -1));
+
+        NombreContacto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        NombreContacto.setForeground(new java.awt.Color(204, 204, 204));
+        NombreContacto.setText("Nombre Contacto:");
+        Panel2.add(NombreContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        CargoContacto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        CargoContacto.setForeground(new java.awt.Color(204, 204, 204));
+        CargoContacto.setText("Cargo Contacto:");
+        Panel2.add(CargoContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        TextCargoContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextCargoContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 310, -1));
+
+        TextTelContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextTelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 310, -1));
+
+        TelContacto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        TelContacto.setForeground(new java.awt.Color(204, 204, 204));
+        TelContacto.setText("Teléfono Contacto:");
+        Panel2.add(TelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+
+        getContentPane().add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -199,9 +313,12 @@ public class InsertarClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_RadioOrgActionPerformed
 
     private void AgregarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarTelefonoActionPerformed
+        
         String t = TextTeléfonoCliente.getText();
-        TextTeléfonoCliente.setText("");
-        Telefonos.setText(Telefonos.getText() + t + "\n");
+        if(!t.isEmpty() && Repuestos.isNumeric(t)){
+            TextTeléfonoCliente.setText("");
+            Telefonos.setText(Telefonos.getText() + t + "\n");
+        }
     }//GEN-LAST:event_AgregarTelefonoActionPerformed
 
     /**
@@ -241,23 +358,45 @@ public class InsertarClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarTelefono;
+    private javax.swing.JLabel CargoContacto;
+    private javax.swing.JComboBox<String> ComboEstadoOrg;
+    private javax.swing.JComboBox<String> ComboEstadoPersona;
+    private javax.swing.JButton InsertarOrg;
+    private javax.swing.JButton InsertarPersona;
     private javax.swing.JLabel Label;
     private javax.swing.JLabel LabelCedulaCliente;
+    private javax.swing.JLabel LabelCedulaOrg;
     private javax.swing.JLabel LabelCiudadCliente;
+    private javax.swing.JLabel LabelCiudadOrg;
     private javax.swing.JLabel LabelDireccionCliente;
+    private javax.swing.JLabel LabelDireccionOrg;
+    private javax.swing.JLabel LabelEstadoCliente;
+    private javax.swing.JLabel LabelEstadoOrg;
     private javax.swing.JLabel LabelNombreCliente;
+    private javax.swing.JLabel LabelNombreOrg;
+    private javax.swing.JLabel LabelTeléfonoOrg;
     private javax.swing.JLabel LabelTeléfonosCliente;
+    private javax.swing.JLabel NombreContacto;
     private javax.swing.JPanel Panel1;
     private javax.swing.JPanel Panel2;
     private javax.swing.JPanel Panel3;
     private javax.swing.JRadioButton RadioOrg;
     private javax.swing.JRadioButton RadioPersona;
+    private javax.swing.JLabel TelContacto;
     private javax.swing.JTextArea Telefonos;
+    private javax.swing.JTextField TextCargoContacto;
     private javax.swing.JTextField TextCedulaCliente;
+    private javax.swing.JTextField TextCedulaOrg;
     private javax.swing.JTextField TextCiudadCliente;
+    private javax.swing.JTextField TextCiudadOrg;
     private javax.swing.JTextField TextDireccionCliente;
+    private javax.swing.JTextField TextDireccionOrg;
     private javax.swing.JTextField TextNombreCliente;
+    private javax.swing.JTextField TextNombreContacto;
+    private javax.swing.JTextField TextNombreOrg;
+    private javax.swing.JTextField TextTelContacto;
     private javax.swing.JTextField TextTeléfonoCliente;
+    private javax.swing.JTextField TextTeléfonoOrg;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
