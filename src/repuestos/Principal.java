@@ -51,8 +51,9 @@ public class Principal extends javax.swing.JFrame {
         AsociarProvButton = new javax.swing.JButton();
         AsociaAutoButton = new javax.swing.JButton();
         ActualizaCostosProvButton = new javax.swing.JButton();
+        LabelAdminPartes = new javax.swing.JLabel();
         Panel3 = new javax.swing.JPanel();
-        WAS = new javax.swing.JLabel();
+        LabelAdminOrdenes = new javax.swing.JLabel();
         BarraMenu = new javax.swing.JMenuBar();
         MenuAdministrar = new javax.swing.JMenu();
         MenuClientes = new javax.swing.JMenuItem();
@@ -130,7 +131,7 @@ public class Principal extends javax.swing.JFrame {
                 verPartesButtonActionPerformed(evt);
             }
         });
-        Panel2.add(verPartesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 270, 80));
+        Panel2.add(verPartesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 270, 80));
 
         InsertarParteButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         InsertarParteButton.setText("Insertar Parte");
@@ -139,7 +140,7 @@ public class Principal extends javax.swing.JFrame {
                 InsertarParteButtonActionPerformed(evt);
             }
         });
-        Panel2.add(InsertarParteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 270, 80));
+        Panel2.add(InsertarParteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 270, 80));
 
         BorrarParteButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         BorrarParteButton.setText("Borrar Parte");
@@ -148,7 +149,7 @@ public class Principal extends javax.swing.JFrame {
                 BorrarParteButtonActionPerformed(evt);
             }
         });
-        Panel2.add(BorrarParteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 270, 80));
+        Panel2.add(BorrarParteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 270, 80));
 
         AsociarProvButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         AsociarProvButton.setText("Asociar partes proveedor ");
@@ -157,11 +158,11 @@ public class Principal extends javax.swing.JFrame {
                 AsociarProvButtonActionPerformed(evt);
             }
         });
-        Panel2.add(AsociarProvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 270, 80));
+        Panel2.add(AsociarProvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 270, 80));
 
         AsociaAutoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         AsociaAutoButton.setText("Asociar partes Auto");
-        Panel2.add(AsociaAutoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 270, 80));
+        Panel2.add(AsociaAutoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 270, 80));
 
         ActualizaCostosProvButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ActualizaCostosProvButton.setText("Acutalizar costos proveedor");
@@ -170,15 +171,24 @@ public class Principal extends javax.swing.JFrame {
                 ActualizaCostosProvButtonActionPerformed(evt);
             }
         });
-        Panel2.add(ActualizaCostosProvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 270, 80));
+        Panel2.add(ActualizaCostosProvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 270, 80));
+
+        LabelAdminPartes.setBackground(new java.awt.Color(255, 255, 255));
+        LabelAdminPartes.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        LabelAdminPartes.setForeground(new java.awt.Color(204, 204, 204));
+        LabelAdminPartes.setText("Administrar Partes");
+        Panel2.add(LabelAdminPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
         getContentPane().add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 600));
 
+        Panel3.setBackground(new java.awt.Color(51, 51, 51));
         Panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        WAS.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        WAS.setText("jLabel3");
-        Panel3.add(WAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 285, -1, -1));
+        LabelAdminOrdenes.setBackground(new java.awt.Color(255, 255, 255));
+        LabelAdminOrdenes.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        LabelAdminOrdenes.setForeground(new java.awt.Color(204, 204, 204));
+        LabelAdminOrdenes.setText("Administrar Órdenes");
+        Panel3.add(LabelAdminOrdenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
         getContentPane().add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 600));
 
@@ -225,8 +235,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void MenuAcercaDeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuAcercaDeMouseClicked
         JOptionPane.showMessageDialog(this, "       App de Repuestos\n" +
-                                            "Desarrollada por " +
-                                            "Gustavo Blanco Alfaro"
+                                            "Desarrollado por:\n" +
+                                            "Gustavo Blanco Alfaro\n"+
+                                            "Gustavo Alvarado Orozco"
                                             , "Acerca de", 1);
     }//GEN-LAST:event_MenuAcercaDeMouseClicked
 
@@ -337,6 +348,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton InsertarClientes;
     private javax.swing.JButton InsertarParteButton;
     private javax.swing.JLabel LabelAdminCliente;
+    private javax.swing.JLabel LabelAdminOrdenes;
+    private javax.swing.JLabel LabelAdminPartes;
     private javax.swing.JMenu MenuAcercaDe;
     private javax.swing.JMenu MenuAdministrar;
     private javax.swing.JMenuItem MenuClientes;
@@ -348,7 +361,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel Panel3;
     private javax.swing.JButton SuspenderClientes;
     private javax.swing.JButton VerClientes;
-    private javax.swing.JLabel WAS;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton verPartesButton;
     // End of variables declaration//GEN-END:variables
