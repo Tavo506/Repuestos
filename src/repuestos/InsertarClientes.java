@@ -324,7 +324,7 @@ public class InsertarClientes extends javax.swing.JFrame {
     private void AgregarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarTelefonoActionPerformed
         
         String t = TextTeléfonoPersona.getText();
-        if(!t.isEmpty() && Repuestos.isNumeric(t)){
+        if(!t.isEmpty() && Repuestos.isNumeric(t) && t.length()>=8){
             TextTeléfonoPersona.setText("");
             if(Telefonos.getText().trim().isEmpty())
                 Telefonos.setText(t);

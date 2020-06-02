@@ -216,6 +216,11 @@ public class ModificarClientes extends javax.swing.JFrame {
 
         ModificarPersona.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         ModificarPersona.setText("Modificar");
+        ModificarPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarPersonaActionPerformed(evt);
+            }
+        });
         Panel2.add(ModificarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
 
         CargarPersona.setText("Cargar");
@@ -332,9 +337,12 @@ public class ModificarClientes extends javax.swing.JFrame {
     private void AgregarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarTelefonoActionPerformed
 
         String t = TextTeléfonoPersona.getText();
-        if(!t.isEmpty() && Repuestos.isNumeric(t)){
+        if(!t.isEmpty() && Repuestos.isNumeric(t) && t.length()>=8){
             TextTeléfonoPersona.setText("");
-            Telefonos.setText(Telefonos.getText() + t + "\n");
+            if(Telefonos.getText().trim().isEmpty())
+                Telefonos.setText(t);
+            else
+                Telefonos.setText(Telefonos.getText() + ",\n" + t);
         }
     }//GEN-LAST:event_AgregarTelefonoActionPerformed
 
@@ -369,6 +377,7 @@ public class ModificarClientes extends javax.swing.JFrame {
             TextDireccionPersona.setText(datos.get(1));
             TextCiudadPersona.setText(datos.get(2));
             ComboEstadoPersona.setSelectedItem(datos.get(3));
+            Telefonos.setText(datos.get(4).replace(",", ",\n"));
             
             JOptionPane.showMessageDialog(this, "Datos del cliente cargados", "Info", 1);
             
@@ -428,6 +437,94 @@ public class ModificarClientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CargarOrgActionPerformed
 
+    private void ModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPersonaActionPerformed
+        String estado, nombre, direccion, ciudad;
+        ArrayList<Integer> telefonos;
+        int cedula;
+        
+        try {
+            estado = (String)ComboEstadoPersona.getSelectedItem();
+            
+            if(TextCedulaPersona.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "El campo de cedula no puede ser vacío", "Advertencia", 2);
+                return;
+            }
+            
+            cedula = Integer.parseInt(TextCedulaPersona.getText());
+            nombre = TextNombrePersona.getText();
+            direccion = TextDireccionPersona.getText();
+            ciudad = TextCiudadPersona.getText();
+            telefonos = getTelefonos();
+            
+            if(!revisarDatosPersona(nombre, direccion, ciudad, cedula, telefonos))
+                return;
+            boolean a = Repuestos.updatePersona(estado, cedula, nombre, direccion, ciudad, telefonos);   //Manda los datos a la funcion que hace la insercion
+            if(a)
+                JOptionPane.showMessageDialog(this, "Cliente modificado exitosamente", "Info", 1);
+            else
+                JOptionPane.showMessageDialog(this, "El cliente no existe", "Advertencia", 2);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error, cédula debe ser un número entero", "Advertencia", 2);
+        }
+    }//GEN-LAST:event_ModificarPersonaActionPerformed
+
+    private ArrayList<Integer> getTelefonos(){
+        ArrayList<Integer> telefonos = new ArrayList<>();
+        String textTelefonos = Telefonos.getText().trim().replace("\n", "");
+        try{
+            if(textTelefonos.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Debe agregar al menos un teléfono", "Advertencia", 2);
+                return null;
+            }
+
+            String[] tel = textTelefonos.split(",");
+            for (String string : tel) {
+                if(Repuestos.isNumeric(string) && string.length() >= 8)
+                    telefonos.add(Integer.parseInt(string));
+                else{
+                    JOptionPane.showMessageDialog(this, "El telefono \"" + string + "\" no es válido", "Advertencia", 2);
+                    return null;
+                }
+            }
+        return telefonos;
+        
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Ocurrió un error al leer los teléfonos\nrevise que estén separados por comas", "Advertencia", 2);
+            return null;
+        }
+    }
+    
+    //Revisa los datos para persona que no sean vacíos y los numéricos que sean del tamaño correcto
+    private boolean revisarDatosPersona(String nombre, String direccion, String ciudad, int cedula, ArrayList<Integer> telefonos){
+        if(nombre.isEmpty() || direccion.isEmpty() || ciudad.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No pueden haber campos vacíos", "Advertencia", 2);
+            return false;
+        }if(Integer.toString(cedula).length() < 9){
+            JOptionPane.showMessageDialog(this, "La cédula es inválido (menor a 9 digitos)", "Advertencia", 2);
+            return false;
+        }if(telefonos.isEmpty())
+            return false;
+        return true;
+    }
+    
+    //Revisa los datos para organizacion que no sean vacíos y los numéricos que sean del tamaño correcto
+    private boolean revisarDatosOrg(String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, int cedula, int telefonoE){
+        if(nombre.isEmpty() || direccion.isEmpty() || ciudad.isEmpty() || nombreContacto.isEmpty() || cargoContacto.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No pueden haber campos vacíos", "Advertencia", 2);
+            return false;
+        }if(Integer.toString(cedula).length() < 9){
+            JOptionPane.showMessageDialog(this, "La cédula jurídica es inválido (menor a 9 digitos)", "Advertencia", 2);
+            return false;
+        }if(Integer.toString(telefonoE).length() < 8){
+            JOptionPane.showMessageDialog(this, "El teléfono del contacto es inválido (menor a 8 digitos)", "Advertencia", 2);
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * @param args the command line arguments
      */
