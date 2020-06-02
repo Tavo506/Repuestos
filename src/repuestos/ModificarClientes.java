@@ -8,7 +8,12 @@ package repuestos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -57,15 +62,15 @@ public class ModificarClientes extends javax.swing.JFrame {
         Label = new javax.swing.JLabel();
         Panel2 = new javax.swing.JPanel();
         LabelNombreCliente = new javax.swing.JLabel();
-        TextNombreCliente = new javax.swing.JTextField();
+        TextNombrePersona = new javax.swing.JTextField();
         LabelCedulaCliente = new javax.swing.JLabel();
-        TextCedulaCliente = new javax.swing.JTextField();
+        TextCedulaPersona = new javax.swing.JTextField();
         LabelDireccionCliente = new javax.swing.JLabel();
-        TextDireccionCliente = new javax.swing.JTextField();
+        TextDireccionPersona = new javax.swing.JTextField();
         LabelCiudadCliente = new javax.swing.JLabel();
-        TextCiudadCliente = new javax.swing.JTextField();
+        TextCiudadPersona = new javax.swing.JTextField();
         LabelTeléfonosCliente = new javax.swing.JLabel();
-        TextTeléfonoCliente = new javax.swing.JTextField();
+        TextTeléfonoPersona = new javax.swing.JTextField();
         AgregarTelefono = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Telefonos = new javax.swing.JTextArea();
@@ -82,8 +87,6 @@ public class ModificarClientes extends javax.swing.JFrame {
         TextDireccionOrg = new javax.swing.JTextField();
         LabelCiudadOrg = new javax.swing.JLabel();
         TextCiudadOrg = new javax.swing.JTextField();
-        LabelTeléfonoOrg = new javax.swing.JLabel();
-        TextTeléfonoOrg = new javax.swing.JTextField();
         LabelEstadoOrg = new javax.swing.JLabel();
         ComboEstadoOrg = new javax.swing.JComboBox<>();
         ModificarOrg = new javax.swing.JButton();
@@ -98,7 +101,6 @@ public class ModificarClientes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Modificar Cliente");
         setMinimumSize(new java.awt.Dimension(500, 650));
-        setPreferredSize(new java.awt.Dimension(500, 650));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -148,40 +150,40 @@ public class ModificarClientes extends javax.swing.JFrame {
         LabelNombreCliente.setText("Nombre:");
         Panel2.add(LabelNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
-        TextNombreCliente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Panel2.add(TextNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 360, -1));
+        TextNombrePersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextNombrePersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 360, -1));
 
         LabelCedulaCliente.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         LabelCedulaCliente.setForeground(new java.awt.Color(204, 204, 204));
         LabelCedulaCliente.setText("Cédula:");
         Panel2.add(LabelCedulaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        TextCedulaCliente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Panel2.add(TextCedulaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 270, -1));
+        TextCedulaPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextCedulaPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 270, -1));
 
         LabelDireccionCliente.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         LabelDireccionCliente.setForeground(new java.awt.Color(204, 204, 204));
         LabelDireccionCliente.setText("Dirección:");
         Panel2.add(LabelDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        TextDireccionCliente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Panel2.add(TextDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 360, -1));
+        TextDireccionPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextDireccionPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 360, -1));
 
         LabelCiudadCliente.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         LabelCiudadCliente.setForeground(new java.awt.Color(204, 204, 204));
         LabelCiudadCliente.setText("Ciudad:");
         Panel2.add(LabelCiudadCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        TextCiudadCliente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Panel2.add(TextCiudadCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 360, -1));
+        TextCiudadPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextCiudadPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 360, -1));
 
         LabelTeléfonosCliente.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         LabelTeléfonosCliente.setForeground(new java.awt.Color(204, 204, 204));
         LabelTeléfonosCliente.setText("Teléfonos:");
         Panel2.add(LabelTeléfonosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
-        TextTeléfonoCliente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Panel2.add(TextTeléfonoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 310, -1));
+        TextTeléfonoPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextTeléfonoPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 310, -1));
 
         AgregarTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BotonMas.png"))); // NOI18N
         AgregarTelefono.setBorderPainted(false);
@@ -209,7 +211,7 @@ public class ModificarClientes extends javax.swing.JFrame {
         Panel2.add(LabelEstadoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
 
         ComboEstadoPersona.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        ComboEstadoPersona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        ComboEstadoPersona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo", "Suspendido" }));
         Panel2.add(ComboEstadoPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 210, -1));
 
         ModificarPersona.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -217,6 +219,11 @@ public class ModificarClientes extends javax.swing.JFrame {
         Panel2.add(ModificarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
 
         CargarPersona.setText("Cargar");
+        CargarPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargarPersonaActionPerformed(evt);
+            }
+        });
         Panel2.add(CargarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 80, -1));
 
         getContentPane().add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, 520));
@@ -257,52 +264,54 @@ public class ModificarClientes extends javax.swing.JFrame {
         TextCiudadOrg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Panel3.add(TextCiudadOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 360, -1));
 
-        LabelTeléfonoOrg.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        LabelTeléfonoOrg.setForeground(new java.awt.Color(204, 204, 204));
-        LabelTeléfonoOrg.setText("Teléfono:");
-        Panel3.add(LabelTeléfonoOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
-
-        TextTeléfonoOrg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Panel3.add(TextTeléfonoOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 360, -1));
-
         LabelEstadoOrg.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         LabelEstadoOrg.setForeground(new java.awt.Color(204, 204, 204));
         LabelEstadoOrg.setText("Estado:");
         Panel3.add(LabelEstadoOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
 
         ComboEstadoOrg.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        ComboEstadoOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        ComboEstadoOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo", "Suspendido" }));
         Panel3.add(ComboEstadoOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 210, -1));
 
         ModificarOrg.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         ModificarOrg.setText("Modificar");
+        ModificarOrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarOrgActionPerformed(evt);
+            }
+        });
         Panel3.add(ModificarOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
 
         TextNombreContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Panel3.add(TextNombreContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 310, -1));
+        Panel3.add(TextNombreContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 310, -1));
 
         NombreContacto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         NombreContacto.setForeground(new java.awt.Color(204, 204, 204));
         NombreContacto.setText("Nombre Contacto:");
-        Panel3.add(NombreContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        Panel3.add(NombreContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         CargoContacto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         CargoContacto.setForeground(new java.awt.Color(204, 204, 204));
         CargoContacto.setText("Cargo Contacto:");
-        Panel3.add(CargoContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        Panel3.add(CargoContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         TextCargoContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Panel3.add(TextCargoContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 310, -1));
+        Panel3.add(TextCargoContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 310, -1));
 
         TextTelContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Panel3.add(TextTelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 310, -1));
+        Panel3.add(TextTelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 310, -1));
 
         TelContacto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         TelContacto.setForeground(new java.awt.Color(204, 204, 204));
         TelContacto.setText("Teléfono Contacto:");
-        Panel3.add(TelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+        Panel3.add(TelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         CargarOrg.setText("Cargar");
+        CargarOrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargarOrgActionPerformed(evt);
+            }
+        });
         Panel3.add(CargarOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 80, -1));
 
         getContentPane().add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, 520));
@@ -322,12 +331,102 @@ public class ModificarClientes extends javax.swing.JFrame {
 
     private void AgregarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarTelefonoActionPerformed
 
-        String t = TextTeléfonoCliente.getText();
+        String t = TextTeléfonoPersona.getText();
         if(!t.isEmpty() && Repuestos.isNumeric(t)){
-            TextTeléfonoCliente.setText("");
+            TextTeléfonoPersona.setText("");
             Telefonos.setText(Telefonos.getText() + t + "\n");
         }
     }//GEN-LAST:event_AgregarTelefonoActionPerformed
+
+    private void CargarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarPersonaActionPerformed
+        int cedula;
+        
+        try {
+            if(TextCedulaPersona.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "El campo de cedula no puede ser vacío", "Advertencia", 2);
+                return;
+            }
+            
+            cedula = Integer.parseInt(TextCedulaPersona.getText());
+            
+            if(Integer.toString(cedula).length() < 9){
+                JOptionPane.showMessageDialog(this, "La cédula es inválida (menor a 7 digitos)", "Advertencia", 2);
+                return;
+            }
+            
+            ArrayList<String> datos = Repuestos.getPersona(cedula);   //Manda la cedula para suspender al cliente
+            TextNombrePersona.setText("");
+            TextDireccionPersona.setText("");
+            TextCiudadPersona.setText("");
+            TextTeléfonoPersona.setText("");
+            Telefonos.setText("");
+            
+            if(datos == null){
+                JOptionPane.showMessageDialog(this, "Cliente no existe", "Advertencia", 2);
+                return;
+            }
+            TextNombrePersona.setText(datos.get(0));
+            TextDireccionPersona.setText(datos.get(1));
+            TextCiudadPersona.setText(datos.get(2));
+            ComboEstadoPersona.setSelectedItem(datos.get(3));
+            
+            JOptionPane.showMessageDialog(this, "Datos del cliente cargados", "Info", 1);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error, cédula debe ser un número entero", "Advertencia", 2);
+        }
+    }//GEN-LAST:event_CargarPersonaActionPerformed
+
+    private void ModificarOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarOrgActionPerformed
+        
+    }//GEN-LAST:event_ModificarOrgActionPerformed
+
+    private void CargarOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarOrgActionPerformed
+        int cedula;
+        
+        try {
+            if(TextCedulaOrg.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "El campo de cedula jurídica no puede ser vacío", "Advertencia", 2);
+                return;
+            }
+            
+            cedula = Integer.parseInt(TextCedulaOrg.getText());
+            
+            if(Integer.toString(cedula).length() < 9){
+                JOptionPane.showMessageDialog(this, "La cédula es inválida (menor a 7 digitos)", "Advertencia", 2);
+                return;
+            }
+            
+            ArrayList<String> datos = Repuestos.getOrganizacion(cedula);   //Manda la cedula para suspender al cliente
+            TextNombreOrg.setText("");
+            TextDireccionOrg.setText("");
+            TextCiudadOrg.setText("");
+            TextNombreContacto.setText("");
+            TextCargoContacto.setText("");
+            TextTelContacto.setText("");
+            
+            if(datos == null){
+                JOptionPane.showMessageDialog(this, "Cliente no existe", "Advertencia", 2);
+                return;
+            }
+            TextNombreOrg.setText(datos.get(0));
+            TextDireccionOrg.setText(datos.get(1));
+            TextCiudadOrg.setText(datos.get(2));
+            TextNombreContacto.setText(datos.get(3));
+            TextCargoContacto.setText(datos.get(4));
+            TextTelContacto.setText(datos.get(5));
+            ComboEstadoOrg.setSelectedItem(datos.get(6));
+            
+            JOptionPane.showMessageDialog(this, "Datos del cliente cargados", "Info", 1);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error, cédula debe ser un número entero", "Advertencia", 2);
+        }
+    }//GEN-LAST:event_CargarOrgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,7 +481,6 @@ public class ModificarClientes extends javax.swing.JFrame {
     private javax.swing.JLabel LabelEstadoOrg;
     private javax.swing.JLabel LabelNombreCliente;
     private javax.swing.JLabel LabelNombreOrg;
-    private javax.swing.JLabel LabelTeléfonoOrg;
     private javax.swing.JLabel LabelTeléfonosCliente;
     private javax.swing.JButton ModificarOrg;
     private javax.swing.JButton ModificarPersona;
@@ -395,18 +493,17 @@ public class ModificarClientes extends javax.swing.JFrame {
     private javax.swing.JLabel TelContacto;
     private javax.swing.JTextArea Telefonos;
     private javax.swing.JTextField TextCargoContacto;
-    private javax.swing.JTextField TextCedulaCliente;
     private javax.swing.JTextField TextCedulaOrg;
-    private javax.swing.JTextField TextCiudadCliente;
+    private javax.swing.JTextField TextCedulaPersona;
     private javax.swing.JTextField TextCiudadOrg;
-    private javax.swing.JTextField TextDireccionCliente;
+    private javax.swing.JTextField TextCiudadPersona;
     private javax.swing.JTextField TextDireccionOrg;
-    private javax.swing.JTextField TextNombreCliente;
+    private javax.swing.JTextField TextDireccionPersona;
     private javax.swing.JTextField TextNombreContacto;
     private javax.swing.JTextField TextNombreOrg;
+    private javax.swing.JTextField TextNombrePersona;
     private javax.swing.JTextField TextTelContacto;
-    private javax.swing.JTextField TextTeléfonoCliente;
-    private javax.swing.JTextField TextTeléfonoOrg;
+    private javax.swing.JTextField TextTeléfonoPersona;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
