@@ -236,6 +236,11 @@ public class Principal extends javax.swing.JFrame {
                 MenuAcercaDeMouseClicked(evt);
             }
         });
+        MenuAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuAcercaDeActionPerformed(evt);
+            }
+        });
         BarraMenu.add(MenuAcercaDe);
 
         setJMenuBar(BarraMenu);
@@ -313,6 +318,10 @@ public class Principal extends javax.swing.JFrame {
         new PartesCostos(this);
        this.setVisible(false);
     }//GEN-LAST:event_ActualizaCostosProvButtonActionPerformed
+
+    private void MenuAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAcercaDeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuAcercaDeActionPerformed
 
     /**
      * @param args the command line arguments

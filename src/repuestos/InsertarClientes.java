@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import sun.security.util.Length;
 
 /**
  *
@@ -324,30 +326,47 @@ public class InsertarClientes extends javax.swing.JFrame {
         String t = TextTeléfonoPersona.getText();
         if(!t.isEmpty() && Repuestos.isNumeric(t)){
             TextTeléfonoPersona.setText("");
-            Telefonos.setText(Telefonos.getText() + t + "\n");
+            if(Telefonos.getText().trim().isEmpty())
+                Telefonos.setText(t);
+            else
+                Telefonos.setText(Telefonos.getText() + ",\n" + t);
         }
     }//GEN-LAST:event_AgregarTelefonoActionPerformed
-
+    
+    //Toma los valores necesarios y los revisa para agregarlos a un cliente tipo persona
     private void InsertarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarPersonaActionPerformed
         String tipo, estado, nombre, direccion, ciudad;
-        ArrayList<Integer> telefonos = null;
+        ArrayList<Integer> telefonos;
         int cedula;
         
         try {
             tipo = "Persona";
             estado = (String)ComboEstadoPersona.getSelectedItem();
+            
+            if(TextCedulaPersona.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "El campo de cedula no puede ser vacío", "Advertencia", 2);
+                return;
+            }
+            
             cedula = Integer.parseInt(TextCedulaPersona.getText());
             nombre = TextNombrePersona.getText();
             direccion = TextDireccionPersona.getText();
             ciudad = TextCiudadPersona.getText();
             telefonos = getTelefonos();
-            Repuestos.InsertClienteP(estado, tipo, cedula, nombre, direccion, ciudad, telefonos);
-        
+            
+            if(!revisarDatosPersona(nombre, direccion, ciudad, cedula, telefonos))
+                return;
+            Repuestos.InsertClienteP(estado, tipo, cedula, nombre, direccion, ciudad, telefonos);   //Manda los datos a la funcion que hace la insercion
+            JOptionPane.showMessageDialog(this, "Cliente insertado exitosamente", "Advertencia", 1);
+            
         } catch (SQLException ex) {
             Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error, cédula debe ser un número entero", "Advertencia", 2);
         }
     }//GEN-LAST:event_InsertarPersonaActionPerformed
 
+    //Toma los valores necesarios y los revisa para agregarlos a un cliente tipo organización
     private void InsertarOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarOrgActionPerformed
         String tipo, estado, nombre, direccion, ciudad, nomContacto, cargoContacto;
         int cedula, telContacto;
@@ -356,22 +375,88 @@ public class InsertarClientes extends javax.swing.JFrame {
             tipo = "Organizacion";
             estado = (String)ComboEstadoOrg.getSelectedItem();
             nombre = TextNombreOrg.getText();
+            
+            if(TextCedulaOrg.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "El campo de cedula jurídica no puede ser vacío", "Advertencia", 2);
+                return;
+            }
+            
             cedula = Integer.parseInt(TextCedulaOrg.getText());
             direccion = TextDireccionOrg.getText();
             ciudad = TextCiudadOrg.getText();
             nomContacto = TextNombreContacto.getText();
             cargoContacto = TextCargoContacto.getText();
+            
+            if(TextTelContacto.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "El campo de teléfono del\ncontacto no puede ser vacío", "Advertencia", 2);
+                return;
+            }
             telContacto = Integer.parseInt(TextTelContacto.getText());
-            Repuestos.InsertClienteO(estado, tipo, cedula, nombre, direccion, ciudad, nomContacto, cargoContacto, telContacto);
-        
+            if(!revisarDatosOrg(nombre, direccion, ciudad, nomContacto, cargoContacto, cedula, telContacto))
+                return;
+            Repuestos.InsertClienteO(estado, tipo, cedula, nombre, direccion, ciudad, nomContacto, cargoContacto, telContacto); //Manda los datos a la funcion que hace la insercion
+            JOptionPane.showMessageDialog(this, "Cliente insertado exitosamente", "Advertencia", 1);
+            
         } catch (SQLException ex) {
             Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error, cedula y telefono del contacto\ndeben ser números enteros", "Advertencia", 2);
         }
     }//GEN-LAST:event_InsertarOrgActionPerformed
 
+    //Se encarga de tomar los numeros de teléfono y agregarlos a un arrayList luego de revisar que sean válidos
     private ArrayList<Integer> getTelefonos(){
         ArrayList<Integer> telefonos = new ArrayList<>();
+        String textTelefonos = Telefonos.getText().trim().replace("\n", "");
+        try{
+            if(textTelefonos.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Debe agregar al menos un teléfono", "Advertencia", 2);
+                return null;
+            }
+
+            String[] tel = textTelefonos.split(",");
+            for (String string : tel) {
+                if(Repuestos.isNumeric(string) && string.length() >= 8)
+                    telefonos.add(Integer.parseInt(string));
+                else{
+                    JOptionPane.showMessageDialog(this, "El telefono \"" + string + "\" no es válido", "Advertencia", 2);
+                    return null;
+                }
+            }
         return telefonos;
+        
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Ocurrió un error al leer los teléfonos\nrevise que estén separados por comas", "Advertencia", 2);
+            return null;
+        }
+    }
+    
+    //Revisa los datos para persona que no sean vacíos y los numéricos que sean del tamaño correcto
+    private boolean revisarDatosPersona(String nombre, String direccion, String ciudad, int cedula, ArrayList<Integer> telefonos){
+        if(nombre.isEmpty() || direccion.isEmpty() || ciudad.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No pueden haber campos vacíos", "Advertencia", 2);
+            return false;
+        }if(Integer.toString(cedula).length() < 9){
+            JOptionPane.showMessageDialog(this, "La cédula es inválido (menor a 9 digitos)", "Advertencia", 2);
+            return false;
+        }if(telefonos.isEmpty())
+            return false;
+        return true;
+    }
+    
+    //Revisa los datos para organizacion que no sean vacíos y los numéricos que sean del tamaño correcto
+    private boolean revisarDatosOrg(String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, int cedula, int telefonoE){
+        if(nombre.isEmpty() || direccion.isEmpty() || ciudad.isEmpty() || nombreContacto.isEmpty() || cargoContacto.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No pueden haber campos vacíos", "Advertencia", 2);
+            return false;
+        }if(Integer.toString(cedula).length() < 9){
+            JOptionPane.showMessageDialog(this, "La cédula jurídica es inválido (menor a 9 digitos)", "Advertencia", 2);
+            return false;
+        }if(Integer.toString(telefonoE).length() < 7){
+            JOptionPane.showMessageDialog(this, "El teléfono del contacto es inválido (menor a 8 digitos)", "Advertencia", 2);
+            return false;
+        }
+        return true;
     }
     
     /**

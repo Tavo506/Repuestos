@@ -85,18 +85,28 @@ public class Repuestos {
     }
     
     public static void InsertClienteP(String estado, String tipo, int cedula, String nombre, String direccion, String ciudad, ArrayList<Integer> telefonos) throws SQLException{
-        ResultSet rs = null;
-        int ID = 0;
         try(PreparedStatement cstmt = con.prepareStatement("EXEC SPIcliente ?, ?");) {  
 
             cstmt.setString(1, estado);
             cstmt.setString(2, tipo);
             cstmt.executeUpdate();  
             
-            PreparedStatement cs = con.prepareStatement("EXEC SPSLcliente");
-            rs = cs.executeQuery();
-            if(rs.next())
-                ID = rs.getInt(1);  
+            PreparedStatement ps = con.prepareStatement("EXEC SPIpersonas ?,?,?,?");
+            
+            ps.setInt(1, cedula);
+            ps.setString(2, nombre);
+            ps.setString(3, direccion);
+            ps.setString(4, ciudad);
+            
+            ps.executeUpdate();
+            
+            PreparedStatement cs = con.prepareStatement("EXEC SPItelefono ?,?");
+            cs.setInt(2, cedula);
+            
+            for (Integer telefono : telefonos) {
+                cs.setInt(1, telefono);
+                cs.executeUpdate();
+            }
         }  
     }
    
@@ -118,6 +128,7 @@ public class Repuestos {
             ps.setInt(7, telefonoContacto);
             
             ps.executeUpdate();
+
         }  
     }
 }
