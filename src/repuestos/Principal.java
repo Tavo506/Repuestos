@@ -74,6 +74,7 @@ public class Principal extends javax.swing.JFrame {
 
         InsertarClientes.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
         InsertarClientes.setText("Insertar Clientes");
+        InsertarClientes.setFocusPainted(false);
         InsertarClientes.setPreferredSize(new java.awt.Dimension(285, 75));
         InsertarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +85,7 @@ public class Principal extends javax.swing.JFrame {
 
         ModificarClientes.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
         ModificarClientes.setText("Modificar Clientes");
+        ModificarClientes.setFocusPainted(false);
         ModificarClientes.setPreferredSize(new java.awt.Dimension(285, 75));
         ModificarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +96,7 @@ public class Principal extends javax.swing.JFrame {
 
         SuspenderClientes.setFont(new java.awt.Font("Dialog", 1, 26)); // NOI18N
         SuspenderClientes.setText("Suspender Clientes");
+        SuspenderClientes.setFocusPainted(false);
         SuspenderClientes.setPreferredSize(new java.awt.Dimension(285, 75));
         SuspenderClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +107,7 @@ public class Principal extends javax.swing.JFrame {
 
         VerClientes.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
         VerClientes.setText("Ver Clientes");
+        VerClientes.setFocusPainted(false);
         VerClientes.setPreferredSize(new java.awt.Dimension(285, 75));
         VerClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +130,7 @@ public class Principal extends javax.swing.JFrame {
 
         verPartesButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         verPartesButton.setText("Ver Partes");
+        verPartesButton.setFocusPainted(false);
         verPartesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verPartesButtonActionPerformed(evt);
@@ -135,6 +140,7 @@ public class Principal extends javax.swing.JFrame {
 
         InsertarParteButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         InsertarParteButton.setText("Insertar Parte");
+        InsertarParteButton.setFocusPainted(false);
         InsertarParteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InsertarParteButtonActionPerformed(evt);
@@ -144,6 +150,7 @@ public class Principal extends javax.swing.JFrame {
 
         BorrarParteButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         BorrarParteButton.setText("Borrar Parte");
+        BorrarParteButton.setFocusPainted(false);
         BorrarParteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BorrarParteButtonActionPerformed(evt);
@@ -153,6 +160,7 @@ public class Principal extends javax.swing.JFrame {
 
         AsociarProvButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         AsociarProvButton.setText("Asociar partes proveedor ");
+        AsociarProvButton.setFocusPainted(false);
         AsociarProvButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AsociarProvButtonActionPerformed(evt);
@@ -162,10 +170,12 @@ public class Principal extends javax.swing.JFrame {
 
         AsociaAutoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         AsociaAutoButton.setText("Asociar partes Auto");
+        AsociaAutoButton.setFocusPainted(false);
         Panel2.add(AsociaAutoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 270, 80));
 
         ActualizaCostosProvButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ActualizaCostosProvButton.setText("Acutalizar costos proveedor");
+        ActualizaCostosProvButton.setFocusPainted(false);
         ActualizaCostosProvButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ActualizaCostosProvButtonActionPerformed(evt);
