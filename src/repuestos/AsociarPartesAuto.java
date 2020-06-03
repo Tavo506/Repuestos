@@ -63,6 +63,7 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
 
         AsoPartAuto.setBackground(new java.awt.Color(204, 204, 204));
         AsoPartAuto.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        AsoPartAuto.setForeground(new java.awt.Color(255, 255, 255));
         AsoPartAuto.setText("Parte:");
         jPanel1.add(AsoPartAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
@@ -72,6 +73,7 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
 
         AsoAutoPart.setBackground(new java.awt.Color(204, 204, 204));
         AsoAutoPart.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        AsoAutoPart.setForeground(new java.awt.Color(255, 255, 255));
         AsoAutoPart.setText("Auto:");
         jPanel1.add(AsoAutoPart, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 

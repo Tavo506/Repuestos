@@ -76,16 +76,19 @@ public class PartesCostos extends javax.swing.JFrame {
 
         ProveedorLabel.setBackground(new java.awt.Color(204, 204, 204));
         ProveedorLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        ProveedorLabel.setForeground(new java.awt.Color(255, 255, 255));
         ProveedorLabel.setText("Proveedor");
         jPanel1.add(ProveedorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 31, -1, -1));
 
         PiezaLabel.setBackground(new java.awt.Color(204, 204, 204));
         PiezaLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        PiezaLabel.setForeground(new java.awt.Color(255, 255, 255));
         PiezaLabel.setText("Pieza");
         jPanel1.add(PiezaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 76, -1, -1));
 
         FabricanteLabel.setBackground(new java.awt.Color(204, 204, 204));
         FabricanteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        FabricanteLabel.setForeground(new java.awt.Color(255, 255, 255));
         FabricanteLabel.setText("Fabricante");
         jPanel1.add(FabricanteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
@@ -112,11 +115,13 @@ public class PartesCostos extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 76, -1, -1));
 
         PorcentajeLabel.setBackground(new java.awt.Color(204, 204, 204));
+        PorcentajeLabel.setForeground(new java.awt.Color(255, 255, 255));
         PorcentajeLabel.setText("Porcentaje Beneficio");
         jPanel1.add(PorcentajeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 219, -1, -1));
 
         CostoLabel.setBackground(new java.awt.Color(204, 204, 204));
         CostoLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        CostoLabel.setForeground(new java.awt.Color(255, 255, 255));
         CostoLabel.setText("Costo en Colones");
         jPanel1.add(CostoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 130, -1, -1));
 

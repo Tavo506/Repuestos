@@ -74,10 +74,12 @@ public class InsertarParte extends javax.swing.JFrame {
         Panelinsertar.add(FabricanteCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         FabricanteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        FabricanteLabel.setForeground(new java.awt.Color(255, 255, 255));
         FabricanteLabel.setText("Fabricante");
         Panelinsertar.add(FabricanteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 29, -1, -1));
 
         MarcaLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        MarcaLabel.setForeground(new java.awt.Color(255, 255, 255));
         MarcaLabel.setText("Marca");
         Panelinsertar.add(MarcaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 95, -1, -1));
 
@@ -85,6 +87,7 @@ public class InsertarParte extends javax.swing.JFrame {
         Panelinsertar.add(NombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 151, 163, -1));
 
         DetallesLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        DetallesLabel.setForeground(new java.awt.Color(255, 255, 255));
         DetallesLabel.setText("Detalles");
         Panelinsertar.add(DetallesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
@@ -98,6 +101,7 @@ public class InsertarParte extends javax.swing.JFrame {
         Panelinsertar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
 
         NombreLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        NombreLabel.setForeground(new java.awt.Color(255, 255, 255));
         NombreLabel.setText("Nombre");
         Panelinsertar.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 151, -1, -1));
 

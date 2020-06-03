@@ -63,6 +63,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
 
         ParteAsoLabel.setBackground(new java.awt.Color(204, 204, 204));
         ParteAsoLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        ParteAsoLabel.setForeground(new java.awt.Color(255, 255, 255));
         ParteAsoLabel.setText("Parte");
         jPanel1.add(ParteAsoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 29, -1, -1));
 
@@ -72,6 +73,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
 
         ProveedorAsoLabel.setBackground(new java.awt.Color(204, 204, 204));
         ProveedorAsoLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        ProveedorAsoLabel.setForeground(new java.awt.Color(255, 255, 255));
         ProveedorAsoLabel.setText("Proveedor");
         jPanel1.add(ProveedorAsoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 137, -1, -1));
 
