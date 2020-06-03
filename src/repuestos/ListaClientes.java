@@ -10,9 +10,14 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -48,16 +53,23 @@ public class ListaClientes extends javax.swing.JFrame {
             ArrayList<String> clientes = Repuestos.SelectClientes();
             String[] cliente;
             for (String c : clientes) {
+                System.out.println(c);
                 if(c.contains("Persona")){
                     cliente = c.split(",", 8);
-                    System.out.println(c);
                     addPersona(cliente);
                 }
                 else{
                     cliente = c.split(",");
-                    addPersona(cliente);
+                    addOrg(cliente);
                 }
             }
+            TableRowSorter<TableModel> sorter = new TableRowSorter<>(modelo);
+            ListaClientes.setRowSorter(sorter);
+
+            List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+            sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+            sorter.setSortKeys(sortKeys);
+            
         }catch (SQLException ex){
             Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -70,7 +82,7 @@ public class ListaClientes extends javax.swing.JFrame {
     }
     
     void addOrg(String[] cliente){
-        
+        modelo.addRow(new Object[]{Integer.parseInt(cliente[0]), cliente[1], cliente[2], "", cliente[3], cliente[4], cliente[5], "", cliente[6]});
     }
 
     /**
@@ -98,6 +110,7 @@ public class ListaClientes extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 300));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
+        ListaClientes.setAutoCreateRowSorter(true);
         ListaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

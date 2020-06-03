@@ -264,9 +264,13 @@ public class Repuestos {
             ArrayList<String> clientes = new ArrayList<>();
             
             PreparedStatement ct = con.prepareStatement("EXEC SPSpersonas");
+            PreparedStatement ctmts = con.prepareStatement("EXEC SPSorganizacion");
             PreparedStatement ps = con.prepareStatement("EXEC SPStelefonos ?");
+            
             ResultSet rt = ct.executeQuery();
+            
             String persona, idP, nomP, cedP, dirP, ciudP, estP, telefonos;
+            
             while(rt.next()){
                 idP = Integer.toString(rt.getInt(1));
                 nomP = rt.getString(2);
@@ -278,6 +282,7 @@ public class Repuestos {
                 ps.setInt(1, Integer.parseInt(cedP));
                 ResultSet t = ps.executeQuery();
                 telefonos = "";
+                
                 while(t.next()){
                     if("".equals(telefonos))
                         telefonos = Integer.toString(t.getInt(1));
@@ -286,6 +291,20 @@ public class Repuestos {
                 }
                 persona = idP + ",Persona," + nomP + "," + cedP + ","+ dirP + "," + ciudP + "," + estP + "," + telefonos;
                 clientes.add(persona);
+            }
+            ResultSet org = ctmts.executeQuery();
+            
+            String organizacion, idO, nomO, cedO, dirO, ciudO, estO;
+            while(org.next()){
+                idO = Integer.toString(org.getInt(1));
+                nomO = org.getString(2);
+                cedO = Integer.toString(org.getInt(3));
+                dirO = org.getString(4);
+                ciudO = org.getString(5);
+                estO = org.getString(6);
+                
+                organizacion = idO + ",Organizacion," + nomO + "," + cedO + ","+ dirO + "," + ciudO + "," + estO;
+                clientes.add(organizacion);
             }
         
         return clientes;
