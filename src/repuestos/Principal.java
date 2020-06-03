@@ -171,6 +171,11 @@ public class Principal extends javax.swing.JFrame {
         AsociaAutoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         AsociaAutoButton.setText("Asociar partes Auto");
         AsociaAutoButton.setFocusPainted(false);
+        AsociaAutoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsociaAutoButtonActionPerformed(evt);
+            }
+        });
         Panel2.add(AsociaAutoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 270, 80));
 
         ActualizaCostosProvButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -307,11 +312,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_InsertarParteButtonActionPerformed
 
     private void BorrarParteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarParteButtonActionPerformed
-        // TODO add your handling code here:
+        new BorrarPartes(this);
+        this.setVisible(false);
     }//GEN-LAST:event_BorrarParteButtonActionPerformed
 
     private void AsociarProvButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarProvButtonActionPerformed
-        // TODO add your handling code here:
+        new AsociarPartesProvedor(this);
+        this.setVisible(false);
     }//GEN-LAST:event_AsociarProvButtonActionPerformed
 
     private void ActualizaCostosProvButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizaCostosProvButtonActionPerformed
@@ -322,6 +329,11 @@ public class Principal extends javax.swing.JFrame {
     private void MenuAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAcercaDeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuAcercaDeActionPerformed
+
+    private void AsociaAutoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociaAutoButtonActionPerformed
+        new AsociarPartesAuto(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_AsociaAutoButtonActionPerformed
 
     /**
      * @param args the command line arguments
