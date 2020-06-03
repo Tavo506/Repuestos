@@ -50,35 +50,17 @@ public class VerPartes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        AnnoCombo = new javax.swing.JComboBox();
-        ModeloCombo = new javax.swing.JComboBox();
-        AnnoLabel = new javax.swing.JLabel();
-        ModeloLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaPartes = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        AnnoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        AnnoCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnnoComboActionPerformed(evt);
-            }
-        });
-        getContentPane().add(AnnoCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 130, -1));
-
-        ModeloCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ModeloCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 170, -1));
-
-        AnnoLabel.setText("Año:");
-        getContentPane().add(AnnoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 30));
-
-        ModeloLabel.setText("Modelo");
-        getContentPane().add(ModeloLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TablaPartes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,17 +75,12 @@ public class VerPartes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TablaPartes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 660, 90));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 90));
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 370));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void AnnoComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnnoComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AnnoComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,10 +118,6 @@ public class VerPartes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox AnnoCombo;
-    private javax.swing.JLabel AnnoLabel;
-    private javax.swing.JComboBox ModeloCombo;
-    private javax.swing.JLabel ModeloLabel;
     private javax.swing.JTable TablaPartes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

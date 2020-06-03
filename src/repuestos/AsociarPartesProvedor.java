@@ -61,6 +61,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ParteAsoLabel.setBackground(new java.awt.Color(204, 204, 204));
         ParteAsoLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         ParteAsoLabel.setText("Parte");
         jPanel1.add(ParteAsoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 29, -1, -1));
@@ -69,6 +70,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         ComboAsoPart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(ComboAsoPart, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 73, -1, -1));
 
+        ProveedorAsoLabel.setBackground(new java.awt.Color(204, 204, 204));
         ProveedorAsoLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         ProveedorAsoLabel.setText("Proveedor");
         jPanel1.add(ProveedorAsoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 137, -1, -1));
