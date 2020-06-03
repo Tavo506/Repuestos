@@ -43,7 +43,8 @@ public class ListaClientes extends javax.swing.JFrame {
         modelo.addRow(new Object[]{"1","2","3","4","5","6","7","8","9"});
         modelo.addRow(new Object[]{"2","2","3","4","5","6","7","8","9"});
         
-
+        modelo.addRow(new Object[]{"4","2","3","4","5","6","7","8","9"});
+        
     }
 
     /**
@@ -56,7 +57,7 @@ public class ListaClientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         ListaClientes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -69,8 +70,7 @@ public class ListaClientes extends javax.swing.JFrame {
         jPanel1.setMaximumSize(new java.awt.Dimension(900, 500));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 300));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 300));
-
-        jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ListaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,7 +84,7 @@ public class ListaClientes extends javax.swing.JFrame {
                 java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -95,9 +95,7 @@ public class ListaClientes extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        ListaClientes.setPreferredSize(new java.awt.Dimension(800, 32));
-        ListaClientes.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(ListaClientes);
+        jScrollPane2.setViewportView(ListaClientes);
         if (ListaClientes.getColumnModel().getColumnCount() > 0) {
             ListaClientes.getColumnModel().getColumn(0).setMinWidth(50);
             ListaClientes.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -119,22 +117,12 @@ public class ListaClientes extends javax.swing.JFrame {
             ListaClientes.getColumnModel().getColumn(5).setMaxWidth(250);
             ListaClientes.getColumnModel().getColumn(6).setMinWidth(85);
             ListaClientes.getColumnModel().getColumn(6).setPreferredWidth(85);
-            ListaClientes.getColumnModel().getColumn(6).setMaxWidth(85);
             ListaClientes.getColumnModel().getColumn(8).setMinWidth(90);
             ListaClientes.getColumnModel().getColumn(8).setPreferredWidth(90);
             ListaClientes.getColumnModel().getColumn(8).setMaxWidth(90);
         }
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-        );
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 300));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -179,6 +167,6 @@ public class ListaClientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ListaClientes;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
