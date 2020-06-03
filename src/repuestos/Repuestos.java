@@ -257,4 +257,40 @@ public class Repuestos {
             throw e;
         }
     }
+    
+    public static ArrayList<String> SelectClientes() throws SQLException{
+        
+        try{
+            ArrayList<String> clientes = new ArrayList<>();
+            
+            PreparedStatement ct = con.prepareStatement("EXEC SPSpersonas");
+            PreparedStatement ps = con.prepareStatement("EXEC SPStelefonos ?");
+            ResultSet rt = ct.executeQuery();
+            String persona, idP, nomP, cedP, dirP, ciudP, estP, telefonos;
+            while(rt.next()){
+                idP = Integer.toString(rt.getInt(1));
+                nomP = rt.getString(2);
+                cedP = Integer.toString(rt.getInt(3));
+                dirP = rt.getString(4);
+                ciudP = rt.getString(5);
+                estP = rt.getString(6);
+                
+                ps.setInt(1, Integer.parseInt(cedP));
+                ResultSet t = ps.executeQuery();
+                telefonos = "";
+                while(t.next()){
+                    if("".equals(telefonos))
+                        telefonos = Integer.toString(t.getInt(1));
+                    else
+                        telefonos += "," + Integer.toString(t.getInt(1));
+                }
+                persona = idP + ",Persona," + nomP + "," + cedP + ","+ dirP + "," + ciudP + "," + estP + "," + telefonos;
+                clientes.add(persona);
+            }
+        
+        return clientes;
+        }catch (SQLException e){
+            throw e;
+        }
+    }
 }

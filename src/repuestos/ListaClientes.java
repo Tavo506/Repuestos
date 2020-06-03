@@ -8,6 +8,10 @@ package repuestos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,10 +44,32 @@ public class ListaClientes extends javax.swing.JFrame {
     }
     
     void llenarTabla(){
-        modelo.addRow(new Object[]{"1","2","3","4","5","6","7","8","9"});
-        modelo.addRow(new Object[]{"2","2","3","4","5","6","7","8","9"});
-        
-        modelo.addRow(new Object[]{"4","2","3","4","5","6","7","8","9"});
+        try{
+            ArrayList<String> clientes = Repuestos.SelectClientes();
+            String[] cliente;
+            for (String c : clientes) {
+                if(c.contains("Persona")){
+                    cliente = c.split(",", 8);
+                    System.out.println(c);
+                    addPersona(cliente);
+                }
+                else{
+                    cliente = c.split(",");
+                    addPersona(cliente);
+                }
+            }
+        }catch (SQLException ex){
+            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //modelo.addRow(new Object[]{id, tipo, nombre, cedula, cedula Juridica, dirección, ciudad, telefonos, estado});
+    }
+    
+    //persona = [0:id, 1:tipo, 2:nombre, 3:cedula, 4:direccion, 5:ciudad, 6:estado, 7:telefonos]
+    void addPersona(String[] cliente){
+        modelo.addRow(new Object[]{Integer.parseInt(cliente[0]), cliente[1], cliente[2], cliente[3], "", cliente[4], cliente[5], cliente[7], cliente[6]});
+    }
+    
+    void addOrg(String[] cliente){
         
     }
 
@@ -70,7 +96,7 @@ public class ListaClientes extends javax.swing.JFrame {
         jPanel1.setMaximumSize(new java.awt.Dimension(900, 500));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 300));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 300));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         ListaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,12 +143,13 @@ public class ListaClientes extends javax.swing.JFrame {
             ListaClientes.getColumnModel().getColumn(5).setMaxWidth(250);
             ListaClientes.getColumnModel().getColumn(6).setMinWidth(85);
             ListaClientes.getColumnModel().getColumn(6).setPreferredWidth(85);
+            ListaClientes.getColumnModel().getColumn(6).setMaxWidth(110);
             ListaClientes.getColumnModel().getColumn(8).setMinWidth(90);
             ListaClientes.getColumnModel().getColumn(8).setPreferredWidth(90);
             ListaClientes.getColumnModel().getColumn(8).setMaxWidth(90);
         }
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 300));
+        jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
