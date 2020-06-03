@@ -67,20 +67,24 @@ public class PartesCostos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ProveedorCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(ProveedorCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 32, -1, -1));
 
+        ProveedorLabel.setBackground(new java.awt.Color(204, 204, 204));
         ProveedorLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         ProveedorLabel.setText("Proveedor");
         jPanel1.add(ProveedorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 31, -1, -1));
 
+        PiezaLabel.setBackground(new java.awt.Color(204, 204, 204));
         PiezaLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         PiezaLabel.setText("Pieza");
         jPanel1.add(PiezaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 76, -1, -1));
 
+        FabricanteLabel.setBackground(new java.awt.Color(204, 204, 204));
         FabricanteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         FabricanteLabel.setText("Fabricante");
         jPanel1.add(FabricanteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
@@ -107,9 +111,11 @@ public class PartesCostos extends javax.swing.JFrame {
         jPanel1.add(PorcentajeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 214, 57, -1));
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 76, -1, -1));
 
+        PorcentajeLabel.setBackground(new java.awt.Color(204, 204, 204));
         PorcentajeLabel.setText("Porcentaje Beneficio");
         jPanel1.add(PorcentajeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 219, -1, -1));
 
+        CostoLabel.setBackground(new java.awt.Color(204, 204, 204));
         CostoLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         CostoLabel.setText("Costo en Colones");
         jPanel1.add(CostoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 130, -1, -1));
@@ -128,7 +134,7 @@ public class PartesCostos extends javax.swing.JFrame {
         });
         jPanel1.add(PorcentajeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 128, 134, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 724, 372));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 372));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

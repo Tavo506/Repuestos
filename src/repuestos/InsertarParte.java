@@ -56,8 +56,11 @@ public class InsertarParte extends javax.swing.JFrame {
         FabricanteLabel = new javax.swing.JLabel();
         MarcaLabel = new javax.swing.JLabel();
         NombreField = new javax.swing.JTextField();
-        NombreLabel = new javax.swing.JLabel();
+        DetallesLabel = new javax.swing.JLabel();
         MarcaField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        DetallesTextArea = new javax.swing.JTextArea();
+        NombreLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -81,12 +84,22 @@ public class InsertarParte extends javax.swing.JFrame {
         NombreField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         Panelinsertar.add(NombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 151, 163, -1));
 
-        NombreLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        NombreLabel.setText("Nombre");
-        Panelinsertar.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 151, -1, -1));
+        DetallesLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        DetallesLabel.setText("Detalles");
+        Panelinsertar.add(DetallesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         MarcaField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         Panelinsertar.add(MarcaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 91, 163, -1));
+
+        DetallesTextArea.setColumns(20);
+        DetallesTextArea.setRows(5);
+        jScrollPane1.setViewportView(DetallesTextArea);
+
+        Panelinsertar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
+
+        NombreLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        NombreLabel.setText("Nombre");
+        Panelinsertar.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 151, -1, -1));
 
         getContentPane().add(Panelinsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 372));
 
@@ -129,6 +142,8 @@ public class InsertarParte extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DetallesLabel;
+    private javax.swing.JTextArea DetallesTextArea;
     private javax.swing.JComboBox FabricanteCombo;
     private javax.swing.JLabel FabricanteLabel;
     private javax.swing.JTextField MarcaField;
@@ -137,5 +152,6 @@ public class InsertarParte extends javax.swing.JFrame {
     private javax.swing.JLabel NombreLabel;
     private javax.swing.JPanel Panelinsertar;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
