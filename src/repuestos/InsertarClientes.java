@@ -445,7 +445,7 @@ public class InsertarClientes extends javax.swing.JFrame {
         }if(Integer.toString(cedula).length() < 9){
             JOptionPane.showMessageDialog(this, "La cédula es inválido (menor a 9 digitos)", "Advertencia", 2);
             return false;
-        }if(telefonos.isEmpty())
+        }if(telefonos == null)
             return false;
         return true;
     }

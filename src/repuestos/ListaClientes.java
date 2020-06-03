@@ -42,6 +42,7 @@ public class ListaClientes extends javax.swing.JFrame {
     void llenarTabla(){
         modelo.addRow(new Object[]{"1","2","3","4","5","6","7","8","9"});
         modelo.addRow(new Object[]{"2","2","3","4","5","6","7","8","9"});
+        
 
     }
 
