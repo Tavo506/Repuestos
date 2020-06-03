@@ -8,13 +8,14 @@ package repuestos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Admin
  */
 public class ListaClientes extends javax.swing.JFrame {
-
+    DefaultTableModel modelo;
     public WindowListener c = new WindowAdapter() {
         @Override
         public void windowClosing(WindowEvent e) {
@@ -26,6 +27,8 @@ public class ListaClientes extends javax.swing.JFrame {
      */
     public ListaClientes() {
         initComponents();
+        modelo = (DefaultTableModel) ListaClientes.getModel();
+        llenarTabla();
         this.setVisible(true);
         this.addWindowListener(c);
         this.setLocationRelativeTo(null);
@@ -34,6 +37,12 @@ public class ListaClientes extends javax.swing.JFrame {
     void cerrar() {
         Principal.listaAbierta = false;
         this.dispose();
+    }
+    
+    void llenarTabla(){
+        modelo.addRow(new Object[]{"1","2","3","4","5","6","7","8","9"});
+        modelo.addRow(new Object[]{"2","2","3","4","5","6","7","8","9"});
+
     }
 
     /**
@@ -64,15 +73,14 @@ public class ListaClientes extends javax.swing.JFrame {
 
         ListaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(1234), "Persona", "Gustavo Blanco Alfaro", "208140295", "NA", "Barranca", "Naranjo", "85548525, 60601225", "ACTIVO"},
-                { new Integer(2), "Organizacion", "Súper María Auxiliadora", "NA", "1077490257", "Barranca", "Naranjo", "NA", "SUSPENDIDO"}
+
             },
             new String [] {
                 "ID", "Tipo", "Nombre", "Cédula", "Cédula Jurídica", "Dirección", "Ciudad", "Teléfono/s", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false
@@ -87,6 +95,7 @@ public class ListaClientes extends javax.swing.JFrame {
             }
         });
         ListaClientes.setPreferredSize(new java.awt.Dimension(800, 32));
+        ListaClientes.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(ListaClientes);
         if (ListaClientes.getColumnModel().getColumnCount() > 0) {
             ListaClientes.getColumnModel().getColumn(0).setMinWidth(50);

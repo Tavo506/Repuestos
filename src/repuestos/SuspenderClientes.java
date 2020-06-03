@@ -8,7 +8,11 @@ package repuestos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,46 +55,23 @@ public class SuspenderClientes extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        Panel3 = new javax.swing.JPanel();
-        Panel2 = new javax.swing.JPanel();
         Panel1 = new javax.swing.JPanel();
         RadioPersona = new javax.swing.JRadioButton();
         RadioOrg = new javax.swing.JRadioButton();
         Label = new javax.swing.JLabel();
+        Panel2 = new javax.swing.JPanel();
+        LabelCedulaCliente = new javax.swing.JLabel();
+        TextCedulaPersona = new javax.swing.JTextField();
+        SuspenderPersona = new javax.swing.JButton();
+        Panel3 = new javax.swing.JPanel();
+        TextCedulaOrg = new javax.swing.JTextField();
+        LabelCedulaOrg = new javax.swing.JLabel();
+        SuspenderOrg = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Suspender Cliente");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Panel3.setBackground(new java.awt.Color(51, 51, 51));
-
-        javax.swing.GroupLayout Panel3Layout = new javax.swing.GroupLayout(Panel3);
-        Panel3.setLayout(Panel3Layout);
-        Panel3Layout.setHorizontalGroup(
-            Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        Panel3Layout.setVerticalGroup(
-            Panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 500, 470));
-
-        Panel2.setBackground(new java.awt.Color(51, 51, 51));
-
-        javax.swing.GroupLayout Panel2Layout = new javax.swing.GroupLayout(Panel2);
-        Panel2.setLayout(Panel2Layout);
-        Panel2Layout.setHorizontalGroup(
-            Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        Panel2Layout.setVerticalGroup(
-            Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, 470));
 
         Panel1.setBackground(new java.awt.Color(51, 51, 51));
         Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,6 +80,7 @@ public class SuspenderClientes extends javax.swing.JFrame {
         buttonGroup1.add(RadioPersona);
         RadioPersona.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         RadioPersona.setForeground(new java.awt.Color(204, 204, 204));
+        RadioPersona.setSelected(true);
         RadioPersona.setText("Persona");
         RadioPersona.setFocusPainted(false);
         RadioPersona.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +110,50 @@ public class SuspenderClientes extends javax.swing.JFrame {
 
         getContentPane().add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
+        Panel2.setBackground(new java.awt.Color(51, 51, 51));
+        Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        LabelCedulaCliente.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        LabelCedulaCliente.setForeground(new java.awt.Color(204, 204, 204));
+        LabelCedulaCliente.setText("Cédula:");
+        Panel2.add(LabelCedulaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        TextCedulaPersona.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel2.add(TextCedulaPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 360, -1));
+
+        SuspenderPersona.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        SuspenderPersona.setText("Suspender");
+        SuspenderPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SuspenderPersonaActionPerformed(evt);
+            }
+        });
+        Panel2.add(SuspenderPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 290, 60));
+
+        getContentPane().add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 500, 180));
+
+        Panel3.setBackground(new java.awt.Color(51, 51, 51));
+        Panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        TextCedulaOrg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Panel3.add(TextCedulaOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 330, -1));
+
+        LabelCedulaOrg.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        LabelCedulaOrg.setForeground(new java.awt.Color(204, 204, 204));
+        LabelCedulaOrg.setText("Cédula Jurídica:");
+        Panel3.add(LabelCedulaOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        SuspenderOrg.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        SuspenderOrg.setText("Suspender");
+        SuspenderOrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SuspenderOrgActionPerformed(evt);
+            }
+        });
+        Panel3.add(SuspenderOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 290, 60));
+
+        getContentPane().add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 500, 180));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,6 +166,64 @@ public class SuspenderClientes extends javax.swing.JFrame {
         Panel2.setVisible(false);
         Panel3.setVisible(true);
     }//GEN-LAST:event_RadioOrgActionPerformed
+
+    private void SuspenderPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuspenderPersonaActionPerformed
+        int cedula;
+        
+        try {
+            if(TextCedulaPersona.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "El campo de cedula no puede ser vacío", "Advertencia", 2);
+                return;
+            }
+            
+            cedula = Integer.parseInt(TextCedulaPersona.getText());
+            
+            if(Integer.toString(cedula).length() < 9){
+                JOptionPane.showMessageDialog(this, "La cédula es inválida (menor a 7 digitos)", "Advertencia", 2);
+                return;
+            }
+            
+            boolean a = Repuestos.SuspenderPersona(cedula);   //Manda la cedula para suspender al cliente
+            if(a)
+                JOptionPane.showMessageDialog(this, "Cliente suspendido", "Info", 1);
+            else
+                JOptionPane.showMessageDialog(this, "Cliente no existe", "Advertencia", 2);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error, cédula debe ser un número entero", "Advertencia", 2);
+        }
+    }//GEN-LAST:event_SuspenderPersonaActionPerformed
+
+    private void SuspenderOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuspenderOrgActionPerformed
+        int cedula;
+        
+        try {
+            if(TextCedulaOrg.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "El campo de cedula jurídica no puede ser vacío", "Advertencia", 2);
+                return;
+            }
+            
+            cedula = Integer.parseInt(TextCedulaOrg.getText());
+            
+            if(Integer.toString(cedula).length() < 9){
+                JOptionPane.showMessageDialog(this, "La cédula jurídica es inválida (menor a 7 digitos)", "Advertencia", 2);
+                return;
+            }
+            
+            boolean a = Repuestos.SuspenderOrg(cedula);   //Manda la cedula para suspender al cliente
+            if(a)
+                JOptionPane.showMessageDialog(this, "Cliente suspendido", "Info", 1);
+            else
+                JOptionPane.showMessageDialog(this, "Cliente no existe", "Advertencia", 2);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error, cédula jurídica debe ser un número entero", "Advertencia", 2);
+        }
+    }//GEN-LAST:event_SuspenderOrgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,11 +262,17 @@ public class SuspenderClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label;
+    private javax.swing.JLabel LabelCedulaCliente;
+    private javax.swing.JLabel LabelCedulaOrg;
     private javax.swing.JPanel Panel1;
     private javax.swing.JPanel Panel2;
     private javax.swing.JPanel Panel3;
     private javax.swing.JRadioButton RadioOrg;
     private javax.swing.JRadioButton RadioPersona;
+    private javax.swing.JButton SuspenderOrg;
+    private javax.swing.JButton SuspenderPersona;
+    private javax.swing.JTextField TextCedulaOrg;
+    private javax.swing.JTextField TextCedulaPersona;
     private javax.swing.ButtonGroup buttonGroup1;
     // End of variables declaration//GEN-END:variables
 }
