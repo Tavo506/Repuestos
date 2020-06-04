@@ -8,7 +8,11 @@ package repuestos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +24,7 @@ public class InsertarParte extends javax.swing.JFrame {
      * Creates new form InsertarParte
      */
     JFrame principal;
+    
     
     public WindowListener c = new WindowAdapter() {
         @Override
@@ -52,15 +57,13 @@ public class InsertarParte extends javax.swing.JFrame {
 
         Panelinsertar = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        FabricanteCombo = new javax.swing.JComboBox();
         FabricanteLabel = new javax.swing.JLabel();
         MarcaLabel = new javax.swing.JLabel();
         NombreField = new javax.swing.JTextField();
-        DetallesLabel = new javax.swing.JLabel();
-        MarcaField = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        DetallesTextArea = new javax.swing.JTextArea();
         NombreLabel = new javax.swing.JLabel();
+        InsertarParte = new javax.swing.JButton();
+        MarcaCombo = new javax.swing.JComboBox<>();
+        FabCombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -70,9 +73,6 @@ public class InsertarParte extends javax.swing.JFrame {
         Panelinsertar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         Panelinsertar.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 73, -1, -1));
 
-        FabricanteCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Panelinsertar.add(FabricanteCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
-
         FabricanteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         FabricanteLabel.setForeground(new java.awt.Color(255, 255, 255));
         FabricanteLabel.setText("Fabricante");
@@ -81,34 +81,52 @@ public class InsertarParte extends javax.swing.JFrame {
         MarcaLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         MarcaLabel.setForeground(new java.awt.Color(255, 255, 255));
         MarcaLabel.setText("Marca");
-        Panelinsertar.add(MarcaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 95, -1, -1));
+        Panelinsertar.add(MarcaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         NombreField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        Panelinsertar.add(NombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 151, 163, -1));
-
-        DetallesLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        DetallesLabel.setForeground(new java.awt.Color(255, 255, 255));
-        DetallesLabel.setText("Detalles");
-        Panelinsertar.add(DetallesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
-
-        MarcaField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        Panelinsertar.add(MarcaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 91, 163, -1));
-
-        DetallesTextArea.setColumns(20);
-        DetallesTextArea.setRows(5);
-        jScrollPane1.setViewportView(DetallesTextArea);
-
-        Panelinsertar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
+        Panelinsertar.add(NombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 163, -1));
 
         NombreLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         NombreLabel.setForeground(new java.awt.Color(255, 255, 255));
         NombreLabel.setText("Nombre");
-        Panelinsertar.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 151, -1, -1));
+        Panelinsertar.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
-        getContentPane().add(Panelinsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 372));
+        InsertarParte.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        InsertarParte.setText("🆗");
+        InsertarParte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertarParteActionPerformed(evt);
+            }
+        });
+        Panelinsertar.add(InsertarParte, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
+
+        MarcaCombo.setForeground(new java.awt.Color(0, 0, 0));
+        MarcaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Delphi", "Falken", "Kelly", "Bondo", "Goyo", "Koni", "Kleber", "Fuller", "Armstrong", "Walker" }));
+        Panelinsertar.add(MarcaCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 120, 40));
+
+        FabCombo.setForeground(new java.awt.Color(0, 0, 0));
+        FabCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "International Spare Parts", "Auto Spare Parts", "AJS Auto Parts", "Discounted Parts" }));
+        Panelinsertar.add(FabCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 180, 40));
+
+        getContentPane().add(Panelinsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 372));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void InsertarParteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarParteActionPerformed
+        int fabricante = FabCombo.getSelectedIndex()+1;
+        int marca = MarcaCombo.getSelectedIndex()+1;
+        String nombre = NombreField.getText();
+        try{
+        boolean Insertado = Repuestos.InsertPartes(fabricante, nombre, marca);
+        if(Insertado){
+            JOptionPane.showMessageDialog(this, "Insertado con exito", "Info", 1);
+            }
+        }
+        catch(SQLException e){
+            Logger.getLogger(InsertarParte.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_InsertarParteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,16 +164,14 @@ public class InsertarParte extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel DetallesLabel;
-    private javax.swing.JTextArea DetallesTextArea;
-    private javax.swing.JComboBox FabricanteCombo;
+    private javax.swing.JComboBox<String> FabCombo;
     private javax.swing.JLabel FabricanteLabel;
-    private javax.swing.JTextField MarcaField;
+    private javax.swing.JButton InsertarParte;
+    private javax.swing.JComboBox<String> MarcaCombo;
     private javax.swing.JLabel MarcaLabel;
     private javax.swing.JTextField NombreField;
     private javax.swing.JLabel NombreLabel;
     private javax.swing.JPanel Panelinsertar;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -312,4 +312,19 @@ public class Repuestos {
             throw e;
         }
     }
+    
+    
+    public static boolean InsertPartes(int fabricante, String nombre, int marca) throws SQLException{
+        try{
+        
+            PreparedStatement ps = con.prepareStatement("EXEC SPIpartes ?, ?, ?");
+            ps.setInt(1,fabricante);
+            ps.setString(2, nombre);
+            ps.setInt(3, marca);
+            ps.executeUpdate();
+            return true;
+        }
+        
+        catch(SQLException e){throw e;}
+    }
 }

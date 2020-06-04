@@ -28,6 +28,9 @@ public class VerPartes extends javax.swing.JFrame {
         }
     };
     
+    private int Anno;
+    private String Modelo;
+    
     public VerPartes(JFrame p) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -53,6 +56,11 @@ public class VerPartes extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaPartes = new javax.swing.JTable();
+        ModeloField = new javax.swing.JTextField();
+        ModeloPartesField = new javax.swing.JLabel();
+        AnnoParteField = new javax.swing.JTextField();
+        AnnoPartesLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -64,23 +72,55 @@ public class VerPartes extends javax.swing.JFrame {
 
         TablaPartes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "Marca", "Nombre", "Fabricante-ID", "Detalle"
+                "ID", "Marca", "Nombre", "Fabricante", "Detalle"
             }
         ));
         jScrollPane1.setViewportView(TablaPartes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 90));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 660, 90));
+
+        ModeloField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jPanel1.add(ModeloField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 140, -1));
+
+        ModeloPartesField.setBackground(new java.awt.Color(255, 255, 255));
+        ModeloPartesField.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        ModeloPartesField.setForeground(new java.awt.Color(255, 255, 255));
+        ModeloPartesField.setText("Modelo:");
+        jPanel1.add(ModeloPartesField, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
+
+        AnnoParteField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jPanel1.add(AnnoParteField, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 140, -1));
+
+        AnnoPartesLabel.setBackground(new java.awt.Color(255, 255, 255));
+        AnnoPartesLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        AnnoPartesLabel.setForeground(new java.awt.Color(255, 255, 255));
+        AnnoPartesLabel.setText("Año:");
+        jPanel1.add(AnnoPartesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jButton1.setText("🔎");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, 60, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Modelo = ModeloField.getText();
+        if(Repuestos.isNumeric(AnnoParteField.getText())){
+            Anno = Integer.parseInt(AnnoParteField.getText());
+        }
+        else{AnnoParteField.setText("Año invalido");}
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,7 +158,12 @@ public class VerPartes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AnnoParteField;
+    private javax.swing.JLabel AnnoPartesLabel;
+    private javax.swing.JTextField ModeloField;
+    private javax.swing.JLabel ModeloPartesField;
     private javax.swing.JTable TablaPartes;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
