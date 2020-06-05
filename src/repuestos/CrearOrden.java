@@ -5,6 +5,8 @@
  */
 package repuestos;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -38,6 +40,54 @@ public class CrearOrden extends javax.swing.JFrame {
         this.addWindowListener(c);
         this.setVisible(true);
         principal = p;
+        
+        TextDia.addKeyListener(new KeyListener(){
+        @Override
+        public void keyTyped(KeyEvent e)
+
+        {if (TextDia.getText().length()== 1){
+             TextMes.requestFocus();
+        }if (TextDia.getText().length()== 2)
+            e.consume();
+        }
+        @Override
+        public void keyPressed(KeyEvent arg0) {
+        }
+        @Override
+        public void keyReleased(KeyEvent arg0) {
+        }
+        });
+        
+        TextMes.addKeyListener(new KeyListener(){
+        @Override
+        public void keyTyped(KeyEvent e)
+
+        {if (TextMes.getText().length()== 1){
+             TextAnno.requestFocus();
+        }
+        }
+        @Override
+        public void keyPressed(KeyEvent arg0) {
+        }
+        @Override
+        public void keyReleased(KeyEvent arg0) {
+        }
+        });
+        
+        TextAnno.addKeyListener(new KeyListener(){
+        @Override
+        public void keyTyped(KeyEvent e)
+
+        {if (TextAnno.getText().length()== 4)
+             e.consume();
+        }
+        @Override
+        public void keyPressed(KeyEvent arg0) {
+        }
+        @Override
+        public void keyReleased(KeyEvent arg0) {
+        }
+        });
     }
     
     void cerrar(JFrame p){
@@ -62,10 +112,16 @@ public class CrearOrden extends javax.swing.JFrame {
         LabelCedulaOrg = new javax.swing.JLabel();
         TextCedulaOrg = new javax.swing.JTextField();
         Panel1 = new javax.swing.JPanel();
+        LabelFecha2 = new javax.swing.JLabel();
+        LabelFecha1 = new javax.swing.JLabel();
         LabelFecha = new javax.swing.JLabel();
         Label = new javax.swing.JLabel();
         RadioPersona = new javax.swing.JRadioButton();
         RadioOrg = new javax.swing.JRadioButton();
+        TextAnno = new javax.swing.JTextField();
+        TextDia = new javax.swing.JTextField();
+        TextMes = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Crear Orden");
@@ -103,6 +159,16 @@ public class CrearOrden extends javax.swing.JFrame {
         Panel1.setBackground(new java.awt.Color(51, 51, 51));
         Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        LabelFecha2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        LabelFecha2.setForeground(new java.awt.Color(204, 204, 204));
+        LabelFecha2.setText("/");
+        Panel1.add(LabelFecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 20, -1));
+
+        LabelFecha1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        LabelFecha1.setForeground(new java.awt.Color(204, 204, 204));
+        LabelFecha1.setText("/");
+        Panel1.add(LabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 20, -1));
+
         LabelFecha.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         LabelFecha.setForeground(new java.awt.Color(204, 204, 204));
         LabelFecha.setText("Fecha:");
@@ -139,6 +205,22 @@ public class CrearOrden extends javax.swing.JFrame {
             }
         });
         Panel1.add(RadioOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+
+        TextAnno.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        TextAnno.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Panel1.add(TextAnno, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 60, -1));
+
+        TextDia.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        TextDia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Panel1.add(TextDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 40, -1));
+
+        TextMes.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        TextMes.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Panel1.add(TextMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 40, -1));
+
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jButton1.setText("Crear");
+        Panel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
 
         getContentPane().add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 400));
 
@@ -195,13 +277,19 @@ public class CrearOrden extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCedulaCliente;
     private javax.swing.JLabel LabelCedulaOrg;
     private javax.swing.JLabel LabelFecha;
+    private javax.swing.JLabel LabelFecha1;
+    private javax.swing.JLabel LabelFecha2;
     private javax.swing.JPanel Panel1;
     private javax.swing.JPanel Panel2;
     private javax.swing.JPanel Panel3;
     private javax.swing.JRadioButton RadioOrg;
     private javax.swing.JRadioButton RadioPersona;
+    private javax.swing.JTextField TextAnno;
     private javax.swing.JTextField TextCedulaOrg;
     private javax.swing.JTextField TextCedulaPersona;
+    private javax.swing.JTextField TextDia;
+    private javax.swing.JTextField TextMes;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

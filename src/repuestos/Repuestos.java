@@ -294,7 +294,7 @@ public class Repuestos {
             }
             ResultSet org = ctmts.executeQuery();
             
-            String organizacion, idO, nomO, cedO, dirO, ciudO, estO;
+            String organizacion, idO, nomO, cedO, dirO, ciudO, estO, nomCont;
             while(org.next()){
                 idO = Integer.toString(org.getInt(1));
                 nomO = org.getString(2);
@@ -302,8 +302,9 @@ public class Repuestos {
                 dirO = org.getString(4);
                 ciudO = org.getString(5);
                 estO = org.getString(6);
+                nomCont = org.getString(7);
                 
-                organizacion = idO + ",Organizacion," + nomO + "," + cedO + ","+ dirO + "," + ciudO + "," + estO;
+                organizacion = idO + ",Organizacion," + nomO + "," + cedO + ","+ dirO + "," + ciudO + "," + estO + "," + nomCont;
                 clientes.add(organizacion);
             }
         
