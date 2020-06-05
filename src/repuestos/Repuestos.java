@@ -259,6 +259,33 @@ public class Repuestos {
         }
     }
     
+    public static boolean updateOrg (String estado, int cedula, String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, int telefonoContacto) throws SQLException{
+        try{
+            PreparedStatement ct = con.prepareStatement("EXEC SPS1org ?");  //Revisa si la organizacion existe
+            ct.setInt(1, cedula);
+            ResultSet rs = ct.executeQuery();
+            if(!rs.next())
+                return false;
+            
+            PreparedStatement ps = con.prepareStatement("EXEC SPUorganizacion ?,?,?,?,?,?,?,?");
+            
+            ps.setInt(1, cedula);
+            ps.setString(2, nombre);
+            ps.setString(3, direccion);
+            ps.setString(4, ciudad);
+            ps.setString(5, nombreContacto);
+            ps.setString(6, cargoContacto);
+            ps.setInt(7, telefonoContacto);
+            ps.setString(8, estado);
+            
+            ps.executeUpdate();
+            return true;
+        }catch (SQLException e){
+            throw e;
+        }
+        
+    }
+    
     public static ArrayList<String> SelectClientes() throws SQLException{
         
         try{
@@ -381,8 +408,18 @@ public class Repuestos {
                 }
             return true;
     
-        }catch(SQLException e){throw e;}
+        }catch(SQLException e)
+        {throw e;}
    
+    }
+
+    static boolean crearOrden(int cedula, String tipo, Date sqlFecha) throws SQLException{
+        try{
+            PreparedStatement ps = con.prepareStatement("EXEC SPIorden ?, ?, ?");
+            return true;
+        }catch(SQLException e){
+            throw e;
+        }
     }
     
 }

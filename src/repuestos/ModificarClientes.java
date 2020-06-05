@@ -389,7 +389,45 @@ public class ModificarClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_CargarPersonaActionPerformed
 
     private void ModificarOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarOrgActionPerformed
+        String tipo, estado, nombre, direccion, ciudad, nomContacto, cargoContacto;
+        int cedula, telContacto;
         
+        try {
+            tipo = "Organizacion";
+            estado = (String)ComboEstadoOrg.getSelectedItem();
+            nombre = TextNombreOrg.getText();
+            
+            if(TextCedulaOrg.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "El campo de cedula jurídica no puede ser vacío", "Advertencia", 2);
+                return;
+            }
+            
+            cedula = Integer.parseInt(TextCedulaOrg.getText());
+            direccion = TextDireccionOrg.getText();
+            ciudad = TextCiudadOrg.getText();
+            nomContacto = TextNombreContacto.getText();
+            cargoContacto = TextCargoContacto.getText();
+            
+            if(TextTelContacto.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "El campo de teléfono del\ncontacto no puede ser vacío", "Advertencia", 2);
+                return;
+            }
+            telContacto = Integer.parseInt(TextTelContacto.getText());
+            if(!revisarDatosOrg(nombre, direccion, ciudad, nomContacto, cargoContacto, cedula, telContacto))
+                return;
+            
+            boolean a = Repuestos.updateOrg(estado, cedula, nombre, direccion, ciudad, nomContacto, cargoContacto, telContacto); //Manda los datos a la funcion que hace la insercion
+            
+            if(a)
+                JOptionPane.showMessageDialog(this, "Cliente modificado exitosamente", "Info", 1);
+            else
+                JOptionPane.showMessageDialog(this, "Cliente no existe", "Advertencia", 2);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error, cedula y telefono del contacto\ndeben ser números enteros", "Advertencia", 2);
+        }
     }//GEN-LAST:event_ModificarOrgActionPerformed
 
     private void CargarOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarOrgActionPerformed
@@ -458,7 +496,9 @@ public class ModificarClientes extends javax.swing.JFrame {
             
             if(!revisarDatosPersona(nombre, direccion, ciudad, cedula, telefonos))
                 return;
+            
             boolean a = Repuestos.updatePersona(estado, cedula, nombre, direccion, ciudad, telefonos);   //Manda los datos a la funcion que hace la insercion
+            
             if(a)
                 JOptionPane.showMessageDialog(this, "Cliente modificado exitosamente", "Info", 1);
             else
