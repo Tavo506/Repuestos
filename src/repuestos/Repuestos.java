@@ -7,6 +7,7 @@ package repuestos;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -328,7 +329,8 @@ public class Repuestos {
             return true;
         }
         
-        catch(SQLException e){throw e;}
+        catch(SQLException e)
+            {throw e;}
     }
     
     public static boolean InsertPartes(int fabricante, String nombre, int marca) throws SQLException{
@@ -342,7 +344,8 @@ public class Repuestos {
             return true;
         }
         
-        catch(SQLException e){throw e;}
+        catch(SQLException e)
+            {throw e;}
     }
     
     public static boolean getPartes() throws SQLException{
@@ -355,9 +358,8 @@ public class Repuestos {
                 }
             return true;
     
-        }catch(SQLException e){throw e;}
-    
-    
+        }catch(SQLException e)
+            {throw e;}
     }
     
     public static boolean CreaAso(String ParteN, String Modelo) throws SQLException{
@@ -382,7 +384,5 @@ public class Repuestos {
         }catch(SQLException e){throw e;}
    
     }
-    
-    
     
 }

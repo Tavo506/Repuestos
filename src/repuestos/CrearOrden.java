@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,7 +65,8 @@ public class CrearOrden extends javax.swing.JFrame {
 
         {if (TextMes.getText().length()== 1){
              TextAnno.requestFocus();
-        }
+        }if (TextMes.getText().length()== 2)
+            e.consume();
         }
         @Override
         public void keyPressed(KeyEvent arg0) {
@@ -121,7 +123,7 @@ public class CrearOrden extends javax.swing.JFrame {
         TextAnno = new javax.swing.JTextField();
         TextDia = new javax.swing.JTextField();
         TextMes = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        BotonCrearOrden = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Crear Orden");
@@ -218,9 +220,14 @@ public class CrearOrden extends javax.swing.JFrame {
         TextMes.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         Panel1.add(TextMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 40, -1));
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jButton1.setText("Crear");
-        Panel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
+        BotonCrearOrden.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        BotonCrearOrden.setText("Crear");
+        BotonCrearOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCrearOrdenActionPerformed(evt);
+            }
+        });
+        Panel1.add(BotonCrearOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
 
         getContentPane().add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 400));
 
@@ -236,6 +243,77 @@ public class CrearOrden extends javax.swing.JFrame {
         Panel2.setVisible(false);
         Panel3.setVisible(true);
     }//GEN-LAST:event_RadioOrgActionPerformed
+
+    boolean verificarFechas(String dia, String mes, String anno){
+        if(dia.isEmpty() || mes.isEmpty() || anno.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Los campos para la fecha no pueden ser vacíos", "Advertencia", 2);
+            return false;
+        }else if(!(Repuestos.isNumeric(dia) || Repuestos.isNumeric(mes) || Repuestos.isNumeric(anno))){
+            JOptionPane.showMessageDialog(this, "Los campos para la fecha deben ser números enteros", "Advertencia", 2);
+            return false;
+        }else if(Integer.parseInt(dia) > 31){
+            JOptionPane.showMessageDialog(this, "Los días van de 1 a 31", "Advertencia", 2);
+            return false;
+        }else if(Integer.parseInt(mes) > 12){
+            JOptionPane.showMessageDialog(this, "Los meses van de 1 a 12", "Advertencia", 2);
+            return false;
+        }else if(Integer.parseInt(anno) > 2020 || Integer.parseInt(anno) < 1900){
+            JOptionPane.showMessageDialog(this, "El año debe ser de 1900 a 2020", "Advertencia", 2);
+            return false;
+        }
+        return true;
+    }
+    
+    private void BotonCrearOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearOrdenActionPerformed
+        try {
+            int cedula;
+            String tipo, dia, mes, anno;
+            dia = TextDia.getText();
+            mes = TextMes.getText();
+            anno = TextAnno.getText();
+            
+            if(!verificarFechas(dia, mes, anno))
+                return;
+            
+            String fecha = dia + "-" + mes + "-" + anno;
+            Date sqlFecha = Date.valueOf(fecha);
+            
+            if(RadioPersona.isSelected()){
+                tipo = "Persona";
+                if(TextCedulaPersona.getText().trim().isEmpty()){
+                    JOptionPane.showMessageDialog(this, "El campo de cedula no puede ser vacío", "Advertencia", 2);
+                    return;
+                }else if(TextCedulaPersona.getText().trim().length() < 9){
+                    JOptionPane.showMessageDialog(this, "Cédula inválida (menor a 9 dígitos)", "Advertencia", 2);
+                    return;
+                }
+                cedula = Integer.parseInt(TextCedulaPersona.getText());
+                
+            }else{
+                tipo = "Organizacion";
+                if(TextCedulaOrg.getText().trim().isEmpty()){
+                    JOptionPane.showMessageDialog(this, "El campo de cedula jurídica no puede ser vacío", "Advertencia", 2);
+                    return;
+                }else if(TextCedulaOrg.getText().trim().length() < 9){
+                    JOptionPane.showMessageDialog(this, "Cédula jurídica inválida (menor a 9 dígitos)", "Advertencia", 2);
+                    return;
+                }
+                cedula = Integer.parseInt(TextCedulaOrg.getText());
+            }
+            
+            
+            boolean a = Repuestos.crearOrden(cedula, tipo, sqlFecha)
+            if(a)
+                JOptionPane.showMessageDialog(this, "Cliente insertado exitosamente", "Info", 1);
+            else
+                JOptionPane.showMessageDialog(this, "Cliente ya existe", "Advertencia", 2);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error, cédula debe ser un número entero", "Advertencia", 2);
+        }
+    }//GEN-LAST:event_BotonCrearOrdenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,6 +351,7 @@ public class CrearOrden extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCrearOrden;
     private javax.swing.JLabel Label;
     private javax.swing.JLabel LabelCedulaCliente;
     private javax.swing.JLabel LabelCedulaOrg;
@@ -290,6 +369,5 @@ public class CrearOrden extends javax.swing.JFrame {
     private javax.swing.JTextField TextDia;
     private javax.swing.JTextField TextMes;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
