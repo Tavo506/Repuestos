@@ -382,7 +382,7 @@ public class ModificarClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Datos del cliente cargados", "Info", 1);
             
         } catch (SQLException ex) {
-            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarClientes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Error, cédula debe ser un número entero", "Advertencia", 2);
         }
@@ -431,7 +431,7 @@ public class ModificarClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Datos del cliente cargados", "Info", 1);
             
         } catch (SQLException ex) {
-            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarClientes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Error, cédula debe ser un número entero", "Advertencia", 2);
         }
