@@ -294,7 +294,7 @@ public class Repuestos {
             }
             ResultSet org = ctmts.executeQuery();
             
-            String organizacion, idO, nomO, cedO, dirO, ciudO, estO;
+            String organizacion, idO, nomO, cedO, dirO, ciudO, estO, nomCont;
             while(org.next()){
                 idO = Integer.toString(org.getInt(1));
                 nomO = org.getString(2);
@@ -302,8 +302,9 @@ public class Repuestos {
                 dirO = org.getString(4);
                 ciudO = org.getString(5);
                 estO = org.getString(6);
+                nomCont = org.getString(7);
                 
-                organizacion = idO + ",Organizacion," + nomO + "," + cedO + ","+ dirO + "," + ciudO + "," + estO;
+                organizacion = idO + ",Organizacion," + nomO + "," + cedO + ","+ dirO + "," + ciudO + "," + estO + "," + nomCont;
                 clientes.add(organizacion);
             }
         
@@ -357,6 +358,29 @@ public class Repuestos {
         }catch(SQLException e){throw e;}
     
     
+    }
+    
+    public static boolean CreaAso(String ParteN, String Modelo) throws SQLException{
+        int ParteID;
+        int AnnoCarro;
+    try{
+            PreparedStatement ps = con.prepareStatement("EXEC SPSAsoParteAuto ?, ?");
+            PreparedStatement ps2 = con.prepareStatement("EXEC SPIAsoParteAuto ?, ?, ?");
+            ps.setString(1, ParteN);
+            ps.setString(2, ParteN);
+            ResultSet resultado = ps.executeQuery();
+            while(resultado.next()){
+                ParteID = resultado.getInt(1);
+                AnnoCarro = resultado.getInt(2);
+                ps2.setInt(1, ParteID);
+                ps2.setString(2, Modelo);
+                ps2.setInt(3, AnnoCarro);
+                ps2.executeUpdate();
+                }
+            return true;
+    
+        }catch(SQLException e){throw e;}
+   
     }
     
     

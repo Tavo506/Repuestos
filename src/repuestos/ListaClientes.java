@@ -72,16 +72,16 @@ public class ListaClientes extends javax.swing.JFrame {
         }catch (SQLException ex){
             Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //modelo.addRow(new Object[]{id, tipo, nombre, cedula, cedula Juridica, dirección, ciudad, telefonos, estado});
+        //modelo.addRow(new Object[]{id, tipo, nombre, cedula, cedula Juridica, dirección, ciudad, telefonos, estado, nombre Contacto});
     }
     
     //persona = [0:id, 1:tipo, 2:nombre, 3:cedula, 4:direccion, 5:ciudad, 6:estado, 7:telefonos]
     void addPersona(String[] cliente){
-        modelo.addRow(new Object[]{Integer.parseInt(cliente[0]), cliente[1], cliente[2], cliente[3], "", cliente[4], cliente[5], cliente[7], cliente[6]});
+        modelo.addRow(new Object[]{Integer.parseInt(cliente[0]), cliente[1], cliente[2], cliente[3], "", cliente[4], cliente[5], cliente[7], cliente[6], ""});
     }
     
     void addOrg(String[] cliente){
-        modelo.addRow(new Object[]{Integer.parseInt(cliente[0]), cliente[1], cliente[2], "", cliente[3], cliente[4], cliente[5], "", cliente[6]});
+        modelo.addRow(new Object[]{Integer.parseInt(cliente[0]), cliente[1], cliente[2], "", cliente[3], cliente[4], cliente[5], "", cliente[6], cliente[7]});
     }
 
     /**
@@ -106,7 +106,7 @@ public class ListaClientes extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setMaximumSize(new java.awt.Dimension(900, 500));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 300));
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 300));
+        jPanel1.setPreferredSize(new java.awt.Dimension(960, 300));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         ListaClientes.setAutoCreateRowSorter(true);
@@ -115,14 +115,14 @@ public class ListaClientes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Tipo", "Nombre", "Cédula", "Cédula Jurídica", "Dirección", "Ciudad", "Teléfono/s", "Estado"
+                "ID", "Tipo", "Nombre", "Cédula", "Cédula Jurídica", "Dirección", "Ciudad", "Teléfono/s", "Estado", "Nombre Cliente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -159,6 +159,9 @@ public class ListaClientes extends javax.swing.JFrame {
             ListaClientes.getColumnModel().getColumn(8).setMinWidth(90);
             ListaClientes.getColumnModel().getColumn(8).setPreferredWidth(90);
             ListaClientes.getColumnModel().getColumn(8).setMaxWidth(90);
+            ListaClientes.getColumnModel().getColumn(9).setMinWidth(160);
+            ListaClientes.getColumnModel().getColumn(9).setPreferredWidth(160);
+            ListaClientes.getColumnModel().getColumn(9).setMaxWidth(160);
         }
 
         jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
