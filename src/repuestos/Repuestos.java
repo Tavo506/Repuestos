@@ -362,15 +362,27 @@ public class Repuestos {
             {throw e;}
     }
     
-    public static boolean crearOrden(int cedula, String tipo, Date fecha) throws SQLException{
-        try {  
-            
-            PreparedStatement ct = con.prepareStatement("EXEC SPIorden ?, ?, ?");
-
+    public static boolean CreaAso(String ParteN, String Modelo) throws SQLException{
+        int ParteID;
+        int AnnoCarro;
+    try{
+            PreparedStatement ps = con.prepareStatement("EXEC SPSAsoParteAuto ?, ?");
+            PreparedStatement ps2 = con.prepareStatement("EXEC SPIAsoParteAuto ?, ?, ?");
+            ps.setString(1, ParteN);
+            ps.setString(2, ParteN);
+            ResultSet resultado = ps.executeQuery();
+            while(resultado.next()){
+                ParteID = resultado.getInt(1);
+                AnnoCarro = resultado.getInt(2);
+                ps2.setInt(1, ParteID);
+                ps2.setString(2, Modelo);
+                ps2.setInt(3, AnnoCarro);
+                ps2.executeUpdate();
+                }
             return true;
-        }  catch (SQLException e){
-            throw e;
-        }
+    
+        }catch(SQLException e){throw e;}
+   
     }
     
 }
