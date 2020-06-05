@@ -65,6 +65,7 @@ public class PartesCostos extends javax.swing.JFrame {
         PorcentajeField = new javax.swing.JFormattedTextField(new Integer(3));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Costo de Parte");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));

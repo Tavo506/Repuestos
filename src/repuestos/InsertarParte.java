@@ -66,6 +66,7 @@ public class InsertarParte extends javax.swing.JFrame {
         FabCombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Insertar Parte");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panelinsertar.setBackground(new java.awt.Color(51, 51, 51));

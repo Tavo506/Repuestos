@@ -54,6 +54,8 @@ public class Principal extends javax.swing.JFrame {
         LabelAdminPartes = new javax.swing.JLabel();
         Panel3 = new javax.swing.JPanel();
         LabelAdminOrdenes = new javax.swing.JLabel();
+        BotonCrearOrden = new javax.swing.JButton();
+        BotonAsociarOrden = new javax.swing.JButton();
         BarraMenu = new javax.swing.JMenuBar();
         MenuAdministrar = new javax.swing.JMenu();
         MenuClientes = new javax.swing.JMenuItem();
@@ -205,6 +207,26 @@ public class Principal extends javax.swing.JFrame {
         LabelAdminOrdenes.setText("Administrar Órdenes");
         Panel3.add(LabelAdminOrdenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
+        BotonCrearOrden.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        BotonCrearOrden.setText("Crear Orden");
+        BotonCrearOrden.setFocusPainted(false);
+        BotonCrearOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCrearOrdenActionPerformed(evt);
+            }
+        });
+        Panel3.add(BotonCrearOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 300, 100));
+
+        BotonAsociarOrden.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        BotonAsociarOrden.setText("Asociar Orden");
+        BotonAsociarOrden.setFocusPainted(false);
+        BotonAsociarOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAsociarOrdenActionPerformed(evt);
+            }
+        });
+        Panel3.add(BotonAsociarOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 300, 100));
+
         getContentPane().add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 600));
 
         MenuAdministrar.setText("Administrar");
@@ -335,6 +357,16 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_AsociaAutoButtonActionPerformed
 
+    private void BotonCrearOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearOrdenActionPerformed
+        new CrearOrden(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_BotonCrearOrdenActionPerformed
+
+    private void BotonAsociarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAsociarOrdenActionPerformed
+        new AsociarOrden(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_BotonAsociarOrdenActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -376,6 +408,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton AsociarProvButton;
     private javax.swing.JMenuBar BarraMenu;
     private javax.swing.JButton BorrarParteButton;
+    private javax.swing.JButton BotonAsociarOrden;
+    private javax.swing.JButton BotonCrearOrden;
     private javax.swing.JButton InsertarClientes;
     private javax.swing.JButton InsertarParteButton;
     private javax.swing.JLabel LabelAdminCliente;

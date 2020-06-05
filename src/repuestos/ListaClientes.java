@@ -53,7 +53,6 @@ public class ListaClientes extends javax.swing.JFrame {
             ArrayList<String> clientes = Repuestos.SelectClientes();
             String[] cliente;
             for (String c : clientes) {
-                System.out.println(c);
                 if(c.contains("Persona")){
                     cliente = c.split(",", 8);
                     addPersona(cliente);
