@@ -8,6 +8,9 @@ package repuestos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -118,6 +121,11 @@ public class VerPartes extends javax.swing.JFrame {
         Modelo = ModeloField.getText();
         if(Repuestos.isNumeric(AnnoParteField.getText())){
             Anno = Integer.parseInt(AnnoParteField.getText());
+            try{
+                Repuestos.Verpartes(Anno, Modelo);
+            }catch(SQLException e){
+                Logger.getLogger(VerPartes.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
         else{AnnoParteField.setText("Año invalido");}
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -313,6 +313,22 @@ public class Repuestos {
         }
     }
     
+    public static boolean Verpartes(int anno, String modelo) throws SQLException{
+        try{
+        
+            PreparedStatement ps = con.prepareStatement("EXEC SPSpartes ?, ?");
+            ps.setInt(1,anno);
+            ps.setString(2, modelo);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            System.out.println("Hola");
+            System.out.println(rs.getInt(1) + rs.getString(2));
+            }
+            return true;
+        }
+        
+        catch(SQLException e){throw e;}
+    }
     
     public static boolean InsertPartes(int fabricante, String nombre, int marca) throws SQLException{
         try{
@@ -327,4 +343,22 @@ public class Repuestos {
         
         catch(SQLException e){throw e;}
     }
+    
+    public static boolean getPartes() throws SQLException{
+        try{
+            PreparedStatement ps = con.prepareStatement("EXEC SPSpartestotales");
+            ResultSet resultado = ps.executeQuery();
+            while(resultado.next()){
+                System.out.println(resultado.getString(1));
+                
+                }
+            return true;
+    
+        }catch(SQLException e){throw e;}
+    
+    
+    }
+    
+    
+    
 }
