@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,12 +34,14 @@ public class VerPartes extends javax.swing.JFrame {
     
     private int Anno;
     private String Modelo;
+    public DefaultTableModel tabla;
     
     public VerPartes(JFrame p) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.addWindowListener(c);
         this.setVisible(true);
+        this.tabla = (DefaultTableModel) TablaPartes.getModel();
         principal = p;
     }
     
@@ -78,12 +81,12 @@ public class VerPartes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Marca", "Nombre", "Fabricante", "Detalle"
+                "ID", "Marca", "Nombre", "Fabricante"
             }
         ));
         jScrollPane1.setViewportView(TablaPartes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 660, 90));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 660, 370));
 
         ModeloField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jPanel1.add(ModeloField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 140, -1));
@@ -122,7 +125,8 @@ public class VerPartes extends javax.swing.JFrame {
         if(Repuestos.isNumeric(AnnoParteField.getText())){
             Anno = Integer.parseInt(AnnoParteField.getText());
             try{
-                Repuestos.Verpartes(Anno, Modelo);
+                tabla.setRowCount(0);
+                Repuestos.Verpartes(Anno, Modelo, tabla);
             }catch(SQLException e){
                 Logger.getLogger(VerPartes.class.getName()).log(Level.SEVERE, null, e);
             }

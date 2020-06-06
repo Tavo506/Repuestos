@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Admin
@@ -342,7 +343,7 @@ public class Repuestos {
         }
     }
     
-    public static boolean Verpartes(int anno, String modelo) throws SQLException{
+    public static boolean Verpartes(int anno, String modelo, DefaultTableModel tabla) throws SQLException{
         try{
         
             PreparedStatement ps = con.prepareStatement("EXEC SPSpartes ?, ?");
@@ -350,8 +351,7 @@ public class Repuestos {
             ps.setString(2, modelo);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-            System.out.println("Hola");
-            System.out.println(rs.getInt(1) + rs.getString(2));
+            tabla.addRow(new Object[]{rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)});
             }
             return true;
         }
@@ -394,13 +394,13 @@ public class Repuestos {
         int AnnoCarro;
     try{
             PreparedStatement ps = con.prepareStatement("EXEC SPSAsoParteAuto ?, ?");
-            PreparedStatement ps2 = con.prepareStatement("EXEC SPIAsoParteAuto ?, ?, ?");
             ps.setString(1, ParteN);
-            ps.setString(2, ParteN);
+            ps.setString(2, Modelo);
             ResultSet resultado = ps.executeQuery();
             while(resultado.next()){
                 ParteID = resultado.getInt(1);
                 AnnoCarro = resultado.getInt(2);
+                PreparedStatement ps2 = con.prepareStatement("EXEC SPIAsoParteAuto ?, ?, ?");
                 ps2.setInt(1, ParteID);
                 ps2.setString(2, Modelo);
                 ps2.setInt(3, AnnoCarro);
