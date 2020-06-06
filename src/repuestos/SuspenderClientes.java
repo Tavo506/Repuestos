@@ -184,8 +184,10 @@ public class SuspenderClientes extends javax.swing.JFrame {
             }
             
             boolean a = Repuestos.SuspenderPersona(cedula);   //Manda la cedula para suspender al cliente
-            if(a)
+            if(a){
                 JOptionPane.showMessageDialog(this, "Cliente suspendido", "Info", 1);
+                cerrar(principal);
+            }
             else
                 JOptionPane.showMessageDialog(this, "Cliente no existe", "Advertencia", 2);
             
@@ -213,8 +215,10 @@ public class SuspenderClientes extends javax.swing.JFrame {
             }
             
             boolean a = Repuestos.SuspenderOrg(cedula);   //Manda la cedula para suspender al cliente
-            if(a)
+            if(a){
                 JOptionPane.showMessageDialog(this, "Cliente suspendido", "Info", 1);
+                cerrar(principal);
+            }
             else
                 JOptionPane.showMessageDialog(this, "Cliente no existe", "Advertencia", 2);
             

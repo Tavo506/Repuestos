@@ -179,8 +179,9 @@ public class CrearOrden extends javax.swing.JFrame {
 
         Label.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         Label.setForeground(new java.awt.Color(204, 204, 204));
+        Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Label.setText("Crear Orden");
-        Panel1.add(Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        Panel1.add(Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 500, -1));
 
         RadioPersona.setBackground(new java.awt.Color(55, 55, 55));
         buttonGroup1.add(RadioPersona);
@@ -304,8 +305,10 @@ public class CrearOrden extends javax.swing.JFrame {
             
             
             boolean a = Repuestos.crearOrden(cedula, tipo, sqlFecha);
-            if(a)
+            if(a){
                 JOptionPane.showMessageDialog(this, "Orden creada", "Info", 1);
+                cerrar(principal);
+            }
             else
                 JOptionPane.showMessageDialog(this, "El cliente no existe", "Advertencia", 2);
             

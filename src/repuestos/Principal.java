@@ -121,8 +121,9 @@ public class Principal extends javax.swing.JFrame {
         LabelAdminCliente.setBackground(new java.awt.Color(255, 255, 255));
         LabelAdminCliente.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         LabelAdminCliente.setForeground(new java.awt.Color(204, 204, 204));
+        LabelAdminCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelAdminCliente.setText("Administrar Clientes");
-        Panel1.add(LabelAdminCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+        Panel1.add(LabelAdminCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 20, 730, -1));
 
         getContentPane().add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -193,8 +194,9 @@ public class Principal extends javax.swing.JFrame {
         LabelAdminPartes.setBackground(new java.awt.Color(255, 255, 255));
         LabelAdminPartes.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         LabelAdminPartes.setForeground(new java.awt.Color(204, 204, 204));
+        LabelAdminPartes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelAdminPartes.setText("Administrar Partes");
-        Panel2.add(LabelAdminPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+        Panel2.add(LabelAdminPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 20, 720, -1));
 
         getContentPane().add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 600));
 
@@ -204,8 +206,9 @@ public class Principal extends javax.swing.JFrame {
         LabelAdminOrdenes.setBackground(new java.awt.Color(255, 255, 255));
         LabelAdminOrdenes.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         LabelAdminOrdenes.setForeground(new java.awt.Color(204, 204, 204));
+        LabelAdminOrdenes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelAdminOrdenes.setText("Administrar Órdenes");
-        Panel3.add(LabelAdminOrdenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+        Panel3.add(LabelAdminOrdenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 20, 730, -1));
 
         BotonCrearOrden.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         BotonCrearOrden.setText("Crear Orden");

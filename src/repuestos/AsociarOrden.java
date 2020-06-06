@@ -63,10 +63,11 @@ public class AsociarOrden extends javax.swing.JFrame {
 
         Label.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         Label.setForeground(new java.awt.Color(204, 204, 204));
+        Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Label.setText("Asociar Orden");
-        jPanel1.add(Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+        jPanel1.add(Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 20, 610, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 400));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

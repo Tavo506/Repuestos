@@ -357,8 +357,10 @@ public class InsertarClientes extends javax.swing.JFrame {
             if(!revisarDatosPersona(nombre, direccion, ciudad, cedula, telefonos))
                 return;
             boolean a = Repuestos.InsertClienteP(estado, tipo, cedula, nombre, direccion, ciudad, telefonos);   //Manda los datos a la funcion que hace la insercion
-            if(a)
+            if(a){
                 JOptionPane.showMessageDialog(this, "Cliente insertado exitosamente", "Info", 1);
+                cerrar(principal);
+            }
             else
                 JOptionPane.showMessageDialog(this, "Cliente ya existe", "Advertencia", 2);
             
@@ -398,8 +400,10 @@ public class InsertarClientes extends javax.swing.JFrame {
             if(!revisarDatosOrg(nombre, direccion, ciudad, nomContacto, cargoContacto, cedula, telContacto))
                 return;
             boolean a = Repuestos.InsertClienteO(estado, tipo, cedula, nombre, direccion, ciudad, nomContacto, cargoContacto, telContacto); //Manda los datos a la funcion que hace la insercion
-            if(a)
+            if(a){
                 JOptionPane.showMessageDialog(this, "Cliente insertado exitosamente", "Info", 1);
+                cerrar(principal);
+            }
             else
                 JOptionPane.showMessageDialog(this, "Cliente ya existe", "Advertencia", 2);
             

@@ -422,9 +422,10 @@ public class ModificarClientes extends javax.swing.JFrame {
             
             boolean a = Repuestos.updateOrg(estado, cedula, nombre, direccion, ciudad, nomContacto, cargoContacto, telContacto); //Manda los datos a la funcion que hace la modificacion
             
-            if(a)
+            if(a){
                 JOptionPane.showMessageDialog(this, "Cliente modificado exitosamente", "Info", 1);
-            else
+                cerrar(principal);
+            }else
                 JOptionPane.showMessageDialog(this, "Cliente no existe", "Advertencia", 2);
             
         } catch (SQLException ex) {
@@ -507,8 +508,10 @@ public class ModificarClientes extends javax.swing.JFrame {
             
             boolean a = Repuestos.updatePersona(estado, cedula, nombre, direccion, ciudad, telefonos);   //Manda los datos a la funcion que hace la modificacion
             
-            if(a)
+            if(a){
                 JOptionPane.showMessageDialog(this, "Cliente modificado exitosamente", "Info", 1);
+                cerrar(principal);
+            }
             else
                 JOptionPane.showMessageDialog(this, "El cliente no existe", "Advertencia", 2);
             
