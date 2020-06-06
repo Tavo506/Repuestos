@@ -416,6 +416,20 @@ public class Repuestos {
     static boolean crearOrden(int cedula, String tipo, Date sqlFecha) throws SQLException{
         try{
             PreparedStatement ps = con.prepareStatement("EXEC SPIorden ?, ?, ?");
+            PreparedStatement ct = con.prepareStatement("EXEC SPgetID ?, ?");
+            ct.setInt(1, cedula);
+            ct.setString(2, tipo);
+            
+            ResultSet rs = ct.executeQuery();
+            if(!rs.next())
+                return false;
+            
+            ps.setInt(1, cedula);
+            ps.setString(2, tipo);
+            ps.setDate(3, sqlFecha);
+            
+            ps.executeUpdate();
+            
             return true;
         }catch(SQLException e){
             throw e;

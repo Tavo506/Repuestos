@@ -41,6 +41,7 @@ public class CrearOrden extends javax.swing.JFrame {
         this.addWindowListener(c);
         this.setVisible(true);
         principal = p;
+        Panel3.setVisible(false);
         
         TextDia.addKeyListener(new KeyListener(){
         @Override
@@ -275,7 +276,7 @@ public class CrearOrden extends javax.swing.JFrame {
             if(!verificarFechas(dia, mes, anno))
                 return;
             
-            String fecha = dia + "-" + mes + "-" + anno;
+            String fecha = anno + "-" + mes + "-" + dia;
             Date sqlFecha = Date.valueOf(fecha);
             
             if(RadioPersona.isSelected()){
@@ -306,10 +307,10 @@ public class CrearOrden extends javax.swing.JFrame {
             if(a)
                 JOptionPane.showMessageDialog(this, "Orden creada", "Info", 1);
             else
-                JOptionPane.showMessageDialog(this, "La orden ya existe", "Advertencia", 2);
+                JOptionPane.showMessageDialog(this, "El cliente no existe", "Advertencia", 2);
             
         } catch (SQLException ex) {
-            Logger.getLogger(InsertarClientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CrearOrden.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Error, cédula debe ser un número entero", "Advertencia", 2);
         }
