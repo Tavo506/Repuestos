@@ -86,7 +86,7 @@ public class VerPartes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TablaPartes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 660, 370));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 640, 350));
 
         ModeloField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jPanel1.add(ModeloField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 140, -1));

@@ -436,4 +436,50 @@ public class Repuestos {
         }
     }
     
+    static boolean selectProveedores(String nombreParte, DefaultTableModel tabla)throws SQLException{
+        try{
+            tabla.setRowCount(0);
+            
+            PreparedStatement ps = con.prepareStatement("EXEC SPSprovedor ?");
+            ps.setString(1, nombreParte);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                tabla.addRow(new Object[]{rs.getString(1), rs.getInt(4)});
+            }
+            
+            return true;
+        }catch(SQLException e){
+            throw e;
+        }
+    }
+    
+    static boolean selectOrdenes(int cedula, String tipo, DefaultTableModel tabla)throws SQLException{
+        try{
+            tabla.setRowCount(0);
+            
+            PreparedStatement ct = con.prepareStatement("EXEC SPgetID ?, ?");
+            ct.setInt(1, cedula);
+            ct.setString(2, tipo);
+            
+            ResultSet rs = ct.executeQuery();
+            if(!rs.next())
+                return false;
+            int id = rs.getInt(1);
+            
+            PreparedStatement ps = con.prepareStatement("EXEC SPSorden ?");
+            ps.setInt(1, id);
+            
+            ResultSet result = ps.executeQuery();
+            
+            while(result.next()){
+                tabla.addRow(new Object[]{result.getInt(1), result.getString(2), result.getInt(3)});
+            }
+            
+            return true;
+        }catch(SQLException e){
+            throw e;
+        }
+    }
 }

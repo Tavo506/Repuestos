@@ -307,7 +307,8 @@ public class CrearOrden extends javax.swing.JFrame {
             boolean a = Repuestos.crearOrden(cedula, tipo, sqlFecha);
             if(a){
                 JOptionPane.showMessageDialog(this, "Orden creada", "Info", 1);
-                cerrar(principal);
+                new AsociarOrden(principal);
+                this.dispose();
             }
             else
                 JOptionPane.showMessageDialog(this, "El cliente no existe", "Advertencia", 2);
