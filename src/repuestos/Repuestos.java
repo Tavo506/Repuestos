@@ -375,7 +375,7 @@ public class Repuestos {
             {throw e;}
     }
     
-    public static boolean getPartes() throws SQLException{
+     public static boolean getPartes() throws SQLException{
         try{
             PreparedStatement ps = con.prepareStatement("EXEC SPSpartestotales");
             ResultSet resultado = ps.executeQuery();
@@ -434,6 +434,13 @@ public class Repuestos {
         }catch(SQLException e){
             throw e;
         }
+    }
+    
+    static boolean BorrarParte(String Parte) throws SQLException{
+    
+    PreparedStatement ps = con.prepareStatement("EXEC SPIorden ?, ?, ?");
+    
+    return false;
     }
     
 }
