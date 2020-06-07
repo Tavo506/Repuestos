@@ -55,6 +55,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         ComboAsoProv = new javax.swing.JComboBox<>();
         AsociarButton = new javax.swing.JButton();
         TITULOINSERTARp = new javax.swing.JLabel();
+        ParteProvAso = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Asociar Parte y Provedor");
@@ -75,7 +76,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         jPanel1.add(ProveedorAsoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         ComboAsoProv.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        ComboAsoProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboAsoProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auto Repuestos Jiménez", "Autopartes Mandi", "Autopartes USA", "J y A Autopartes", "LACOR Repuestos", "Megapartes Martínez", "Repuestos ABZ", "Repuestos Zúñiga", "Servicios Omega", "Super Repuestos" }));
         jPanel1.add(ComboAsoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         AsociarButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -86,6 +87,9 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         TITULOINSERTARp.setForeground(new java.awt.Color(255, 255, 255));
         TITULOINSERTARp.setText("Asociar Parte Proveedor");
         jPanel1.add(TITULOINSERTARp, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        ParteProvAso.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jPanel1.add(ParteProvAso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 190, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,6 +144,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
     private javax.swing.JButton AsociarButton;
     private javax.swing.JComboBox<String> ComboAsoProv;
     private javax.swing.JLabel ParteAsoLabel;
+    private javax.swing.JTextField ParteProvAso;
     private javax.swing.JLabel ProveedorAsoLabel;
     private javax.swing.JLabel TITULOINSERTARp;
     private javax.swing.JPanel jPanel1;
