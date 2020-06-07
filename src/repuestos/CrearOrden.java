@@ -307,8 +307,7 @@ public class CrearOrden extends javax.swing.JFrame {
             boolean a = Repuestos.crearOrden(cedula, tipo, sqlFecha);
             if(a){
                 JOptionPane.showMessageDialog(this, "Orden creada", "Info", 1);
-                new AsociarOrden(principal);
-                this.dispose();
+                siguientePaso(cedula, tipo, sqlFecha);
             }
             else
                 JOptionPane.showMessageDialog(this, "El cliente no existe", "Advertencia", 2);
@@ -320,6 +319,10 @@ public class CrearOrden extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BotonCrearOrdenActionPerformed
 
+    void siguientePaso(int cedula, String tipo, Date fecha){
+        this.dispose();
+        new AsociarOrden(principal, cedula, tipo, fecha);
+    }
     /**
      * @param args the command line arguments
      */

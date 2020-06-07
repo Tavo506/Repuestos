@@ -8,6 +8,7 @@ package repuestos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,9 +47,25 @@ public class AsociarOrden extends javax.swing.JFrame {
         modelProveedores = (DefaultTableModel) TablaProveedores.getModel();
     }
     
+    public AsociarOrden(JFrame p, int cedula, String tipo, Date fecha) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.addWindowListener(c);
+        Panel3.setVisible(false);
+        
+        this.setVisible(true);
+        principal = p;
+        modelOrdenes = (DefaultTableModel) TablaOrdenes.getModel();
+        modelProveedores = (DefaultTableModel) TablaProveedores.getModel();
+    }
+    
     void cerrar(JFrame p){
         p.setVisible(true);
         this.dispose();
+    }
+    
+    void colocarCosas(){
+        
     }
 
     /**
@@ -281,7 +298,7 @@ public class AsociarOrden extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 570, 170, -1));
 
         BotonAsociar.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        BotonAsociar.setText("Asociar Piesa");
+        BotonAsociar.setText("Asociar Pieza");
         BotonAsociar.setFocusPainted(false);
         BotonAsociar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

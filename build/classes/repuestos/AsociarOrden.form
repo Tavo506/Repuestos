@@ -442,7 +442,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="36" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Asociar Piesa"/>
+            <Property name="text" type="java.lang.String" value="Asociar Pieza"/>
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
