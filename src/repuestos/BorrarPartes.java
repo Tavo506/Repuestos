@@ -96,11 +96,12 @@ public class BorrarPartes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
+        /*try {
             Repuestos.BorrarParte(ParteBorrarField.getText());
         } catch (SQLException ex) {
             Logger.getLogger(BorrarPartes.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

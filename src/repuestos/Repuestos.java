@@ -484,4 +484,21 @@ public class Repuestos {
         }
     }
 
+    static boolean asociarOrden(int idOrden, String Parte, int cantidad, String proveedor, int monto)throws SQLException{
+        try{
+            
+            PreparedStatement ps = con.prepareStatement("EXEC SPIdetalle ?,?,?,?,?");
+            ps.setInt(1, idOrden);
+            ps.setString(2, Parte);
+            ps.setInt(3, cantidad);
+            ps.setString(4, proveedor);
+            ps.setInt(5, monto);
+            
+            ps.executeUpdate();
+            
+            return true;
+        }catch(SQLException e){
+            throw e;
+        }
+    }
 }
