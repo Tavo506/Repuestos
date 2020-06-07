@@ -67,6 +67,7 @@ public class VerPartes extends javax.swing.JFrame {
         AnnoParteField = new javax.swing.JTextField();
         AnnoPartesLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        TITULOINSERTARp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -86,25 +87,25 @@ public class VerPartes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TablaPartes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 640, 350));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 640, 340));
 
         ModeloField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(ModeloField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 140, -1));
+        jPanel1.add(ModeloField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 140, -1));
 
         ModeloPartesField.setBackground(new java.awt.Color(255, 255, 255));
         ModeloPartesField.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         ModeloPartesField.setForeground(new java.awt.Color(255, 255, 255));
         ModeloPartesField.setText("Modelo:");
-        jPanel1.add(ModeloPartesField, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
+        jPanel1.add(ModeloPartesField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
 
         AnnoParteField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(AnnoParteField, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 140, -1));
+        jPanel1.add(AnnoParteField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 140, -1));
 
         AnnoPartesLabel.setBackground(new java.awt.Color(255, 255, 255));
         AnnoPartesLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         AnnoPartesLabel.setForeground(new java.awt.Color(255, 255, 255));
         AnnoPartesLabel.setText("Año:");
-        jPanel1.add(AnnoPartesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        jPanel1.add(AnnoPartesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButton1.setText("🔎");
@@ -113,7 +114,12 @@ public class VerPartes extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, 60, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 60, -1));
+
+        TITULOINSERTARp.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        TITULOINSERTARp.setForeground(new java.awt.Color(255, 255, 255));
+        TITULOINSERTARp.setText("Ver Partes");
+        jPanel1.add(TITULOINSERTARp, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 470));
 
@@ -174,6 +180,7 @@ public class VerPartes extends javax.swing.JFrame {
     private javax.swing.JLabel AnnoPartesLabel;
     private javax.swing.JTextField ModeloField;
     private javax.swing.JLabel ModeloPartesField;
+    private javax.swing.JLabel TITULOINSERTARp;
     private javax.swing.JTable TablaPartes;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;

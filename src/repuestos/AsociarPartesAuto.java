@@ -58,6 +58,7 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         ParteAsoField = new javax.swing.JTextField();
         AutoAsoField = new javax.swing.JTextField();
+        TITULOASOCIAR = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Asociar Parte y Auto");
@@ -69,13 +70,13 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
         AsoPartAuto.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         AsoPartAuto.setForeground(new java.awt.Color(255, 255, 255));
         AsoPartAuto.setText("Parte:");
-        jPanel1.add(AsoPartAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jPanel1.add(AsoPartAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         AsoAutoPart.setBackground(new java.awt.Color(204, 204, 204));
         AsoAutoPart.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         AsoAutoPart.setForeground(new java.awt.Color(255, 255, 255));
         AsoAutoPart.setText("Auto:");
-        jPanel1.add(AsoAutoPart, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        jPanel1.add(AsoAutoPart, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButton1.setText("Asociar");
@@ -87,10 +88,15 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
 
         ParteAsoField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(ParteAsoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 180, 30));
+        jPanel1.add(ParteAsoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 180, 30));
 
         AutoAsoField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jPanel1.add(AutoAsoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 180, 30));
+
+        TITULOASOCIAR.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        TITULOASOCIAR.setForeground(new java.awt.Color(255, 255, 255));
+        TITULOASOCIAR.setText("Asociar Parte");
+        jPanel1.add(TITULOASOCIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,6 +160,7 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
     private javax.swing.JLabel AsoPartAuto;
     private javax.swing.JTextField AutoAsoField;
     private javax.swing.JTextField ParteAsoField;
+    private javax.swing.JLabel TITULOASOCIAR;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

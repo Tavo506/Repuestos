@@ -51,10 +51,10 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         ParteAsoLabel = new javax.swing.JLabel();
-        ComboAsoPart = new javax.swing.JComboBox<>();
         ProveedorAsoLabel = new javax.swing.JLabel();
         ComboAsoProv = new javax.swing.JComboBox<>();
         AsociarButton = new javax.swing.JButton();
+        TITULOINSERTARp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Asociar Parte y Provedor");
@@ -66,31 +66,32 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         ParteAsoLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         ParteAsoLabel.setForeground(new java.awt.Color(255, 255, 255));
         ParteAsoLabel.setText("Parte");
-        jPanel1.add(ParteAsoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 29, -1, -1));
-
-        ComboAsoPart.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        ComboAsoPart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(ComboAsoPart, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 73, -1, -1));
+        jPanel1.add(ParteAsoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         ProveedorAsoLabel.setBackground(new java.awt.Color(204, 204, 204));
         ProveedorAsoLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         ProveedorAsoLabel.setForeground(new java.awt.Color(255, 255, 255));
         ProveedorAsoLabel.setText("Proveedor");
-        jPanel1.add(ProveedorAsoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 137, -1, -1));
+        jPanel1.add(ProveedorAsoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         ComboAsoProv.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         ComboAsoProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(ComboAsoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 187, -1, -1));
+        jPanel1.add(ComboAsoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         AsociarButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        AsociarButton.setText("Asociar");
-        jPanel1.add(AsociarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
+        AsociarButton.setText("Asociar ✅");
+        jPanel1.add(AsociarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 170, 90));
+
+        TITULOINSERTARp.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        TITULOINSERTARp.setForeground(new java.awt.Color(255, 255, 255));
+        TITULOINSERTARp.setText("Asociar Parte Proveedor");
+        jPanel1.add(TITULOINSERTARp, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,10 +138,10 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AsociarButton;
-    private javax.swing.JComboBox<String> ComboAsoPart;
     private javax.swing.JComboBox<String> ComboAsoProv;
     private javax.swing.JLabel ParteAsoLabel;
     private javax.swing.JLabel ProveedorAsoLabel;
+    private javax.swing.JLabel TITULOINSERTARp;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

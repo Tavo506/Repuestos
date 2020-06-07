@@ -64,6 +64,8 @@ public class InsertarParte extends javax.swing.JFrame {
         InsertarParte = new javax.swing.JButton();
         MarcaCombo = new javax.swing.JComboBox<>();
         FabCombo = new javax.swing.JComboBox<>();
+        TITULOINSERTARp = new javax.swing.JLabel();
+        TITULOASOCIAR = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Insertar Parte");
@@ -77,20 +79,20 @@ public class InsertarParte extends javax.swing.JFrame {
         FabricanteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         FabricanteLabel.setForeground(new java.awt.Color(255, 255, 255));
         FabricanteLabel.setText("Fabricante");
-        Panelinsertar.add(FabricanteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 29, -1, -1));
+        Panelinsertar.add(FabricanteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         MarcaLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         MarcaLabel.setForeground(new java.awt.Color(255, 255, 255));
         MarcaLabel.setText("Marca");
-        Panelinsertar.add(MarcaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        Panelinsertar.add(MarcaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         NombreField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        Panelinsertar.add(NombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 163, -1));
+        Panelinsertar.add(NombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 230, -1));
 
         NombreLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         NombreLabel.setForeground(new java.awt.Color(255, 255, 255));
         NombreLabel.setText("Nombre");
-        Panelinsertar.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        Panelinsertar.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         InsertarParte.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         InsertarParte.setText("🆗");
@@ -103,13 +105,23 @@ public class InsertarParte extends javax.swing.JFrame {
 
         MarcaCombo.setForeground(new java.awt.Color(0, 0, 0));
         MarcaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Delphi", "Falken", "Kelly", "Bondo", "Goyo", "Koni", "Kleber", "Fuller", "Armstrong", "Walker" }));
-        Panelinsertar.add(MarcaCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 120, 40));
+        Panelinsertar.add(MarcaCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 120, 40));
 
         FabCombo.setForeground(new java.awt.Color(0, 0, 0));
         FabCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "International Spare Parts", "Auto Spare Parts", "AJS Auto Parts", "Discounted Parts" }));
-        Panelinsertar.add(FabCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 180, 40));
+        Panelinsertar.add(FabCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 200, 40));
+
+        TITULOINSERTARp.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        TITULOINSERTARp.setForeground(new java.awt.Color(255, 255, 255));
+        TITULOINSERTARp.setText("Insertar Parte");
+        Panelinsertar.add(TITULOINSERTARp, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         getContentPane().add(Panelinsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 372));
+
+        TITULOASOCIAR.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        TITULOASOCIAR.setForeground(new java.awt.Color(255, 255, 255));
+        TITULOASOCIAR.setText("Asociar Parte");
+        getContentPane().add(TITULOASOCIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,6 +185,8 @@ public class InsertarParte extends javax.swing.JFrame {
     private javax.swing.JTextField NombreField;
     private javax.swing.JLabel NombreLabel;
     private javax.swing.JPanel Panelinsertar;
+    private javax.swing.JLabel TITULOASOCIAR;
+    private javax.swing.JLabel TITULOINSERTARp;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

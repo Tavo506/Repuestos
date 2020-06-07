@@ -501,4 +501,12 @@ public class Repuestos {
             throw e;
         }
     }
+    static boolean BorrarParte(String NombreP) throws SQLException{
+        
+        PreparedStatement ps = con.prepareStatement("EXEC SPDparte ?");
+        ps.setString(1, NombreP);
+        ps.executeQuery();
+        
+        return false;
+    }
 }

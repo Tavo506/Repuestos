@@ -54,15 +54,15 @@ public class PartesCostos extends javax.swing.JFrame {
         ProveedorCombo = new javax.swing.JComboBox();
         ProveedorLabel = new javax.swing.JLabel();
         PiezaLabel = new javax.swing.JLabel();
-        FabricanteLabel = new javax.swing.JLabel();
-        PiezaCombo = new javax.swing.JComboBox();
-        FabricanteCombo = new javax.swing.JComboBox();
         CostoFinal = new javax.swing.JTextField();
         PorcentajeSpinner = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         PorcentajeLabel = new javax.swing.JLabel();
         CostoLabel = new javax.swing.JLabel();
         PorcentajeField = new javax.swing.JFormattedTextField(new Integer(3));
+        PiezaNAcutalizar = new javax.swing.JTextField();
+        TITULOINSERTARp = new javax.swing.JLabel();
+        PorcentajeLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Costo de Parte");
@@ -72,32 +72,20 @@ public class PartesCostos extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ProveedorCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(ProveedorCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 32, -1, -1));
+        ProveedorCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Auto Repuestos Jiménez", "Autopartes Mandi", "Autopartes USA", "J y A Autopartes", "LACOR Repuestos", "Megapartes Martínez", "Repuestos ABZ", "Repuestos Zúñiga", "Servicios Omega", "Super Repuestos" }));
+        jPanel1.add(ProveedorCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
         ProveedorLabel.setBackground(new java.awt.Color(204, 204, 204));
         ProveedorLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         ProveedorLabel.setForeground(new java.awt.Color(255, 255, 255));
         ProveedorLabel.setText("Proveedor");
-        jPanel1.add(ProveedorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 31, -1, -1));
+        jPanel1.add(ProveedorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
         PiezaLabel.setBackground(new java.awt.Color(204, 204, 204));
         PiezaLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         PiezaLabel.setForeground(new java.awt.Color(255, 255, 255));
         PiezaLabel.setText("Pieza");
-        jPanel1.add(PiezaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 76, -1, -1));
-
-        FabricanteLabel.setBackground(new java.awt.Color(204, 204, 204));
-        FabricanteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        FabricanteLabel.setForeground(new java.awt.Color(255, 255, 255));
-        FabricanteLabel.setText("Fabricante");
-        jPanel1.add(FabricanteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
-
-        PiezaCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(PiezaCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 76, -1, -1));
-
-        FabricanteCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(FabricanteCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 131, -1, -1));
+        jPanel1.add(PiezaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
 
         CostoFinal.setEditable(false);
         CostoFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -105,26 +93,26 @@ public class PartesCostos extends javax.swing.JFrame {
                 CostoFinalActionPerformed(evt);
             }
         });
-        jPanel1.add(CostoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 295, 118, -1));
+        jPanel1.add(CostoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 118, -1));
 
         PorcentajeSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 PorcentajeSpinnerStateChanged(evt);
             }
         });
-        jPanel1.add(PorcentajeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 214, 57, -1));
+        jPanel1.add(PorcentajeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, 57, -1));
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 76, -1, -1));
 
         PorcentajeLabel.setBackground(new java.awt.Color(204, 204, 204));
         PorcentajeLabel.setForeground(new java.awt.Color(255, 255, 255));
-        PorcentajeLabel.setText("Porcentaje Beneficio");
-        jPanel1.add(PorcentajeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 219, -1, -1));
+        PorcentajeLabel.setText("Precio Final");
+        jPanel1.add(PorcentajeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
 
         CostoLabel.setBackground(new java.awt.Color(204, 204, 204));
         CostoLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         CostoLabel.setForeground(new java.awt.Color(255, 255, 255));
         CostoLabel.setText("Costo en Colones");
-        jPanel1.add(CostoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 130, -1, -1));
+        jPanel1.add(CostoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         PorcentajeField.setText("0");
         PorcentajeField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -138,9 +126,23 @@ public class PartesCostos extends javax.swing.JFrame {
                 PorcentajeFieldKeyPressed(evt);
             }
         });
-        jPanel1.add(PorcentajeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 128, 134, -1));
+        jPanel1.add(PorcentajeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 134, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 372));
+        PiezaNAcutalizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jPanel1.add(PiezaNAcutalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 160, -1));
+
+        TITULOINSERTARp.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        TITULOINSERTARp.setForeground(new java.awt.Color(255, 255, 255));
+        TITULOINSERTARp.setText("Acutalizar costos por Parte");
+        jPanel1.add(TITULOINSERTARp, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+
+        PorcentajeLabel1.setBackground(new java.awt.Color(204, 204, 204));
+        PorcentajeLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        PorcentajeLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        PorcentajeLabel1.setText("Porcentaje Beneficio");
+        jPanel1.add(PorcentajeLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,15 +207,15 @@ public class PartesCostos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CostoFinal;
     private javax.swing.JLabel CostoLabel;
-    private javax.swing.JComboBox FabricanteCombo;
-    private javax.swing.JLabel FabricanteLabel;
-    private javax.swing.JComboBox PiezaCombo;
     private javax.swing.JLabel PiezaLabel;
+    private javax.swing.JTextField PiezaNAcutalizar;
     private javax.swing.JFormattedTextField PorcentajeField;
     private javax.swing.JLabel PorcentajeLabel;
+    private javax.swing.JLabel PorcentajeLabel1;
     private javax.swing.JSpinner PorcentajeSpinner;
     private javax.swing.JComboBox ProveedorCombo;
     private javax.swing.JLabel ProveedorLabel;
+    private javax.swing.JLabel TITULOINSERTARp;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
