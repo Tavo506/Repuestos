@@ -353,6 +353,14 @@ public class ModificarClientes extends javax.swing.JFrame {
         int cedula;
         
         try {
+            TextNombrePersona.setText("");
+            TextDireccionPersona.setText("");
+            TextCiudadPersona.setText("");
+            TextTeléfonoPersona.setText("");
+            Telefonos.setText("");
+            ComboEstadoPersona.setEnabled(true);
+            ComboEstadoPersona.setSelectedIndex(0);
+            
             if(TextCedulaPersona.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "El campo de cedula no puede ser vacío", "Advertencia", 2);
                 return;
@@ -366,11 +374,6 @@ public class ModificarClientes extends javax.swing.JFrame {
             }
             
             ArrayList<String> datos = Repuestos.getPersona(cedula);   //Manda la cedula para suspender al cliente
-            TextNombrePersona.setText("");
-            TextDireccionPersona.setText("");
-            TextCiudadPersona.setText("");
-            TextTeléfonoPersona.setText("");
-            Telefonos.setText("");
             
             if(datos == null){
                 JOptionPane.showMessageDialog(this, "Cliente no existe", "Advertencia", 2);
@@ -381,6 +384,9 @@ public class ModificarClientes extends javax.swing.JFrame {
             TextCiudadPersona.setText(datos.get(2));
             ComboEstadoPersona.setSelectedItem(datos.get(3));
             Telefonos.setText(datos.get(4).replace(",", ",\n"));
+            
+            if("Suspendido".equals(datos.get(3)))
+                ComboEstadoPersona.setEnabled(false);
             
             JOptionPane.showMessageDialog(this, "Datos del cliente cargados", "Info", 1);
             
@@ -441,6 +447,15 @@ public class ModificarClientes extends javax.swing.JFrame {
         int cedula;
         
         try {
+            TextNombreOrg.setText("");
+            TextDireccionOrg.setText("");
+            TextCiudadOrg.setText("");
+            TextNombreContacto.setText("");
+            TextCargoContacto.setText("");
+            TextTelContacto.setText("");
+            ComboEstadoOrg.setEnabled(true);
+            ComboEstadoOrg.setSelectedIndex(0);
+            
             if(TextCedulaOrg.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "El campo de cedula jurídica no puede ser vacío", "Advertencia", 2);
                 return;
@@ -453,13 +468,7 @@ public class ModificarClientes extends javax.swing.JFrame {
                 return;
             }
             
-            ArrayList<String> datos = Repuestos.getOrganizacion(cedula);   //Manda la cedula para suspender al cliente
-            TextNombreOrg.setText("");
-            TextDireccionOrg.setText("");
-            TextCiudadOrg.setText("");
-            TextNombreContacto.setText("");
-            TextCargoContacto.setText("");
-            TextTelContacto.setText("");
+            ArrayList<String> datos = Repuestos.getOrganizacion(cedula);
             
             if(datos == null){
                 JOptionPane.showMessageDialog(this, "Cliente no existe", "Advertencia", 2);
@@ -472,6 +481,9 @@ public class ModificarClientes extends javax.swing.JFrame {
             TextCargoContacto.setText(datos.get(4));
             TextTelContacto.setText(datos.get(5));
             ComboEstadoOrg.setSelectedItem(datos.get(6));
+            
+            if("Suspendido".equals(datos.get(6)))
+                ComboEstadoOrg.setEnabled(false);
             
             JOptionPane.showMessageDialog(this, "Datos del cliente cargados", "Info", 1);
             

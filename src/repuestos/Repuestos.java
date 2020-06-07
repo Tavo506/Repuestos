@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -413,7 +415,7 @@ public class Repuestos {
    
     }
 
-    static boolean crearOrden(int cedula, String tipo, Date sqlFecha) throws SQLException{
+    static boolean crearOrden(int cedula, String tipo, Date sqlFecha, JFrame p) throws SQLException{
         try{
             PreparedStatement ps = con.prepareStatement("EXEC SPIorden ?, ?, ?");
             PreparedStatement ct = con.prepareStatement("EXEC SPgetID ?, ?");
@@ -421,8 +423,15 @@ public class Repuestos {
             ct.setString(2, tipo);
             
             ResultSet rs = ct.executeQuery();
-            if(!rs.next())
+            if(!rs.next()){
+                JOptionPane.showMessageDialog(p, "El cliente no existe", "Advertencia", 2);
                 return false;
+            }
+            
+            if(!verificarEstado(cedula)){
+                JOptionPane.showMessageDialog(p, "Cliente suspendido, no puede tener ordenes", "Advertencia", 2);
+                return false;
+            }
             
             ps.setInt(1, cedula);
             ps.setString(2, tipo);
@@ -492,9 +501,10 @@ public class Repuestos {
         }
     }
 
-    static boolean asociarOrden(int idOrden, String Parte, int cantidad, String proveedor, int monto)throws SQLException{
+    static boolean asociarOrden(int cedula, int idOrden, String Parte, int cantidad, String proveedor, int monto)throws SQLException{
         try{
-            
+            if(!verificarEstado(cedula))
+                return false;
             PreparedStatement ps = con.prepareStatement("EXEC SPIdetalle ?,?,?,?,?");
             ps.setInt(1, idOrden);
             ps.setString(2, Parte);
@@ -510,12 +520,31 @@ public class Repuestos {
         }
     }
     static boolean BorrarParte(String NombreP) throws SQLException{
-        
-        PreparedStatement ps = con.prepareStatement("EXEC SPDparte ?");
-        ps.setString(1, NombreP);
-        ps.executeQuery();
-        
-        return false;
+        try{
+            PreparedStatement ps = con.prepareStatement("EXEC SPDparte ?");
+            ps.setString(1, NombreP);
+            ps.executeQuery();
+
+            return false;
+        }catch(SQLException e){
+            throw e;
+        }
     }
     
+    
+    static boolean verificarEstado(int cedula) throws SQLException{
+        try{
+            PreparedStatement ps = con.prepareStatement("EXEC SPverEstado ?");
+            ps.setInt(1, cedula);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                if("Suspendido".equals(rs.getString(1)))
+                    return false;
+            }
+
+            return true;
+        }catch(SQLException e){
+            throw e;
+        }
+    }
 }

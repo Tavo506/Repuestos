@@ -441,9 +441,10 @@ public class AsociarOrden extends javax.swing.JFrame {
             monto *= cantPiesas;
             
             
-            if(Repuestos.asociarOrden(idOrden, piesa, cantPiesas, proveedor, monto)){
+            if(Repuestos.asociarOrden(cedula, idOrden, piesa, cantPiesas, proveedor, monto)){
                 JOptionPane.showMessageDialog(this, "Piesa agregada a la orden", "Info", 1);
-            }
+            }else
+                JOptionPane.showMessageDialog(this, "Cliente suspendido, no puede tener ordenes", "Advertencia", 2);
             
         }catch(SQLException ex){
             Logger.getLogger(AsociarOrden.class.getName()).log(Level.SEVERE, null, ex);

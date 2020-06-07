@@ -304,13 +304,13 @@ public class CrearOrden extends javax.swing.JFrame {
             }
             
             
-            boolean a = Repuestos.crearOrden(cedula, tipo, sqlFecha);
+            boolean a = Repuestos.crearOrden(cedula, tipo, sqlFecha, this);
             if(a){
                 JOptionPane.showMessageDialog(this, "Orden creada", "Info", 1);
                 siguientePaso(cedula, tipo, sqlFecha);
             }
-            else
-                JOptionPane.showMessageDialog(this, "El cliente no existe", "Advertencia", 2);
+            
+                
             
         } catch (SQLException ex) {
             Logger.getLogger(CrearOrden.class.getName()).log(Level.SEVERE, null, ex);
