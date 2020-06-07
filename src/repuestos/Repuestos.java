@@ -375,7 +375,7 @@ public class Repuestos {
             {throw e;}
     }
     
-    public static boolean getPartes() throws SQLException{
+     public static boolean getPartes() throws SQLException{
         try{
             PreparedStatement ps = con.prepareStatement("EXEC SPSpartestotales");
             ResultSet resultado = ps.executeQuery();
@@ -436,6 +436,7 @@ public class Repuestos {
         }
     }
     
+
     static boolean selectProveedores(String nombreParte, DefaultTableModel tabla)throws SQLException{
         try{
             tabla.setRowCount(0);
@@ -482,4 +483,5 @@ public class Repuestos {
             throw e;
         }
     }
+
 }
