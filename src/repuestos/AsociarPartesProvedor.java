@@ -68,9 +68,11 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         ComboAsoProv = new javax.swing.JComboBox<>();
         AsociarButton = new javax.swing.JButton();
         TITULOINSERTARp = new javax.swing.JLabel();
-
         ComboPartes = new javax.swing.JComboBox<>();
-
+        PorcentajeField = new javax.swing.JFormattedTextField(new Integer(3));
+        CostoLabel = new javax.swing.JLabel();
+        PorcentajeLabel1 = new javax.swing.JLabel();
+        PorcentajeSpinner = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Asociar Parte y Provedor");
@@ -96,31 +98,83 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
 
         AsociarButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         AsociarButton.setText("Asociar ✅");
-        jPanel1.add(AsociarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 170, 90));
+        AsociarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsociarButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(AsociarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 170, 90));
 
         TITULOINSERTARp.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         TITULOINSERTARp.setForeground(new java.awt.Color(255, 255, 255));
         TITULOINSERTARp.setText("Asociar Parte Proveedor");
-        jPanel1.add(TITULOINSERTARp, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
+        jPanel1.add(TITULOINSERTARp, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
         ComboPartes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jPanel1.add(ComboPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 180, -1));
 
+        PorcentajeField.setText("0");
+        PorcentajeField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        PorcentajeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PorcentajeFieldActionPerformed(evt);
+            }
+        });
+        PorcentajeField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PorcentajeFieldKeyPressed(evt);
+            }
+        });
+        jPanel1.add(PorcentajeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 134, -1));
+
+        CostoLabel.setBackground(new java.awt.Color(204, 204, 204));
+        CostoLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        CostoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        CostoLabel.setText("Costo en Colones");
+        jPanel1.add(CostoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        PorcentajeLabel1.setBackground(new java.awt.Color(204, 204, 204));
+        PorcentajeLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        PorcentajeLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        PorcentajeLabel1.setText("Porcentaje Beneficio");
+        jPanel1.add(PorcentajeLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, -1, -1));
+
+        PorcentajeSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                PorcentajeSpinnerStateChanged(evt);
+            }
+        });
+        jPanel1.add(PorcentajeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 57, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AsociarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AsociarButtonActionPerformed
+
+    private void PorcentajeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PorcentajeFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PorcentajeFieldActionPerformed
+
+    private void PorcentajeFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PorcentajeFieldKeyPressed
+        //CostoFinal.setText(calcValor());
+    }//GEN-LAST:event_PorcentajeFieldKeyPressed
+
+    private void PorcentajeSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_PorcentajeSpinnerStateChanged
+        //CostoFinal.setText(calcValor());
+    }//GEN-LAST:event_PorcentajeSpinnerStateChanged
 
     /**
      * @param args the command line arguments
@@ -161,8 +215,11 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
     private javax.swing.JButton AsociarButton;
     private javax.swing.JComboBox<String> ComboAsoProv;
     private javax.swing.JComboBox<String> ComboPartes;
+    private javax.swing.JLabel CostoLabel;
     private javax.swing.JLabel ParteAsoLabel;
-    private javax.swing.JTextField ParteProvAso;
+    private javax.swing.JFormattedTextField PorcentajeField;
+    private javax.swing.JLabel PorcentajeLabel1;
+    private javax.swing.JSpinner PorcentajeSpinner;
     private javax.swing.JLabel ProveedorAsoLabel;
     private javax.swing.JLabel TITULOINSERTARp;
     private javax.swing.JPanel jPanel1;

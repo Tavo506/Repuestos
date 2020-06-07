@@ -48,7 +48,6 @@ public class Principal extends javax.swing.JFrame {
         verPartesButton = new javax.swing.JButton();
         InsertarParteButton = new javax.swing.JButton();
         BorrarParteButton = new javax.swing.JButton();
-        AsociarProvButton = new javax.swing.JButton();
         AsociaAutoButton = new javax.swing.JButton();
         ActualizaCostosProvButton = new javax.swing.JButton();
         LabelAdminPartes = new javax.swing.JLabel();
@@ -160,16 +159,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         Panel2.add(BorrarParteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 270, 80));
-
-        AsociarProvButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        AsociarProvButton.setText("Asociar partes proveedor ");
-        AsociarProvButton.setFocusPainted(false);
-        AsociarProvButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AsociarProvButtonActionPerformed(evt);
-            }
-        });
-        Panel2.add(AsociarProvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 270, 80));
 
         AsociaAutoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         AsociaAutoButton.setText("Asociar partes Auto");
@@ -341,11 +330,6 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BorrarParteButtonActionPerformed
 
-    private void AsociarProvButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarProvButtonActionPerformed
-        new AsociarPartesProvedor(this);
-        this.setVisible(false);
-    }//GEN-LAST:event_AsociarProvButtonActionPerformed
-
     private void ActualizaCostosProvButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizaCostosProvButtonActionPerformed
         new PartesCostos(this);
        this.setVisible(false);
@@ -408,7 +392,6 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ActualizaCostosProvButton;
     private javax.swing.JButton AsociaAutoButton;
-    private javax.swing.JButton AsociarProvButton;
     private javax.swing.JMenuBar BarraMenu;
     private javax.swing.JButton BorrarParteButton;
     private javax.swing.JButton BotonAsociarOrden;

@@ -76,6 +76,7 @@ public class PartesCostos extends javax.swing.JFrame {
         TITULOINSERTARp = new javax.swing.JLabel();
         PorcentajeLabel1 = new javax.swing.JLabel();
         ComboPartes = new javax.swing.JComboBox<>();
+        AsociarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Costo de Parte");
@@ -156,6 +157,15 @@ public class PartesCostos extends javax.swing.JFrame {
         ComboPartes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jPanel1.add(ComboPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 180, -1));
 
+        AsociarButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        AsociarButton.setText("Asociar ✅");
+        AsociarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsociarButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(AsociarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 160, 50));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 340));
 
         pack();
@@ -176,6 +186,15 @@ public class PartesCostos extends javax.swing.JFrame {
     private void PorcentajeFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PorcentajeFieldKeyPressed
       CostoFinal.setText(calcValor());
     }//GEN-LAST:event_PorcentajeFieldKeyPressed
+
+    private void AsociarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarButtonActionPerformed
+       CostoFinal.setText(calcValor());
+        try {
+            Repuestos.CostoCreateOrUpdate(ProveedorCombo.getSelectedItem().toString(), ComboPartes.getSelectedIndex()+1, Integer.parseInt(PorcentajeField.getText()), (int)PorcentajeSpinner.getValue());
+        } catch (SQLException ex) {
+            Logger.getLogger(PartesCostos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_AsociarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,10 +234,11 @@ public class PartesCostos extends javax.swing.JFrame {
     private String calcValor(){
     float Costo = (Integer) PorcentajeField.getValue();
     float Porcentaje = (Integer) PorcentajeSpinner.getValue();
-    return ""+(Costo+Costo*(Porcentaje/100));
+    return ""+(Costo+Costo*(Porcentaje/100)+(Costo*0.13));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AsociarButton;
     private javax.swing.JComboBox<String> ComboPartes;
     private javax.swing.JTextField CostoFinal;
     private javax.swing.JLabel CostoLabel;

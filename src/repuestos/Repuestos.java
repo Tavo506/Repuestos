@@ -547,4 +547,34 @@ public class Repuestos {
             throw e;
         }
     }
+    
+    static boolean CostoCreateOrUpdate(String Provedor, int ParteID, int Precio, int Ganancia) throws SQLException{
+        try{
+            PreparedStatement ps = con.prepareStatement("EXEC SPSpartesCosto ?, ?");
+            PreparedStatement UpdatePs = con.prepareStatement("EXEC SPUpartesCosto ?, ?, ?, ?");
+            PreparedStatement Insertps = con.prepareStatement("EXEC SPIpartesCosto ?, ?, ?, ?");
+            ps.setString(1, Provedor);
+            ps.setInt(2, ParteID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                UpdatePs.setString(1, Provedor);
+                UpdatePs.setInt(2, ParteID);
+                UpdatePs.setInt(3, Precio);
+                UpdatePs.setInt(4, Ganancia);
+                UpdatePs.executeUpdate();
+                    return false;
+            }
+            else{
+                Insertps.setString(1, Provedor);
+                Insertps.setInt(2, ParteID);
+                Insertps.setInt(3, Precio);
+                Insertps.setInt(4, Ganancia);
+                Insertps.executeUpdate();
+            }
+
+            return true;
+        }catch(SQLException e){
+            throw e;
+        }
+    }
 }
