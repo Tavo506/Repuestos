@@ -60,14 +60,14 @@ public class VerPartes extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaPartes = new javax.swing.JTable();
-        ModeloField = new javax.swing.JTextField();
         ModeloPartesField = new javax.swing.JLabel();
         AnnoParteField = new javax.swing.JTextField();
         AnnoPartesLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         TITULOINSERTARp = new javax.swing.JLabel();
+        ComboAutos = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaPartes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -76,21 +76,6 @@ public class VerPartes extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        TablaPartes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Marca", "Nombre", "Fabricante"
-            }
-        ));
-        jScrollPane1.setViewportView(TablaPartes);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 640, 340));
-
-        ModeloField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(ModeloField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 140, -1));
 
         ModeloPartesField.setBackground(new java.awt.Color(255, 255, 255));
         ModeloPartesField.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -121,13 +106,34 @@ public class VerPartes extends javax.swing.JFrame {
         TITULOINSERTARp.setText("Ver Partes");
         jPanel1.add(TITULOINSERTARp, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
+        ComboAutos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        ComboAutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Camry", "Corolla", "CX-5", "Eclipse", "F18", "Fox", "Golf", "Lancer", "Mazda 6", "Murano", "Pajero", "Prius", "Sentra", "Terrano", "Titan", "X6 M", "X-Trail", "Yaris" }));
+        ComboAutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboAutosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ComboAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 180, 30));
+
+        TablaPartes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Marca", "Nombre", "Fabricante"
+            }
+        ));
+        jScrollPane1.setViewportView(TablaPartes);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 640, 340));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Modelo = ModeloField.getText();
+        Modelo = ComboAutos.getSelectedItem().toString();
         if(Repuestos.isNumeric(AnnoParteField.getText())){
             Anno = Integer.parseInt(AnnoParteField.getText());
             try{
@@ -139,6 +145,10 @@ public class VerPartes extends javax.swing.JFrame {
         }
         else{AnnoParteField.setText("Año invalido");}
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ComboAutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboAutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboAutosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,7 +188,7 @@ public class VerPartes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AnnoParteField;
     private javax.swing.JLabel AnnoPartesLabel;
-    private javax.swing.JTextField ModeloField;
+    private javax.swing.JComboBox<String> ComboAutos;
     private javax.swing.JLabel ModeloPartesField;
     private javax.swing.JLabel TITULOINSERTARp;
     private javax.swing.JTable TablaPartes;

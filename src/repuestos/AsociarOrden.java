@@ -41,10 +41,11 @@ public class AsociarOrden extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.addWindowListener(c);
         Panel3.setVisible(false);
-        this.setVisible(true);
         principal = p;
         modelOrdenes = (DefaultTableModel) TablaOrdenes.getModel();
         modelProveedores = (DefaultTableModel) TablaProveedores.getModel();
+        cargarPartes();
+        this.setVisible(true);
     }
     
     public AsociarOrden(JFrame p, int cedula, String tipo, Date fecha) {
@@ -52,11 +53,12 @@ public class AsociarOrden extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.addWindowListener(c);
         Panel3.setVisible(false);
-        
-        this.setVisible(true);
         principal = p;
         modelOrdenes = (DefaultTableModel) TablaOrdenes.getModel();
         modelProveedores = (DefaultTableModel) TablaProveedores.getModel();
+        colocarCosas(cedula, tipo, fecha);
+        cargarPartes();
+        this.setVisible(true);
     }
     
     void cerrar(JFrame p){
@@ -64,8 +66,30 @@ public class AsociarOrden extends javax.swing.JFrame {
         this.dispose();
     }
     
-    void colocarCosas(){
-        
+    void colocarCosas(int cedula, String tipo, Date fecha){
+        try{
+            if("Persona".equals(tipo)){
+                TextCedulaPersona.setText(Integer.toString(cedula));
+            }else{
+                RadioOrg.setSelected(true);
+                Panel2.setVisible(false);
+                Panel3.setVisible(true);
+                TextCedulaOrg.setText(Integer.toString(cedula));
+            }
+            Repuestos.selectOrdenes(cedula, tipo, modelOrdenes, fecha.toString());
+            
+        }catch(SQLException ex){
+            Logger.getLogger(AsociarOrden.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    void cargarPartes(){
+        try{
+            Repuestos.getPartes(ComboPartes);
+            
+        }catch(SQLException ex){
+            Logger.getLogger(AsociarOrden.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -90,7 +114,6 @@ public class AsociarOrden extends javax.swing.JFrame {
         LabelCantidad = new javax.swing.JLabel();
         Label = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        TextNombreParte = new javax.swing.JTextField();
         BuscarProveedor = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaProveedores = new javax.swing.JTable();
@@ -102,6 +125,7 @@ public class AsociarOrden extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         BotonAsociar = new javax.swing.JButton();
         Cantidad = new javax.swing.JSpinner();
+        ComboPartes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Asociar Orden");
@@ -187,9 +211,6 @@ public class AsociarOrden extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Nombre Parte:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
-
-        TextNombreParte.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jPanel1.add(TextNombreParte, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 420, -1));
 
         BuscarProveedor.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         BuscarProveedor.setText("Buscar Proveedores");
@@ -311,6 +332,9 @@ public class AsociarOrden extends javax.swing.JFrame {
         Cantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 99, 1));
         jPanel1.add(Cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 600, 60, 30));
 
+        ComboPartes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jPanel1.add(ComboPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 420, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 760));
 
         pack();
@@ -318,7 +342,7 @@ public class AsociarOrden extends javax.swing.JFrame {
 
     private void BuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarProveedorActionPerformed
         try{
-            String nombreParte = TextNombreParte.getText();
+            String nombreParte = ComboPartes.getSelectedItem().toString();
             piesa = nombreParte;
             
             Repuestos.selectProveedores(nombreParte, (DefaultTableModel)TablaProveedores.getModel());
@@ -370,7 +394,7 @@ public class AsociarOrden extends javax.swing.JFrame {
             }
             
             
-            Repuestos.selectOrdenes(cedula, tipo, modelOrdenes);
+            Repuestos.selectOrdenes(cedula, tipo, modelOrdenes, null);
         }catch(SQLException ex){
             Logger.getLogger(AsociarOrden.class.getName()).log(Level.SEVERE, null, ex);
         }catch (NumberFormatException e){
@@ -470,6 +494,7 @@ public class AsociarOrden extends javax.swing.JFrame {
     private javax.swing.JButton BotonBuscarOrdenes;
     private javax.swing.JButton BuscarProveedor;
     private javax.swing.JSpinner Cantidad;
+    private javax.swing.JComboBox<String> ComboPartes;
     private javax.swing.JLabel Label;
     private javax.swing.JLabel LabelCantidad;
     private javax.swing.JLabel LabelCedulaCliente;
@@ -483,7 +508,6 @@ public class AsociarOrden extends javax.swing.JFrame {
     private javax.swing.JTable TablaProveedores;
     private javax.swing.JTextField TextCedulaOrg;
     private javax.swing.JTextField TextCedulaPersona;
-    private javax.swing.JTextField TextNombreParte;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

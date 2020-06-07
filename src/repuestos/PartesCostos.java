@@ -8,6 +8,9 @@ package repuestos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -32,6 +35,7 @@ public class PartesCostos extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.addWindowListener(c);
+        cargarPartes();
         this.setVisible(true);
         principal = p;
     }
@@ -39,6 +43,15 @@ public class PartesCostos extends javax.swing.JFrame {
     void cerrar(JFrame p){
         p.setVisible(true);
         this.dispose();
+    }
+    
+    void cargarPartes(){
+        try{
+            Repuestos.getPartes(ComboPartes);
+            
+        }catch(SQLException ex){
+            Logger.getLogger(AsociarOrden.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -60,9 +73,9 @@ public class PartesCostos extends javax.swing.JFrame {
         PorcentajeLabel = new javax.swing.JLabel();
         CostoLabel = new javax.swing.JLabel();
         PorcentajeField = new javax.swing.JFormattedTextField(new Integer(3));
-        PiezaNAcutalizar = new javax.swing.JTextField();
         TITULOINSERTARp = new javax.swing.JLabel();
         PorcentajeLabel1 = new javax.swing.JLabel();
+        ComboPartes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Costo de Parte");
@@ -72,6 +85,7 @@ public class PartesCostos extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ProveedorCombo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ProveedorCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Auto Repuestos Jiménez", "Autopartes Mandi", "Autopartes USA", "J y A Autopartes", "LACOR Repuestos", "Megapartes Martínez", "Repuestos ABZ", "Repuestos Zúñiga", "Servicios Omega", "Super Repuestos" }));
         jPanel1.add(ProveedorCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
@@ -128,9 +142,6 @@ public class PartesCostos extends javax.swing.JFrame {
         });
         jPanel1.add(PorcentajeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 134, -1));
 
-        PiezaNAcutalizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(PiezaNAcutalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 160, -1));
-
         TITULOINSERTARp.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         TITULOINSERTARp.setForeground(new java.awt.Color(255, 255, 255));
         TITULOINSERTARp.setText("Acutalizar costos por Parte");
@@ -141,6 +152,9 @@ public class PartesCostos extends javax.swing.JFrame {
         PorcentajeLabel1.setForeground(new java.awt.Color(255, 255, 255));
         PorcentajeLabel1.setText("Porcentaje Beneficio");
         jPanel1.add(PorcentajeLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
+
+        ComboPartes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jPanel1.add(ComboPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 180, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 340));
 
@@ -205,10 +219,10 @@ public class PartesCostos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboPartes;
     private javax.swing.JTextField CostoFinal;
     private javax.swing.JLabel CostoLabel;
     private javax.swing.JLabel PiezaLabel;
-    private javax.swing.JTextField PiezaNAcutalizar;
     private javax.swing.JFormattedTextField PorcentajeField;
     private javax.swing.JLabel PorcentajeLabel;
     private javax.swing.JLabel PorcentajeLabel1;

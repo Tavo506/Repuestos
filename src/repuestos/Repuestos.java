@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -375,14 +376,13 @@ public class Repuestos {
             {throw e;}
     }
     
-     public static boolean getPartes() throws SQLException{
+     public static boolean getPartes(JComboBox combo) throws SQLException{
         try{
             PreparedStatement ps = con.prepareStatement("EXEC SPSpartestotales");
             ResultSet resultado = ps.executeQuery();
             while(resultado.next()){
-                System.out.println(resultado.getString(1));
-                
-                }
+                combo.addItem(resultado.getString(1));
+            }
             return true;
     
         }catch(SQLException e)
@@ -456,7 +456,7 @@ public class Repuestos {
         }
     }
     
-    static boolean selectOrdenes(int cedula, String tipo, DefaultTableModel tabla)throws SQLException{
+    static boolean selectOrdenes(int cedula, String tipo, DefaultTableModel tabla, String fecha)throws SQLException{
         try{
             tabla.setRowCount(0);
             
@@ -474,9 +474,17 @@ public class Repuestos {
             
             ResultSet result = ps.executeQuery();
             
-            while(result.next()){
-                tabla.addRow(new Object[]{result.getInt(1), result.getString(2), result.getInt(3)});
+            if(fecha == null){
+                while(result.next()){
+                    tabla.addRow(new Object[]{result.getInt(1), result.getString(2), result.getInt(3)});
+                }
+            }else{
+                while(result.next()){
+                    if(result.getString(2).equals(fecha))
+                        tabla.addRow(new Object[]{result.getInt(1), result.getString(2), result.getInt(3)});
+                }
             }
+            
             
             return true;
         }catch(SQLException e){
@@ -509,4 +517,5 @@ public class Repuestos {
         
         return false;
     }
+    
 }

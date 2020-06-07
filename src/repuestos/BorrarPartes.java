@@ -35,6 +35,7 @@ public class BorrarPartes extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.addWindowListener(c);
+        cargarPartes();
         this.setVisible(true);
         principal = p;
     }
@@ -42,6 +43,15 @@ public class BorrarPartes extends javax.swing.JFrame {
     void cerrar(JFrame p){
         p.setVisible(true);
         this.dispose();
+    }
+    
+    void cargarPartes(){
+        try{
+            Repuestos.getPartes(ComboPartes);
+            
+        }catch(SQLException ex){
+            Logger.getLogger(AsociarOrden.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,8 +65,8 @@ public class BorrarPartes extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        ParteBorrarField = new javax.swing.JTextField();
         TITULOBORRAR = new javax.swing.JLabel();
+        ComboPartes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Borrar Parte");
@@ -79,13 +89,13 @@ public class BorrarPartes extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
 
-        ParteBorrarField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(ParteBorrarField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 180, 30));
-
         TITULOBORRAR.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         TITULOBORRAR.setForeground(new java.awt.Color(255, 255, 255));
         TITULOBORRAR.setText("Borrar Parte");
         jPanel1.add(TITULOBORRAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+
+        ComboPartes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jPanel1.add(ComboPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,7 +113,7 @@ public class BorrarPartes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            Repuestos.BorrarParte(ParteBorrarField.getText());
+            Repuestos.BorrarParte(ComboPartes.getSelectedItem().toString());
         } catch (SQLException ex) {
             Logger.getLogger(BorrarPartes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -146,7 +156,7 @@ public class BorrarPartes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ParteBorrarField;
+    private javax.swing.JComboBox<String> ComboPartes;
     private javax.swing.JLabel TITULOBORRAR;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

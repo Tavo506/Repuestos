@@ -8,6 +8,9 @@ package repuestos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -32,6 +35,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.addWindowListener(c);
+        cargarPartes();
         this.setVisible(true);
         principal = p;
     }
@@ -39,6 +43,15 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
     void cerrar(JFrame p){
         p.setVisible(true);
         this.dispose();
+    }
+    
+    void cargarPartes(){
+        try{
+            Repuestos.getPartes(ComboPartes);
+            
+        }catch(SQLException ex){
+            Logger.getLogger(AsociarOrden.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,6 +68,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         ComboAsoProv = new javax.swing.JComboBox<>();
         AsociarButton = new javax.swing.JButton();
         TITULOINSERTARp = new javax.swing.JLabel();
+        ComboPartes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Asociar Parte y Provedor");
@@ -75,7 +89,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         jPanel1.add(ProveedorAsoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         ComboAsoProv.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        ComboAsoProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboAsoProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auto Repuestos Jiménez", "Autopartes Mandi", "Autopartes USA", "J y A Autopartes", "LACOR Repuestos", "Megapartes Martínez", "Repuestos ABZ", "Repuestos Zúñiga", "Servicios Omega", "Super Repuestos" }));
         jPanel1.add(ComboAsoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         AsociarButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -86,6 +100,9 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         TITULOINSERTARp.setForeground(new java.awt.Color(255, 255, 255));
         TITULOINSERTARp.setText("Asociar Parte Proveedor");
         jPanel1.add(TITULOINSERTARp, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        ComboPartes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jPanel1.add(ComboPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,6 +156,7 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AsociarButton;
     private javax.swing.JComboBox<String> ComboAsoProv;
+    private javax.swing.JComboBox<String> ComboPartes;
     private javax.swing.JLabel ParteAsoLabel;
     private javax.swing.JLabel ProveedorAsoLabel;
     private javax.swing.JLabel TITULOINSERTARp;

@@ -35,6 +35,7 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.addWindowListener(c);
+        cargarPartes();
         this.setVisible(true);
         principal = p;
     }
@@ -42,6 +43,15 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
     void cerrar(JFrame p){
         p.setVisible(true);
         this.dispose();
+    }
+    
+    void cargarPartes(){
+        try{
+            Repuestos.getPartes(ComboPartes);
+            
+        }catch(SQLException ex){
+            Logger.getLogger(AsociarOrden.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,18 +63,22 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        ComboPartes = new javax.swing.JComboBox<>();
         AsoPartAuto = new javax.swing.JLabel();
         AsoAutoPart = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        ParteAsoField = new javax.swing.JTextField();
-        AutoAsoField = new javax.swing.JTextField();
         TITULOASOCIAR = new javax.swing.JLabel();
+        ComboAutos = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Asociar Parte y Auto");
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setPreferredSize(new java.awt.Dimension(373, 237));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ComboPartes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jPanel1.add(ComboPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 180, -1));
 
         AsoPartAuto.setBackground(new java.awt.Color(204, 204, 204));
         AsoPartAuto.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -87,26 +101,29 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
 
-        ParteAsoField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(ParteAsoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 180, 30));
-
-        AutoAsoField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(AutoAsoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 180, 30));
-
         TITULOASOCIAR.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         TITULOASOCIAR.setForeground(new java.awt.Color(255, 255, 255));
         TITULOASOCIAR.setText("Asociar Parte");
         jPanel1.add(TITULOASOCIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
+        ComboAutos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        ComboAutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Camry", "Corolla", "CX-5", "Eclipse", "F18", "Fox", "Golf", "Lancer", "Mazda 6", "Murano", "Pajero", "Prius", "Sentra", "Terrano", "Titan", "X6 M", "X-Trail", "Yaris" }));
+        ComboAutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboAutosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ComboAutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 180, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -114,11 +131,15 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            Repuestos.CreaAso(ParteAsoField.getText(), AutoAsoField.getText());
+            Repuestos.CreaAso(ComboPartes.getSelectedItem().toString(), ComboAutos.getSelectedItem().toString());
         } catch (SQLException ex) {
             Logger.getLogger(AsociarPartesAuto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ComboAutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboAutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboAutosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,8 +179,8 @@ public class AsociarPartesAuto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AsoAutoPart;
     private javax.swing.JLabel AsoPartAuto;
-    private javax.swing.JTextField AutoAsoField;
-    private javax.swing.JTextField ParteAsoField;
+    private javax.swing.JComboBox<String> ComboAutos;
+    private javax.swing.JComboBox<String> ComboPartes;
     private javax.swing.JLabel TITULOASOCIAR;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
