@@ -168,7 +168,7 @@ public class SuspenderClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_RadioOrgActionPerformed
 
     private void SuspenderPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuspenderPersonaActionPerformed
-        int cedula;
+        String cedula;
         
         try {
             if(TextCedulaPersona.getText().isEmpty()){
@@ -176,9 +176,9 @@ public class SuspenderClientes extends javax.swing.JFrame {
                 return;
             }
             
-            cedula = Integer.parseInt(TextCedulaPersona.getText());
+            cedula = TextCedulaPersona.getText();
             
-            if(Integer.toString(cedula).length() < 9){
+            if(cedula.length() < 9){
                 JOptionPane.showMessageDialog(this, "La cédula es inválida (menor a 7 digitos)", "Advertencia", 2);
                 return;
             }
@@ -199,7 +199,7 @@ public class SuspenderClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_SuspenderPersonaActionPerformed
 
     private void SuspenderOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuspenderOrgActionPerformed
-        int cedula;
+        String cedula;
         
         try {
             if(TextCedulaOrg.getText().isEmpty()){
@@ -207,9 +207,9 @@ public class SuspenderClientes extends javax.swing.JFrame {
                 return;
             }
             
-            cedula = Integer.parseInt(TextCedulaOrg.getText());
+            cedula = TextCedulaOrg.getText();
             
-            if(Integer.toString(cedula).length() < 9){
+            if(cedula.length() < 9){
                 JOptionPane.showMessageDialog(this, "La cédula jurídica es inválida (menor a 7 digitos)", "Advertencia", 2);
                 return;
             }

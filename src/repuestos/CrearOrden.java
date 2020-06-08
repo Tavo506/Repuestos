@@ -268,7 +268,7 @@ public class CrearOrden extends javax.swing.JFrame {
     
     private void BotonCrearOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearOrdenActionPerformed
         try {
-            int cedula;
+            String cedula;
             String tipo, dia, mes, anno;
             dia = TextDia.getText();
             mes = TextMes.getText();
@@ -289,7 +289,7 @@ public class CrearOrden extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Cédula inválida (menor a 9 dígitos)", "Advertencia", 2);
                     return;
                 }
-                cedula = Integer.parseInt(TextCedulaPersona.getText());
+                cedula = TextCedulaPersona.getText();
                 
             }else{
                 tipo = "Organizacion";
@@ -300,7 +300,7 @@ public class CrearOrden extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Cédula jurídica inválida (menor a 9 dígitos)", "Advertencia", 2);
                     return;
                 }
-                cedula = Integer.parseInt(TextCedulaOrg.getText());
+                cedula = TextCedulaOrg.getText();
             }
             
             
@@ -319,7 +319,7 @@ public class CrearOrden extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BotonCrearOrdenActionPerformed
 
-    void siguientePaso(int cedula, String tipo, Date fecha){
+    void siguientePaso(String cedula, String tipo, Date fecha){
         this.dispose();
         new AsociarOrden(principal, cedula, tipo, fecha);
     }

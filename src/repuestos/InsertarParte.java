@@ -138,7 +138,7 @@ public class InsertarParte extends javax.swing.JFrame {
             }
         }
         catch(SQLException e){
-            Logger.getLogger(InsertarParte.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, "La parte ya existe", "Advertencia", 2);
         }
     }//GEN-LAST:event_InsertarParteActionPerformed
 

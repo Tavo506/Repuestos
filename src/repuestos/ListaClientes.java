@@ -50,18 +50,8 @@ public class ListaClientes extends javax.swing.JFrame {
     
     void llenarTabla(){
         try{
-            ArrayList<String> clientes = Repuestos.SelectClientes();
-            String[] cliente;
-            for (String c : clientes) {
-                if(c.contains("Persona")){
-                    cliente = c.split(",", 8);
-                    addPersona(cliente);
-                }
-                else{
-                    cliente = c.split(",");
-                    addOrg(cliente);
-                }
-            }
+            Repuestos.SelectClientes(modelo);
+            
             TableRowSorter<TableModel> sorter = new TableRowSorter<>(modelo);
             ListaClientes.setRowSorter(sorter);
 

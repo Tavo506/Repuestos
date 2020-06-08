@@ -350,7 +350,7 @@ public class ModificarClientes extends javax.swing.JFrame {
     
     
     private void CargarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarPersonaActionPerformed
-        int cedula;
+        String cedula;
         
         try {
             TextNombrePersona.setText("");
@@ -358,7 +358,6 @@ public class ModificarClientes extends javax.swing.JFrame {
             TextCiudadPersona.setText("");
             TextTeléfonoPersona.setText("");
             Telefonos.setText("");
-            ComboEstadoPersona.setEnabled(true);
             ComboEstadoPersona.setSelectedIndex(0);
             
             if(TextCedulaPersona.getText().isEmpty()){
@@ -366,9 +365,9 @@ public class ModificarClientes extends javax.swing.JFrame {
                 return;
             }
             
-            cedula = Integer.parseInt(TextCedulaPersona.getText());
+            cedula = TextCedulaPersona.getText();
             
-            if(Integer.toString(cedula).length() < 9){
+            if(cedula.length() < 9){
                 JOptionPane.showMessageDialog(this, "La cédula es inválida (menor a 7 digitos)", "Advertencia", 2);
                 return;
             }
@@ -384,9 +383,7 @@ public class ModificarClientes extends javax.swing.JFrame {
             TextCiudadPersona.setText(datos.get(2));
             ComboEstadoPersona.setSelectedItem(datos.get(3));
             Telefonos.setText(datos.get(4).replace(",", ",\n"));
-            
-            if("Suspendido".equals(datos.get(3)))
-                ComboEstadoPersona.setEnabled(false);
+
             
             JOptionPane.showMessageDialog(this, "Datos del cliente cargados", "Info", 1);
             
@@ -400,8 +397,8 @@ public class ModificarClientes extends javax.swing.JFrame {
     
     
     private void ModificarOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarOrgActionPerformed
-        String estado, nombre, direccion, ciudad, nomContacto, cargoContacto;
-        int cedula, telContacto;
+        String estado, nombre, direccion, ciudad, nomContacto, cargoContacto, cedula;
+        int telContacto;
         
         try {
             estado = (String)ComboEstadoOrg.getSelectedItem();
@@ -412,7 +409,7 @@ public class ModificarClientes extends javax.swing.JFrame {
                 return;
             }
             
-            cedula = Integer.parseInt(TextCedulaOrg.getText());
+            cedula = TextCedulaOrg.getText();
             direccion = TextDireccionOrg.getText();
             ciudad = TextCiudadOrg.getText();
             nomContacto = TextNombreContacto.getText();
@@ -444,7 +441,7 @@ public class ModificarClientes extends javax.swing.JFrame {
     
     
     private void CargarOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarOrgActionPerformed
-        int cedula;
+        String cedula;
         
         try {
             TextNombreOrg.setText("");
@@ -453,7 +450,6 @@ public class ModificarClientes extends javax.swing.JFrame {
             TextNombreContacto.setText("");
             TextCargoContacto.setText("");
             TextTelContacto.setText("");
-            ComboEstadoOrg.setEnabled(true);
             ComboEstadoOrg.setSelectedIndex(0);
             
             if(TextCedulaOrg.getText().isEmpty()){
@@ -461,9 +457,9 @@ public class ModificarClientes extends javax.swing.JFrame {
                 return;
             }
             
-            cedula = Integer.parseInt(TextCedulaOrg.getText());
+            cedula = TextCedulaOrg.getText();
             
-            if(Integer.toString(cedula).length() < 9){
+            if(cedula.length() < 9){
                 JOptionPane.showMessageDialog(this, "La cédula es inválida (menor a 7 digitos)", "Advertencia", 2);
                 return;
             }
@@ -482,9 +478,6 @@ public class ModificarClientes extends javax.swing.JFrame {
             TextTelContacto.setText(datos.get(5));
             ComboEstadoOrg.setSelectedItem(datos.get(6));
             
-            if("Suspendido".equals(datos.get(6)))
-                ComboEstadoOrg.setEnabled(false);
-            
             JOptionPane.showMessageDialog(this, "Datos del cliente cargados", "Info", 1);
             
         } catch (SQLException ex) {
@@ -499,7 +492,7 @@ public class ModificarClientes extends javax.swing.JFrame {
     private void ModificarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPersonaActionPerformed
         String estado, nombre, direccion, ciudad;
         ArrayList<Integer> telefonos;
-        int cedula;
+        String cedula;
         
         try {
             estado = (String)ComboEstadoPersona.getSelectedItem();
@@ -509,7 +502,7 @@ public class ModificarClientes extends javax.swing.JFrame {
                 return;
             }
             
-            cedula = Integer.parseInt(TextCedulaPersona.getText());
+            cedula = TextCedulaPersona.getText();
             nombre = TextNombrePersona.getText();
             direccion = TextDireccionPersona.getText();
             ciudad = TextCiudadPersona.getText();
@@ -564,11 +557,11 @@ public class ModificarClientes extends javax.swing.JFrame {
     
     
     //Revisa los datos para persona que no sean vacíos y los numéricos que sean del tamaño correcto
-    private boolean revisarDatosPersona(String nombre, String direccion, String ciudad, int cedula, ArrayList<Integer> telefonos){
+    private boolean revisarDatosPersona(String nombre, String direccion, String ciudad, String cedula, ArrayList<Integer> telefonos){
         if(nombre.isEmpty() || direccion.isEmpty() || ciudad.isEmpty()){
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacíos", "Advertencia", 2);
             return false;
-        }if(Integer.toString(cedula).length() < 9){
+        }if(cedula.length() < 9){
             JOptionPane.showMessageDialog(this, "La cédula es inválido (menor a 9 digitos)", "Advertencia", 2);
             return false;
         }if(telefonos.isEmpty())
@@ -578,11 +571,11 @@ public class ModificarClientes extends javax.swing.JFrame {
     
     
     //Revisa los datos para organizacion que no sean vacíos y los numéricos que sean del tamaño correcto
-    private boolean revisarDatosOrg(String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, int cedula, int telefonoE){
+    private boolean revisarDatosOrg(String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, String cedula, int telefonoE){
         if(nombre.isEmpty() || direccion.isEmpty() || ciudad.isEmpty() || nombreContacto.isEmpty() || cargoContacto.isEmpty()){
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacíos", "Advertencia", 2);
             return false;
-        }if(Integer.toString(cedula).length() < 9){
+        }if(cedula.length() < 9){
             JOptionPane.showMessageDialog(this, "La cédula jurídica es inválido (menor a 9 digitos)", "Advertencia", 2);
             return false;
         }if(Integer.toString(telefonoE).length() < 8){

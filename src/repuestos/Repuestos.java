@@ -58,7 +58,7 @@ public class Repuestos {
         boolean resultado;
 
         try {
-            Integer.parseInt(cadena);
+            Long.parseLong(cadena);
             resultado = true;
         } catch (NumberFormatException excepcion) {
             resultado = false;
@@ -66,11 +66,11 @@ public class Repuestos {
         return resultado;
     }
     
-    public static boolean InsertClienteP(String estado, String tipo, int cedula, String nombre, String direccion, String ciudad, ArrayList<Integer> telefonos) throws SQLException{
+    public static boolean InsertClienteP(String estado, String tipo, String cedula, String nombre, String direccion, String ciudad, ArrayList<Integer> telefonos) throws SQLException{
         try {  
             
             PreparedStatement ct = con.prepareStatement("EXEC SPS1persona ?");  //Revisa si la persona existe
-            ct.setInt(1, cedula);
+            ct.setString(1, cedula);
             ResultSet rs = ct.executeQuery();
             if(rs.next())
                 return false;
@@ -82,7 +82,7 @@ public class Repuestos {
             
             PreparedStatement ps = con.prepareStatement("EXEC SPIpersonas ?,?,?,?");
             
-            ps.setInt(1, cedula);
+            ps.setString(1, cedula);
             ps.setString(2, nombre);
             ps.setString(3, direccion);
             ps.setString(4, ciudad);
@@ -90,7 +90,7 @@ public class Repuestos {
             ps.executeUpdate();
             
             PreparedStatement cs = con.prepareStatement("EXEC SPItelefono ?,?");
-            cs.setInt(2, cedula);
+            cs.setString(2, cedula);
             
             for (Integer telefono : telefonos) {
                 cs.setInt(1, telefono);
@@ -102,10 +102,10 @@ public class Repuestos {
         }
     }
    
-    public static boolean InsertClienteO(String estado, String tipo, int cedula, String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, int telefonoContacto) throws SQLException{
+    public static boolean InsertClienteO(String estado, String tipo, String cedula, String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, int telefonoContacto) throws SQLException{
         try{
             PreparedStatement ct = con.prepareStatement("EXEC SPS1org ?");  //Revisa si la organizacion existe
-            ct.setInt(1, cedula);
+            ct.setString(1, cedula);
             ResultSet rs = ct.executeQuery();
             if(rs.next())
                 return false;
@@ -118,7 +118,7 @@ public class Repuestos {
             
             PreparedStatement ps = con.prepareStatement("EXEC SPIorganizacion ?,?,?,?,?,?,?");
             
-            ps.setInt(1, cedula);
+            ps.setString(1, cedula);
             ps.setString(2, nombre);
             ps.setString(3, direccion);
             ps.setString(4, ciudad);
@@ -133,16 +133,16 @@ public class Repuestos {
         }
     }
     
-    public static boolean SuspenderPersona(int cedula)throws SQLException{
+    public static boolean SuspenderPersona(String cedula)throws SQLException{
         try{
             PreparedStatement ct = con.prepareStatement("EXEC SPS1persona ?");  //Revisa si la persona existe
-            ct.setInt(1, cedula);
+            ct.setString(1, cedula);
             ResultSet rs = ct.executeQuery();
             if(!rs.next())
                 return false;
             
             PreparedStatement ps = con.prepareStatement("EXEC SPSuspPersona ?");
-            ps.setInt(1, cedula);
+            ps.setString(1, cedula);
             ps.executeUpdate();
             
             return true;
@@ -151,16 +151,16 @@ public class Repuestos {
         }
     }
     
-    public static boolean SuspenderOrg(int cedula)throws SQLException{
+    public static boolean SuspenderOrg(String cedula)throws SQLException{
         try{
             PreparedStatement ct = con.prepareStatement("EXEC SPS1org ?");  //Revisa si la organizacion existe
-            ct.setInt(1, cedula);
+            ct.setString(1, cedula);
             ResultSet rs = ct.executeQuery();
             if(!rs.next())
                 return false;
             
             PreparedStatement ps = con.prepareStatement("EXEC SPSuspOrg ?");
-            ps.setInt(1, cedula);
+            ps.setString(1, cedula);
             ps.executeUpdate();
             
             return true;
@@ -169,12 +169,12 @@ public class Repuestos {
         }
     }
     
-    public static ArrayList<String> getPersona(int cedula)throws SQLException{
+    public static ArrayList<String> getPersona(String cedula)throws SQLException{
         try{
             ArrayList<String> datos = new ArrayList<>();
         
             PreparedStatement ct = con.prepareStatement("EXEC SPS1persona ?");
-            ct.setInt(1, cedula);
+            ct.setString(1, cedula);
             ResultSet rs = ct.executeQuery();
             
             if(rs.next()){
@@ -187,11 +187,11 @@ public class Repuestos {
             }
             
             PreparedStatement ps = con.prepareStatement("EXEC SPStelefonos ?");
-            ps.setInt(1, cedula);
+            ps.setString(1, cedula);
             ResultSet t = ps.executeQuery();
             String telefonos = "";
             while(t.next()){
-                if(telefonos == "")
+                if("".equals(telefonos))
                     telefonos = Integer.toString(t.getInt(1));
                 else
                     telefonos += "," + Integer.toString(t.getInt(1));
@@ -203,12 +203,12 @@ public class Repuestos {
         }
     }
     
-    public static ArrayList<String> getOrganizacion(int cedula)throws SQLException{
+    public static ArrayList<String> getOrganizacion(String cedula)throws SQLException{
         try{
             ArrayList<String> datos = new ArrayList<>();
         
             PreparedStatement ct = con.prepareStatement("EXEC SPS1org ?");
-            ct.setInt(1, cedula);
+            ct.setString(1, cedula);
             ResultSet rs = ct.executeQuery();
             
             if(rs.next()){
@@ -228,18 +228,18 @@ public class Repuestos {
         }
     }
     
-    public static boolean updatePersona(String estado, int cedula, String nombre, String direccion, String ciudad, ArrayList<Integer> telefonos) throws SQLException{
+    public static boolean updatePersona(String estado, String cedula, String nombre, String direccion, String ciudad, ArrayList<Integer> telefonos) throws SQLException{
         try {  
             
             PreparedStatement ct = con.prepareStatement("EXEC SPS1persona ?");
-            ct.setInt(1, cedula);
+            ct.setString(1, cedula);
             ResultSet rs = ct.executeQuery();
             if(!rs.next())
                 return false;  
             
             PreparedStatement ps = con.prepareStatement("EXEC SPUpersonas ?,?,?,?,?");
             
-            ps.setInt(1, cedula);
+            ps.setString(1, cedula);
             ps.setString(2, nombre);
             ps.setString(3, direccion);
             ps.setString(4, ciudad);
@@ -247,14 +247,37 @@ public class Repuestos {
             
             ps.executeUpdate();
             
+            PreparedStatement getTel = con.prepareStatement("EXEC SPStelefonos ?");
+            getTel.setString(1, cedula);
+            ResultSet t = getTel.executeQuery();
+            ArrayList<Integer> telefonosEx = new ArrayList<>();
+            while(t.next()){
+                telefonosEx.add(t.getInt(1));
+            }
+            PreparedStatement delT = con.prepareStatement("EXEC SPDtelefonos ?");
             PreparedStatement cs = con.prepareStatement("EXEC SPItelefono ?,?");
-            cs.setInt(2, cedula);
+            cs.setString(2, cedula);
+            
+            
+            for (Integer telefono : telefonosEx) {
+                try{
+                    if(!telefonos.contains(telefono)){
+                        System.out.println(telefono + " ya no existe");
+                        delT.setInt(1, telefono);
+                        delT.executeUpdate();
+                    }
+                }catch(SQLException e){
+                }
+            }
+            
             
             for (Integer telefono : telefonos) {
                 try{
-                cs.setInt(1, telefono);
-                cs.executeUpdate();
-                }catch(Exception e){
+                    if(!telefonosEx.contains(telefono)){
+                        cs.setInt(1, telefono);
+                        cs.executeUpdate();
+                    }
+                }catch(SQLException e){
                 }
             }
             return true;
@@ -263,17 +286,17 @@ public class Repuestos {
         }
     }
     
-    public static boolean updateOrg (String estado, int cedula, String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, int telefonoContacto) throws SQLException{
+    public static boolean updateOrg (String estado, String cedula, String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, int telefonoContacto) throws SQLException{
         try{
             PreparedStatement ct = con.prepareStatement("EXEC SPS1org ?");  //Revisa si la organizacion existe
-            ct.setInt(1, cedula);
+            ct.setString(1, cedula);
             ResultSet rs = ct.executeQuery();
             if(!rs.next())
                 return false;
             
             PreparedStatement ps = con.prepareStatement("EXEC SPUorganizacion ?,?,?,?,?,?,?,?");
             
-            ps.setInt(1, cedula);
+            ps.setString(1, cedula);
             ps.setString(2, nombre);
             ps.setString(3, direccion);
             ps.setString(4, ciudad);
@@ -290,10 +313,9 @@ public class Repuestos {
         
     }
     
-    public static ArrayList<String> SelectClientes() throws SQLException{
+    public static void SelectClientes(DefaultTableModel tabla) throws SQLException{
         
         try{
-            ArrayList<String> clientes = new ArrayList<>();
             
             PreparedStatement ct = con.prepareStatement("EXEC SPSpersonas");
             PreparedStatement ctmts = con.prepareStatement("EXEC SPSorganizacion");
@@ -301,12 +323,12 @@ public class Repuestos {
             
             ResultSet rt = ct.executeQuery();
             
-            String persona, idP, nomP, cedP, dirP, ciudP, estP, telefonos;
+            String idP, nomP, cedP, dirP, ciudP, estP, telefonos;
             
             while(rt.next()){
                 idP = Integer.toString(rt.getInt(1));
                 nomP = rt.getString(2);
-                cedP = Integer.toString(rt.getInt(3));
+                cedP = rt.getString(3);
                 dirP = rt.getString(4);
                 ciudP = rt.getString(5);
                 estP = rt.getString(6);
@@ -321,26 +343,24 @@ public class Repuestos {
                     else
                         telefonos += "," + Integer.toString(t.getInt(1));
                 }
-                persona = idP + ",Persona," + nomP + "," + cedP + ","+ dirP + "," + ciudP + "," + estP + "," + telefonos;
-                clientes.add(persona);
+                tabla.addRow(new Object[]{Integer.parseInt(idP), "Persona", nomP, cedP, "", dirP, ciudP, telefonos, estP, ""});
+
             }
             ResultSet org = ctmts.executeQuery();
             
-            String organizacion, idO, nomO, cedO, dirO, ciudO, estO, nomCont;
+            String idO, nomO, cedO, dirO, ciudO, estO, nomCont;
             while(org.next()){
                 idO = Integer.toString(org.getInt(1));
                 nomO = org.getString(2);
-                cedO = Integer.toString(org.getInt(3));
+                cedO = org.getString(3);
                 dirO = org.getString(4);
                 ciudO = org.getString(5);
                 estO = org.getString(6);
                 nomCont = org.getString(7);
                 
-                organizacion = idO + ",Organizacion," + nomO + "," + cedO + ","+ dirO + "," + ciudO + "," + estO + "," + nomCont;
-                clientes.add(organizacion);
+                tabla.addRow(new Object[]{Integer.parseInt(idO), "Organizacion", nomO, "", cedO, dirO, ciudO, "", estO, nomCont});
             }
         
-        return clientes;
         }catch (SQLException e){
             throw e;
         }
@@ -415,11 +435,11 @@ public class Repuestos {
    
     }
 
-    static boolean crearOrden(int cedula, String tipo, Date sqlFecha, JFrame p) throws SQLException{
+    static boolean crearOrden(String cedula, String tipo, Date sqlFecha, JFrame p) throws SQLException{
         try{
             PreparedStatement ps = con.prepareStatement("EXEC SPIorden ?, ?, ?");
             PreparedStatement ct = con.prepareStatement("EXEC SPgetID ?, ?");
-            ct.setInt(1, cedula);
+            ct.setString(1, cedula);
             ct.setString(2, tipo);
             
             ResultSet rs = ct.executeQuery();
@@ -433,7 +453,7 @@ public class Repuestos {
                 return false;
             }
             
-            ps.setInt(1, cedula);
+            ps.setString(1, cedula);
             ps.setString(2, tipo);
             ps.setDate(3, sqlFecha);
             
@@ -465,12 +485,12 @@ public class Repuestos {
         }
     }
     
-    static boolean selectOrdenes(int cedula, String tipo, DefaultTableModel tabla, String fecha)throws SQLException{
+    static boolean selectOrdenes(String cedula, String tipo, DefaultTableModel tabla, String fecha)throws SQLException{
         try{
             tabla.setRowCount(0);
             
             PreparedStatement ct = con.prepareStatement("EXEC SPgetID ?, ?");
-            ct.setInt(1, cedula);
+            ct.setString(1, cedula);
             ct.setString(2, tipo);
             
             ResultSet rs = ct.executeQuery();
@@ -483,14 +503,24 @@ public class Repuestos {
             
             ResultSet result = ps.executeQuery();
             
+            PreparedStatement monto = con.prepareStatement("EXEC SPSMontoDetalle ?");
+            monto.setInt(1, id);
+            ResultSet rMonto = monto.executeQuery();
+            
+            int MontoTotal = 0;
+            while(rMonto.next()){
+                MontoTotal += rMonto.getInt(1);
+            }
+            
             if(fecha == null){
                 while(result.next()){
-                    tabla.addRow(new Object[]{result.getInt(1), result.getString(2), result.getInt(3)});
+                    tabla.addRow(new Object[]{result.getInt(1), result.getString(2), MontoTotal});
+                    
                 }
             }else{
                 while(result.next()){
                     if(result.getString(2).equals(fecha))
-                        tabla.addRow(new Object[]{result.getInt(1), result.getString(2), result.getInt(3)});
+                        tabla.addRow(new Object[]{result.getInt(1), result.getString(2), MontoTotal});
                 }
             }
             
@@ -501,7 +531,7 @@ public class Repuestos {
         }
     }
 
-    static boolean asociarOrden(int cedula, int idOrden, String Parte, int cantidad, String proveedor, int monto)throws SQLException{
+    static boolean asociarOrden(String cedula, int idOrden, String Parte, int cantidad, String proveedor, int monto)throws SQLException{
         try{
             if(!verificarEstado(cedula))
                 return false;
@@ -532,10 +562,10 @@ public class Repuestos {
     }
     
     
-    static boolean verificarEstado(int cedula) throws SQLException{
+    static boolean verificarEstado(String cedula) throws SQLException{
         try{
             PreparedStatement ps = con.prepareStatement("EXEC SPverEstado ?");
-            ps.setInt(1, cedula);
+            ps.setString(1, cedula);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 if("Suspendido".equals(rs.getString(1)))

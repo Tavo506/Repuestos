@@ -48,7 +48,7 @@ public class AsociarOrden extends javax.swing.JFrame {
         this.setVisible(true);
     }
     
-    public AsociarOrden(JFrame p, int cedula, String tipo, Date fecha) {
+    public AsociarOrden(JFrame p, String cedula, String tipo, Date fecha) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.addWindowListener(c);
@@ -66,15 +66,15 @@ public class AsociarOrden extends javax.swing.JFrame {
         this.dispose();
     }
     
-    void colocarCosas(int cedula, String tipo, Date fecha){
+    void colocarCosas(String cedula, String tipo, Date fecha){
         try{
             if("Persona".equals(tipo)){
-                TextCedulaPersona.setText(Integer.toString(cedula));
+                TextCedulaPersona.setText(cedula);
             }else{
                 RadioOrg.setSelected(true);
                 Panel2.setVisible(false);
                 Panel3.setVisible(true);
-                TextCedulaOrg.setText(Integer.toString(cedula));
+                TextCedulaOrg.setText(cedula);
             }
             Repuestos.selectOrdenes(cedula, tipo, modelOrdenes, fecha.toString());
             
@@ -367,7 +367,7 @@ public class AsociarOrden extends javax.swing.JFrame {
 
     private void BotonBuscarOrdenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarOrdenesActionPerformed
         try{
-            int cedula;
+            String cedula;
             String tipo;
             
             if(RadioPersona.isSelected()){
@@ -379,7 +379,7 @@ public class AsociarOrden extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Cédula inválida (menor a 9 dígitos)", "Advertencia", 2);
                     return;
                 }
-                cedula = Integer.parseInt(TextCedulaPersona.getText());
+                cedula = TextCedulaPersona.getText();
                 
             }else{
                 tipo = "Organizacion";
@@ -390,7 +390,7 @@ public class AsociarOrden extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Cédula jurídica inválida (menor a 9 dígitos)", "Advertencia", 2);
                     return;
                 }
-                cedula = Integer.parseInt(TextCedulaOrg.getText());
+                cedula = TextCedulaOrg.getText();
             }
             
             
@@ -404,8 +404,8 @@ public class AsociarOrden extends javax.swing.JFrame {
 
     private void BotonAsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAsociarActionPerformed
         try{
-            int cedula, idOrden, cantPiesas, monto;
-            String proveedor;
+            int idOrden, cantPiesas, monto;
+            String proveedor, cedula;
             
             if(RadioPersona.isSelected()){
 
@@ -416,7 +416,7 @@ public class AsociarOrden extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Cédula inválida (menor a 9 dígitos)", "Advertencia", 2);
                     return;
                 }
-                cedula = Integer.parseInt(TextCedulaPersona.getText());
+                cedula = TextCedulaPersona.getText();
                 
             }else{
 
@@ -427,7 +427,7 @@ public class AsociarOrden extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Cédula jurídica inválida (menor a 9 dígitos)", "Advertencia", 2);
                     return;
                 }
-                cedula = Integer.parseInt(TextCedulaOrg.getText());
+                cedula = TextCedulaOrg.getText();
             }
             
             int selecO = TablaOrdenes.getSelectedRow();

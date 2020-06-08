@@ -335,9 +335,9 @@ public class InsertarClientes extends javax.swing.JFrame {
     
     //Toma los valores necesarios y los revisa para agregarlos a un cliente tipo persona
     private void InsertarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarPersonaActionPerformed
-        String tipo, estado, nombre, direccion, ciudad;
+        String tipo, estado, nombre, direccion, ciudad, cedula;
         ArrayList<Integer> telefonos;
-        int cedula;
+        
         
         try {
             tipo = "Persona";
@@ -348,7 +348,7 @@ public class InsertarClientes extends javax.swing.JFrame {
                 return;
             }
             
-            cedula = Integer.parseInt(TextCedulaPersona.getText());
+            cedula = TextCedulaPersona.getText();
             nombre = TextNombrePersona.getText();
             direccion = TextDireccionPersona.getText();
             ciudad = TextCiudadPersona.getText();
@@ -373,8 +373,8 @@ public class InsertarClientes extends javax.swing.JFrame {
 
     //Toma los valores necesarios y los revisa para agregarlos a un cliente tipo organización
     private void InsertarOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarOrgActionPerformed
-        String tipo, estado, nombre, direccion, ciudad, nomContacto, cargoContacto;
-        int cedula, telContacto;
+        String tipo, estado, nombre, direccion, ciudad, nomContacto, cargoContacto, cedula;
+        int  telContacto;
         
         try {
             tipo = "Organizacion";
@@ -386,7 +386,7 @@ public class InsertarClientes extends javax.swing.JFrame {
                 return;
             }
             
-            cedula = Integer.parseInt(TextCedulaOrg.getText());
+            cedula = TextCedulaOrg.getText();
             direccion = TextDireccionOrg.getText();
             ciudad = TextCiudadOrg.getText();
             nomContacto = TextNombreContacto.getText();
@@ -442,11 +442,11 @@ public class InsertarClientes extends javax.swing.JFrame {
     }
     
     //Revisa los datos para persona que no sean vacíos y los numéricos que sean del tamaño correcto
-    private boolean revisarDatosPersona(String nombre, String direccion, String ciudad, int cedula, ArrayList<Integer> telefonos){
+    private boolean revisarDatosPersona(String nombre, String direccion, String ciudad, String cedula, ArrayList<Integer> telefonos){
         if(nombre.isEmpty() || direccion.isEmpty() || ciudad.isEmpty()){
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacíos", "Advertencia", 2);
             return false;
-        }if(Integer.toString(cedula).length() < 9){
+        }if(cedula.length() < 9){
             JOptionPane.showMessageDialog(this, "La cédula es inválido (menor a 9 digitos)", "Advertencia", 2);
             return false;
         }if(telefonos == null)
@@ -455,11 +455,11 @@ public class InsertarClientes extends javax.swing.JFrame {
     }
     
     //Revisa los datos para organizacion que no sean vacíos y los numéricos que sean del tamaño correcto
-    private boolean revisarDatosOrg(String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, int cedula, int telefonoE){
+    private boolean revisarDatosOrg(String nombre, String direccion, String ciudad, String nombreContacto, String cargoContacto, String cedula, int telefonoE){
         if(nombre.isEmpty() || direccion.isEmpty() || ciudad.isEmpty() || nombreContacto.isEmpty() || cargoContacto.isEmpty()){
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacíos", "Advertencia", 2);
             return false;
-        }if(Integer.toString(cedula).length() < 9){
+        }if(cedula.length() < 9){
             JOptionPane.showMessageDialog(this, "La cédula jurídica es inválido (menor a 9 digitos)", "Advertencia", 2);
             return false;
         }if(Integer.toString(telefonoE).length() < 8){
