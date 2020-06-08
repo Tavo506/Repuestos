@@ -511,6 +511,7 @@ public class Repuestos {
             while(rMonto.next()){
                 MontoTotal += rMonto.getInt(1);
             }
+            MontoTotal += MontoTotal*13/100;
             
             if(fecha == null){
                 while(result.next()){
