@@ -354,7 +354,7 @@ public class Repuestos {
             ps.setString(2, modelo);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-            tabla.addRow(new Object[]{rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)});
+                tabla.addRow(new Object[]{rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)});
             }
             return true;
         }
@@ -523,9 +523,9 @@ public class Repuestos {
         try{
             PreparedStatement ps = con.prepareStatement("EXEC SPDparte ?");
             ps.setString(1, NombreP);
-            ps.executeQuery();
+            ps.executeUpdate();
 
-            return false;
+            return true;
         }catch(SQLException e){
             throw e;
         }
@@ -548,11 +548,51 @@ public class Repuestos {
         }
     }
     
-    static boolean CostoCreateOrUpdate(String Provedor, int ParteID, int Precio, int Ganancia) throws SQLException{
+    static boolean CostoCreate(String Provedor, String Parte, int Precio, int Ganancia) throws SQLException{
         try{
+            int ParteID;
+            PreparedStatement obtenerID = con.prepareStatement("EXEC SPgetParteID ?");
+            obtenerID.setString(1, Parte);
+            ResultSet ID = obtenerID.executeQuery();
+            if(ID.next())
+                ParteID = ID.getInt(1);
+            else
+                return false;
+            System.out.println("Precio: " + Precio + " Ganancia:" + Ganancia);
+            PreparedStatement ps = con.prepareStatement("EXEC SPSpartesCosto ?, ?");
+            PreparedStatement Insertps = con.prepareStatement("EXEC SPIpartesCosto ?, ?, ?, ?");
+            ps.setString(1, Provedor);
+            ps.setInt(2, ParteID);
+            ResultSet rs = ps.executeQuery();
+            if(!rs.next()){
+                Insertps.setString(1, Provedor);
+                Insertps.setInt(2, ParteID);
+                Insertps.setInt(3, Precio);
+                Insertps.setInt(4, Ganancia);
+                Insertps.executeUpdate();
+                return true;
+            }
+
+            return false;
+        }catch(SQLException e){
+            throw e;
+        }
+    }
+    
+    static boolean CostoUpdate(String Provedor, String Parte, int Precio, int Ganancia) throws SQLException{
+        try{
+            int ParteID;
+            PreparedStatement obtenerID = con.prepareStatement("EXEC SPgetParteID ?");
+            obtenerID.setString(1, Parte);
+            ResultSet ID = obtenerID.executeQuery();
+            if(ID.next())
+                ParteID = ID.getInt(1);
+            else
+                return false;
+            
+            System.out.println("Precio: " + Precio + " Ganancia:" + Ganancia);
             PreparedStatement ps = con.prepareStatement("EXEC SPSpartesCosto ?, ?");
             PreparedStatement UpdatePs = con.prepareStatement("EXEC SPUpartesCosto ?, ?, ?, ?");
-            PreparedStatement Insertps = con.prepareStatement("EXEC SPIpartesCosto ?, ?, ?, ?");
             ps.setString(1, Provedor);
             ps.setInt(2, ParteID);
             ResultSet rs = ps.executeQuery();
@@ -562,17 +602,10 @@ public class Repuestos {
                 UpdatePs.setInt(3, Precio);
                 UpdatePs.setInt(4, Ganancia);
                 UpdatePs.executeUpdate();
-                    return false;
-            }
-            else{
-                Insertps.setString(1, Provedor);
-                Insertps.setInt(2, ParteID);
-                Insertps.setInt(3, Precio);
-                Insertps.setInt(4, Ganancia);
-                Insertps.executeUpdate();
+                return true;
             }
 
-            return true;
+            return false;
         }catch(SQLException e){
             throw e;
         }

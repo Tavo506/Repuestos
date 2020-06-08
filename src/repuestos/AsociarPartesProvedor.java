@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -73,9 +74,12 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         CostoLabel = new javax.swing.JLabel();
         PorcentajeLabel1 = new javax.swing.JLabel();
         PorcentajeSpinner = new javax.swing.JSpinner();
+        PorcentajeLabel = new javax.swing.JLabel();
+        CostoFinal = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Asociar Parte y Provedor");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -139,12 +143,31 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
         PorcentajeLabel1.setText("Porcentaje Beneficio");
         jPanel1.add(PorcentajeLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, -1, -1));
 
+        PorcentajeSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
         PorcentajeSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 PorcentajeSpinnerStateChanged(evt);
             }
         });
+        PorcentajeSpinner.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PorcentajeSpinnerKeyPressed(evt);
+            }
+        });
         jPanel1.add(PorcentajeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 57, -1));
+
+        PorcentajeLabel.setBackground(new java.awt.Color(204, 204, 204));
+        PorcentajeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        PorcentajeLabel.setText("Precio Final");
+        jPanel1.add(PorcentajeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
+
+        CostoFinal.setEditable(false);
+        CostoFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CostoFinalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CostoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 118, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,20 +184,43 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AsociarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarButtonActionPerformed
-        // TODO add your handling code here:
+        CostoFinal.setText(calcValor());
+        try {
+            boolean a = Repuestos.CostoCreate(ComboAsoProv.getSelectedItem().toString(), ComboPartes.getSelectedItem().toString(), Integer.parseInt(PorcentajeField.getText().replace(".","")), (int)PorcentajeSpinner.getValue());
+            if(a)
+                JOptionPane.showMessageDialog(this, "Asociación creada", "Info", 1);
+            else
+                JOptionPane.showMessageDialog(this, "La asociación ya existe", "Advertencia", 2);
+        } catch (SQLException ex) {
+            Logger.getLogger(PartesCostos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AsociarButtonActionPerformed
+
+    private String calcValor(){
+        float Costo = (Integer) PorcentajeField.getValue();
+        float Porcentaje = (Integer) PorcentajeSpinner.getValue();
+        return ""+(Costo+Costo*(Porcentaje/100)+(Costo*0.13));
+    }
 
     private void PorcentajeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PorcentajeFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PorcentajeFieldActionPerformed
 
     private void PorcentajeFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PorcentajeFieldKeyPressed
-        //CostoFinal.setText(calcValor());
+        CostoFinal.setText(calcValor());
     }//GEN-LAST:event_PorcentajeFieldKeyPressed
 
     private void PorcentajeSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_PorcentajeSpinnerStateChanged
-        //CostoFinal.setText(calcValor());
+        CostoFinal.setText(calcValor());
     }//GEN-LAST:event_PorcentajeSpinnerStateChanged
+
+    private void CostoFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CostoFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CostoFinalActionPerformed
+
+    private void PorcentajeSpinnerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PorcentajeSpinnerKeyPressed
+        CostoFinal.setText(calcValor());
+    }//GEN-LAST:event_PorcentajeSpinnerKeyPressed
 
     /**
      * @param args the command line arguments
@@ -215,9 +261,11 @@ public class AsociarPartesProvedor extends javax.swing.JFrame {
     private javax.swing.JButton AsociarButton;
     private javax.swing.JComboBox<String> ComboAsoProv;
     private javax.swing.JComboBox<String> ComboPartes;
+    private javax.swing.JTextField CostoFinal;
     private javax.swing.JLabel CostoLabel;
     private javax.swing.JLabel ParteAsoLabel;
     private javax.swing.JFormattedTextField PorcentajeField;
+    private javax.swing.JLabel PorcentajeLabel;
     private javax.swing.JLabel PorcentajeLabel1;
     private javax.swing.JSpinner PorcentajeSpinner;
     private javax.swing.JLabel ProveedorAsoLabel;

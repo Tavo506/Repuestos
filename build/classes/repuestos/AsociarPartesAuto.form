@@ -4,6 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="0"/>
     <Property name="title" type="java.lang.String" value="Asociar Parte y Auto"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -151,7 +152,7 @@
                 <StringItem index="5" value="Fox"/>
                 <StringItem index="6" value="Golf"/>
                 <StringItem index="7" value="Lancer"/>
-                <StringItem index="8" value="Mazda 6"/>
+                <StringItem index="8" value="Mazda"/>
                 <StringItem index="9" value="Murano"/>
                 <StringItem index="10" value="Pajero"/>
                 <StringItem index="11" value="Prius"/>

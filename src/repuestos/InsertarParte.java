@@ -69,6 +69,7 @@ public class InsertarParte extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Insertar Parte");
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panelinsertar.setBackground(new java.awt.Color(51, 51, 51));

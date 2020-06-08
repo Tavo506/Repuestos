@@ -51,6 +51,7 @@ public class Principal extends javax.swing.JFrame {
         AsociaAutoButton = new javax.swing.JButton();
         ActualizaCostosProvButton = new javax.swing.JButton();
         LabelAdminPartes = new javax.swing.JLabel();
+        AsociarProveedor = new javax.swing.JButton();
         Panel3 = new javax.swing.JPanel();
         LabelAdminOrdenes = new javax.swing.JLabel();
         BotonCrearOrden = new javax.swing.JButton();
@@ -138,7 +139,7 @@ public class Principal extends javax.swing.JFrame {
                 verPartesButtonActionPerformed(evt);
             }
         });
-        Panel2.add(verPartesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 270, 80));
+        Panel2.add(verPartesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 270, 80));
 
         InsertarParteButton.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         InsertarParteButton.setText("Insertar Parte");
@@ -158,7 +159,7 @@ public class Principal extends javax.swing.JFrame {
                 BorrarParteButtonActionPerformed(evt);
             }
         });
-        Panel2.add(BorrarParteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 270, 80));
+        Panel2.add(BorrarParteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 270, 80));
 
         AsociaAutoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         AsociaAutoButton.setText("Asociar partes Auto");
@@ -168,7 +169,7 @@ public class Principal extends javax.swing.JFrame {
                 AsociaAutoButtonActionPerformed(evt);
             }
         });
-        Panel2.add(AsociaAutoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 270, 80));
+        Panel2.add(AsociaAutoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, 270, 80));
 
         ActualizaCostosProvButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ActualizaCostosProvButton.setText("Acutalizar costos proveedor");
@@ -178,7 +179,7 @@ public class Principal extends javax.swing.JFrame {
                 ActualizaCostosProvButtonActionPerformed(evt);
             }
         });
-        Panel2.add(ActualizaCostosProvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 270, 80));
+        Panel2.add(ActualizaCostosProvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 270, 80));
 
         LabelAdminPartes.setBackground(new java.awt.Color(255, 255, 255));
         LabelAdminPartes.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -186,6 +187,16 @@ public class Principal extends javax.swing.JFrame {
         LabelAdminPartes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelAdminPartes.setText("Administrar Partes");
         Panel2.add(LabelAdminPartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 20, 720, -1));
+
+        AsociarProveedor.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        AsociarProveedor.setText("Asociar parte proveedor");
+        AsociarProveedor.setFocusPainted(false);
+        AsociarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsociarProveedorActionPerformed(evt);
+            }
+        });
+        Panel2.add(AsociarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 270, 80));
 
         getContentPane().add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 600));
 
@@ -354,6 +365,11 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BotonAsociarOrdenActionPerformed
 
+    private void AsociarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarProveedorActionPerformed
+         new AsociarPartesProvedor(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_AsociarProveedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -392,6 +408,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ActualizaCostosProvButton;
     private javax.swing.JButton AsociaAutoButton;
+    private javax.swing.JButton AsociarProveedor;
     private javax.swing.JMenuBar BarraMenu;
     private javax.swing.JButton BorrarParteButton;
     private javax.swing.JButton BotonAsociarOrden;

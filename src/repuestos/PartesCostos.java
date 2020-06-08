@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -80,6 +81,7 @@ public class PartesCostos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Costo de Parte");
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -110,6 +112,7 @@ public class PartesCostos extends javax.swing.JFrame {
         });
         jPanel1.add(CostoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 118, -1));
 
+        PorcentajeSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
         PorcentajeSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 PorcentajeSpinnerStateChanged(evt);
@@ -190,7 +193,11 @@ public class PartesCostos extends javax.swing.JFrame {
     private void AsociarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsociarButtonActionPerformed
        CostoFinal.setText(calcValor());
         try {
-            Repuestos.CostoCreateOrUpdate(ProveedorCombo.getSelectedItem().toString(), ComboPartes.getSelectedIndex()+1, Integer.parseInt(PorcentajeField.getText()), (int)PorcentajeSpinner.getValue());
+            boolean a = Repuestos.CostoUpdate(ProveedorCombo.getSelectedItem().toString(), ComboPartes.getSelectedItem().toString(), Integer.parseInt(PorcentajeField.getText().replace(".","")), (int)PorcentajeSpinner.getValue());
+            if(a)
+                JOptionPane.showMessageDialog(this, "Asociación actualizada", "Info", 1);
+            else
+                JOptionPane.showMessageDialog(this, "La asociación no existe", "Advertencia", 2);
         } catch (SQLException ex) {
             Logger.getLogger(PartesCostos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -232,9 +239,9 @@ public class PartesCostos extends javax.swing.JFrame {
     }
     
     private String calcValor(){
-    float Costo = (Integer) PorcentajeField.getValue();
-    float Porcentaje = (Integer) PorcentajeSpinner.getValue();
-    return ""+(Costo+Costo*(Porcentaje/100)+(Costo*0.13));
+        float Costo = (Integer) PorcentajeField.getValue();
+        float Porcentaje = (Integer) PorcentajeSpinner.getValue();
+        return ""+(Costo+Costo*(Porcentaje/100)+(Costo*0.13));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

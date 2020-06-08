@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,6 +71,7 @@ public class BorrarPartes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Borrar Parte");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,8 +116,12 @@ public class BorrarPartes extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Repuestos.BorrarParte(ComboPartes.getSelectedItem().toString());
+            ComboPartes.removeAllItems();
+            cargarPartes();
+            JOptionPane.showMessageDialog(this, "Parte borrada", "Info", 1);
         } catch (SQLException ex) {
-            Logger.getLogger(BorrarPartes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "La parte no se puede borrar\nporque pertenece a una o más ordenes", "Advertencia", 2);
+            //Logger.getLogger(BorrarPartes.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
